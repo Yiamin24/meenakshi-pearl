@@ -209,13 +209,13 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         </CinematicReveal>
         
         <CinematicReveal delay={0.3}>
-          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
+          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
             Grade-A Plotted Development
           </span>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres.
           </p>
