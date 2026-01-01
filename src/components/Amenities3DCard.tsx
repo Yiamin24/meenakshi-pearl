@@ -214,15 +214,15 @@ const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({ a
           ease: [0.22, 1, 0.36, 1]
         }}
       >
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <h3 className="font-heading text-lg md:text-xl text-pearl-ivory hover:text-primary transition-colors duration-300 flex-1">
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <h3 className="font-heading text-xl md:text-2xl text-pearl-ivory hover:text-primary transition-colors duration-300 flex-1">
             {amenity.amenityName}
           </h3>
           <span className="font-mono text-primary/60 text-xs uppercase tracking-widest whitespace-nowrap">
             0{index + 1}
           </span>
         </div>
-        <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 leading-relaxed line-clamp-2">
+        <p className="font-paragraph text-sm md:text-base text-champagne-beige/70 leading-relaxed line-clamp-2">
           {amenity.description}
         </p>
         <div className="mt-3 flex items-center gap-2">
