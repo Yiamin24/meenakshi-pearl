@@ -426,7 +426,7 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
 
 const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigurations[] }) => {
   return (
-    <section id="plots" className="py-32 bg-champagne-beige/5">
+    <section id="plots" className="pt-16 pb-32 bg-champagne-beige/5">
       <div className="container mx-auto px-4 md:px-8">
         <SectionDivider />
         
