@@ -17,6 +17,7 @@ import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
 import Amenities3DSection from '@/components/Amenities3DCard';
 import ContactFormModal from '@/components/ContactFormModal';
+import Header from '@/components/Header';
 
 
 // --- Utility Components ---
@@ -100,6 +101,8 @@ export default function HomePage() {
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
       />
 
+      <Header />
+
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
@@ -136,7 +139,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0">
+    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0 mt-16 sm:mt-20 md:mt-24">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <Image
           src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
@@ -166,7 +169,8 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         <CinematicReveal delay={0.6}>
           <p className="font-paragraph text-sm sm:text-base md:text-lg text-champagne-beige/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
-            A sanctuary of 212 premium plots across 14 acres.
+            A sanctuary of 212 premium plots across 14 acres. <br className="hidden md:block" />
+            <span className="text-primary font-semibold">Plots starting from 38 lac</span>
           </p>
         </CinematicReveal>
 
@@ -690,7 +694,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
               <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-4">The Collection</h2>
             </CinematicReveal>
             <CinematicReveal delay={0.1}>
-              <p className="font-paragraph text-primary uppercase tracking-widest text-sm\">World-Class Amenities</p>
+              <p className="font-paragraph text-primary uppercase tracking-widest text-sm">World-Class Amenities</p>
             </CinematicReveal>
           </div>
           <CinematicReveal delay={0.2} className="hidden md:flex items-center gap-4 text-white/30">
@@ -708,7 +712,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
                 className="relative w-[85vw] md:w-[600px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0 group"
               >
                 <div className="absolute inset-0 overflow-hidden rounded-sm">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10\" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
                   {amenity.galleryImage && (
                     <Image
                       src={amenity.galleryImage}
@@ -729,7 +733,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
                     <h3 className="font-heading text-3xl md:text-4xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
                       {amenity.amenityName}
                     </h3>
-                    <span className="font-mono text-primary/50 text-xl\">0{index + 1}</span>
+                    <span className="font-mono text-primary/50 text-xl">0{index + 1}</span>
                   </div>
                   <p className="font-paragraph text-sm text-champagne-beige/60 mt-4 max-w-md line-clamp-2">
                     {amenity.description}
@@ -740,8 +744,8 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
           </motion.div>
 
           {/* Gradient Fade Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-champagne-beige/5 to-transparent z-10 pointer-events-none\" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-champagne-beige/5 to-transparent z-10 pointer-events-none\" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-champagne-beige/5 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-champagne-beige/5 to-transparent z-10 pointer-events-none" />
         </div>
 
         {/* Bottom Spacing */}
