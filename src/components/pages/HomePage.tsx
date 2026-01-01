@@ -16,6 +16,7 @@ import { MapPin, Phone, Mail, ArrowRight, Check, Lock, TrendingUp } from 'lucide
 import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
 import Amenities3DSection from '@/components/Amenities3DCard';
+import ContactFormModal from '@/components/ContactFormModal';
 
 
 // --- Utility Components ---
@@ -68,6 +69,7 @@ export default function HomePage() {
   const [amenities, setAmenities] = useState<ProjectAmenities[]>([]);
   const [gatedBenefits, setGatedBenefits] = useState<GatedLivingBenefits[]>([]);
   const [investmentHighlights, setInvestmentHighlights] = useState<InvestmentHighlights[]>([]);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,6 +110,11 @@ export default function HomePage() {
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
       />
 
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
+
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div 
@@ -142,7 +149,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <HeroSection />
+            <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <ProjectOverviewSection />
             <InfrastructureSection infrastructure={infrastructure} />
             <GatedLivingSection gatedBenefits={gatedBenefits} />
@@ -151,7 +158,7 @@ export default function HomePage() {
             <PlotConfigurationsSection plotConfigs={plotConfigs} />
             <LegalSection legalApprovals={legalApprovals} />
             <InvestmentSection investmentHighlights={investmentHighlights} />
-            <FinalCTASection />
+            <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <Footer />
           </motion.main>
         )}
@@ -162,7 +169,7 @@ export default function HomePage() {
 
 // --- Sections ---
 
-const HeroSection = () => {
+const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -208,7 +215,7 @@ const HeroSection = () => {
           <Button 
             size="lg" 
             className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={onOpenContactForm}
           >
             Schedule Visit
           </Button>
@@ -959,33 +966,110 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
   );
 };
 
-const FinalCTASection = () => {
+const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   return (
     <section id="contact" className="relative py-32 bg-background flex items-center justify-center overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
-        <CinematicReveal>
-          <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl text-pearl-ivory mb-8 tracking-tight">
-            Own The <br />
-            <span className="text-primary">Legacy</span>
-          </h2>
-        </CinematicReveal>
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <CinematicReveal>
+            <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl text-pearl-ivory mb-8 tracking-tight">
+              Own The <br />
+              <span className="text-primary">Legacy</span>
+            </h2>
+          </CinematicReveal>
 
-        <CinematicReveal delay={0.2}>
-          <p className="font-paragraph text-xl text-champagne-beige/80 max-w-2xl mx-auto mb-16 font-light">
-            Limited plots available. Secure your piece of East Bangalore's finest address today.
-          </p>
-        </CinematicReveal>
+          <CinematicReveal delay={0.2}>
+            <p className="font-paragraph text-xl text-champagne-beige/80 max-w-2xl mx-auto mb-16 font-light">
+              Limited plots available. Secure your piece of East Bangalore's finest address today.
+            </p>
+          </CinematicReveal>
+        </div>
 
+        {/* Contact Form */}
+        <div className="max-w-2xl mx-auto mb-20">
+          <CinematicReveal delay={0.3}>
+            <form onSubmit={(e) => { e.preventDefault(); onOpenContactForm(); }} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Name */}
+                <div>
+                  <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                    placeholder="+91 XXXXX XXXXX"
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                  Message *
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
+                  placeholder="Tell us about your interest in Meenakshi Pearl..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-base py-3 rounded-lg mt-6 transition-all"
+              >
+                Send Message
+              </Button>
+
+              <p className="font-paragraph text-xs text-white/30 text-center">
+                We respect your privacy. Your information will never be shared.
+              </p>
+            </form>
+          </CinematicReveal>
+        </div>
+
+        {/* CTA Buttons */}
         <CinematicReveal delay={0.4}>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
               <Button 
                 size="lg" 
                 className="relative bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-12 py-8 rounded-none min-w-[240px]"
+                onClick={onOpenContactForm}
               >
                 <Phone className="w-5 h-5 mr-3" />
                 Request Callback
@@ -996,6 +1080,7 @@ const FinalCTASection = () => {
               size="lg" 
               variant="outline" 
               className="border-white/20 text-white hover:bg-white/5 font-paragraph text-lg px-12 py-8 rounded-none min-w-[240px]"
+              onClick={onOpenContactForm}
             >
               <Mail className="w-5 h-5 mr-3" />
               Download Brochure
@@ -1003,7 +1088,7 @@ const FinalCTASection = () => {
           </div>
         </CinematicReveal>
 
-        <CinematicReveal delay={0.6} className="mt-16 pt-16 border-t border-white/5">
+        <CinematicReveal delay={0.6} className="pt-16 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-white/30 font-paragraph uppercase tracking-widest">
             <span>Sales Office: Sarjapur Road</span>
             <span className="hidden md:inline">•</span>
