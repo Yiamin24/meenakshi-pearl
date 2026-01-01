@@ -647,33 +647,57 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
 };
 
 const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const carouselRef = useRef(null);
+  
+  const { scrollYProgress: sectionProgress } = useScroll({ target: sectionRef });
+  const { scrollYProgress: carouselProgress } = useScroll({ target: carouselRef });
+  
+  // Calculate scroll distance needed to show all cards
+  const itemWidth = 600; // md:w-[600px]
+  const gap = 64; // md:gap-16
+  const totalScrollDistance = amenities.length * (itemWidth + gap);
+  
+  const x = useTransform(carouselProgress, [0, 1], ["0%", `-${totalScrollDistance}px`]);
+  
+  // Sticky header logic: stick at 20% from top, release when last card is visible
+  const headerY = useTransform(sectionProgress, [0, 0.3, 1], [0, 0, 0]);
+  const headerOpacity = useTransform(sectionProgress, [0.85, 1], [1, 0]);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-champagne-beige/5">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        <div className="container mx-auto px-4 md:px-8 mb-12 flex justify-between items-end">
+    <section ref={sectionRef} className="relative py-16 md:py-20 bg-champagne-beige/5">
+      <div className="container mx-auto px-4 md:px-8">
+        {/* Sticky Header */}
+        <motion.div 
+          ref={headerRef}
+          style={{ y: headerY, opacity: headerOpacity }}
+          className="sticky top-[20%] z-20 mb-12 md:mb-16 flex justify-between items-end pb-8 border-b border-primary/20"
+        >
           <div>
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-4">The Collection</h2>
-            <p className="font-paragraph text-primary uppercase tracking-widest text-sm">World-Class Amenities</p>
+            <CinematicReveal>
+              <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-4">The Collection</h2>
+            </CinematicReveal>
+            <CinematicReveal delay={0.1}>
+              <p className="font-paragraph text-primary uppercase tracking-widest text-sm\">World-Class Amenities</p>
+            </CinematicReveal>
           </div>
-          <div className="hidden md:flex items-center gap-4 text-white/30">
+          <CinematicReveal delay={0.2} className="hidden md:flex items-center gap-4 text-white/30">
             <span>Scroll to Explore</span>
             <ArrowRight className="w-5 h-5 animate-pulse" />
-          </div>
-        </div>
+          </CinematicReveal>
+        </motion.div>
 
-        <div className="w-full pl-4 md:pl-8">
-          <motion.div style={{ x }} className="flex gap-8 md:gap-16 w-max pr-32">
+        {/* Carousel Container */}
+        <div ref={carouselRef} className="relative overflow-hidden -mx-4 md:-mx-8 px-4 md:px-8">
+          <motion.div style={{ x }} className="flex gap-8 md:gap-16 w-max">
             {amenities.map((amenity, index) => (
               <div 
                 key={amenity._id} 
                 className="relative w-[85vw] md:w-[600px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0 group"
               >
                 <div className="absolute inset-0 overflow-hidden rounded-sm">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10\" />
                   {amenity.galleryImage && (
                     <Image
                       src={amenity.galleryImage}
@@ -683,21 +707,34 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
                   )}
                 </div>
                 
-                <div className="absolute -bottom-12 left-0 w-full">
+                <motion.div 
+                  className="absolute -bottom-20 left-0 w-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
                   <div className="flex items-baseline justify-between border-b border-white/20 pb-4">
-                    <h3 className="font-heading text-3xl md:text-4xl text-pearl-ivory">
+                    <h3 className="font-heading text-3xl md:text-4xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
                       {amenity.amenityName}
                     </h3>
-                    <span className="font-mono text-primary/50 text-xl">0{index + 1}</span>
+                    <span className="font-mono text-primary/50 text-xl\">0{index + 1}</span>
                   </div>
-                  <p className="font-paragraph text-sm text-champagne-beige/60 mt-4 max-w-md">
+                  <p className="font-paragraph text-sm text-champagne-beige/60 mt-4 max-w-md line-clamp-2">
                     {amenity.description}
                   </p>
-                </div>
+                </motion.div>
               </div>
             ))}
           </motion.div>
+
+          {/* Gradient Fade Edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-champagne-beige/5 to-transparent z-10 pointer-events-none\" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-champagne-beige/5 to-transparent z-10 pointer-events-none\" />
         </div>
+
+        {/* Bottom Spacing */}
+        <div className="mt-32 md:mt-40" />
       </div>
     </section>
   );
