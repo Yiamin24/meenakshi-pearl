@@ -154,7 +154,7 @@ export default function HomePage() {
             <InfrastructureSection infrastructure={infrastructure} />
             <GatedLivingSection gatedBenefits={gatedBenefits} />
             <Amenities3DSection amenities={amenities} />
-            <LocationSection />
+            <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <PlotConfigurationsSection plotConfigs={plotConfigs} />
             <LegalSection legalApprovals={legalApprovals} />
             <InvestmentSection investmentHighlights={investmentHighlights} />
@@ -245,14 +245,14 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   );
 };
 
-const LocationSection = () => {
+const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   return (
     <section className="relative py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <CinematicReveal>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 group">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 group cursor-pointer" onClick={onOpenContactForm}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0!2d77.7!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA3N8KwNDInMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
                   width="100%"
@@ -300,9 +300,11 @@ const LocationSection = () => {
                 { label: "Whitefield Tech Park", dist: "12 km" },
                 { label: "Intl. Airport", dist: "45 mins" }
               ].map((item, i) => (
-                <CinematicReveal key={i} delay={0.3 + (i * 0.1)} className="flex items-center justify-between border-b border-white/10 pb-4 group hover:border-primary/50 transition-colors">
-                  <span className="font-heading text-xl text-pearl-ivory group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
-                  <span className="font-paragraph text-primary font-medium">{item.dist}</span>
+                <CinematicReveal key={i} delay={0.3 + (i * 0.1)}>
+                  <div className="flex items-center justify-between border-b border-white/10 pb-4 group hover:border-primary/50 transition-colors cursor-pointer" onClick={onOpenContactForm}>
+                    <span className="font-heading text-xl text-pearl-ivory group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
+                    <span className="font-paragraph text-primary font-medium">{item.dist}</span>
+                  </div>
                 </CinematicReveal>
               ))}
             </div>
