@@ -60,9 +60,6 @@ const ParallaxText = ({ children, className = "", speed = 1 }: { children: React
 // --- Main Component ---
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showVideo, setShowVideo] = useState(false);
-  const [videoEnded, setVideoEnded] = useState(false);
   const [legalApprovals, setLegalApprovals] = useState<LegalApprovals[]>([]);
   const [plotConfigs, setPlotConfigs] = useState<PlotConfigurations[]>([]);
   const [infrastructure, setInfrastructure] = useState<InfrastructureDetails[]>([]);
@@ -90,28 +87,11 @@ export default function HomePage() {
         setInvestmentHighlights(investment.items.sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0)));
       } catch (error) {
         console.error("Failed to fetch data", error);
-      } finally {
-        // Minimum load time to ensure smooth transition
-        setTimeout(() => {
-          setIsLoading(false);
-          setShowVideo(true);
-        }, 2500);
       }
     };
 
     fetchData();
   }, []);
-
-  // Open contact form 5 seconds after video ends and hero section is visible
-  useEffect(() => {
-    if (videoEnded) {
-      const timer = setTimeout(() => {
-        setIsContactModalOpen(true);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [videoEnded]);
 
   return (
     <div className="bg-background text-foreground min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
@@ -125,54 +105,23 @@ export default function HomePage() {
         onClose={() => setIsContactModalOpen(false)} 
       />
 
-      <AnimatePresence mode="wait">
-        {isLoading ? (
-          <motion.div 
-            key="loader"
-            exit={{ opacity: 0, transition: { duration: 1, ease: "easeInOut" } }}
-            className="fixed inset-0 z-[200]"
-          >
-            <Loader />
-          </motion.div>
-        ) : showVideo && !videoEnded ? (
-          <motion.div
-            key="video"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
-            className="fixed inset-0 z-[150] bg-black flex items-center justify-center"
-          >
-            <video
-              autoPlay
-              muted
-              playsInline
-              onEnded={() => setVideoEnded(true)}
-              className="w-full h-full object-contain"
-            >
-              <source src="https://video.wixstatic.com/video/cef78c_3fdbf53a388748deb2e7bb1354e2faca/720p/mp4/file.mp4" type="video/mp4" />
-            </video>
-          </motion.div>
-        ) : (
-          <motion.main
-            key="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-            <ProjectOverviewSection />
-            <InfrastructureSection infrastructure={infrastructure} />
-            <GatedLivingSection gatedBenefits={gatedBenefits} />
-            <Amenities3DSection amenities={amenities} />
-            <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-            <PlotConfigurationsSection plotConfigs={plotConfigs} />
-            <LegalSection legalApprovals={legalApprovals} />
-            <InvestmentSection investmentHighlights={investmentHighlights} />
-            <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
-            <Footer />
-          </motion.main>
-        )}
-      </AnimatePresence>
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+        <ProjectOverviewSection />
+        <InfrastructureSection infrastructure={infrastructure} />
+        <GatedLivingSection gatedBenefits={gatedBenefits} />
+        <Amenities3DSection amenities={amenities} />
+        <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+        <PlotConfigurationsSection plotConfigs={plotConfigs} />
+        <LegalSection legalApprovals={legalApprovals} />
+        <InvestmentSection investmentHighlights={investmentHighlights} />
+        <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
+        <Footer />
+      </motion.main>
     </div>
   );
 }
