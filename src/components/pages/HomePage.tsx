@@ -70,6 +70,8 @@ export default function HomePage() {
   const [gatedBenefits, setGatedBenefits] = useState<GatedLivingBenefits[]>([]);
   const [investmentHighlights, setInvestmentHighlights] = useState<InvestmentHighlights[]>([]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const [heroFullyVisible, setHeroFullyVisible] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,6 +104,37 @@ export default function HomePage() {
 
     fetchData();
   }, []);
+
+  // Detect when hero section is fully visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Hero is fully visible when it's completely in the viewport
+        if (entry.isIntersecting && entry.intersectionRatio === 1) {
+          setHeroFullyVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 1 } // Trigger only when 100% of the element is visible
+    );
+
+    if (heroSectionRef.current) {
+      observer.observe(heroSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Open contact form 5 seconds after hero section is fully visible
+  useEffect(() => {
+    if (heroFullyVisible && !videoEnded) {
+      const timer = setTimeout(() => {
+        setIsContactModalOpen(true);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [heroFullyVisible, videoEnded]);
 
   return (
     <div className="bg-background text-foreground min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
@@ -149,7 +182,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+            <HeroSection ref={heroSectionRef} onOpenContactForm={() => setIsContactModalOpen(true)} />
             <ProjectOverviewSection />
             <InfrastructureSection infrastructure={infrastructure} />
             <GatedLivingSection gatedBenefits={gatedBenefits} />
@@ -169,81 +202,83 @@ export default function HomePage() {
 
 // --- Sections ---
 
-const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.2]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+const HeroSection = React.forwardRef<HTMLDivElement, { onOpenContactForm: () => void }>(
+  ({ onOpenContactForm }, ref) => {
+    const scrollRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: scrollRef, offset: ["start start", "end start"] });
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.2]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
-        <Image
-          src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
-          alt="Meenakshi Pearl Aerial View"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
-      </motion.div>
-
-      <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 md:px-8 text-center">
-        <CinematicReveal delay={0.1}>
+    return (
+      <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
           <Image
-            src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
-            alt="Meenakshi Pearl Logo"
-            width={400}
-            height={140}
-            className="mx-auto mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)]"
+            src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
+            alt="Meenakshi Pearl Aerial View"
+            className="w-full h-full object-cover"
           />
-        </CinematicReveal>
-        
-        <CinematicReveal delay={0.3}>
-          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
-            Grade-A Plotted Development
-          </span>
-        </CinematicReveal>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
+        </motion.div>
 
-        <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-            Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
-            A sanctuary of 212 premium plots across 14 acres.
-          </p>
-        </CinematicReveal>
+        <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 md:px-8 text-center">
+          <CinematicReveal delay={0.1}>
+            <Image
+              src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
+              alt="Meenakshi Pearl Logo"
+              width={400}
+              height={140}
+              className="mx-auto mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)]"
+            />
+          </CinematicReveal>
+          
+          <CinematicReveal delay={0.3}>
+            <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
+              Grade-A Plotted Development
+            </span>
+          </CinematicReveal>
 
-        <CinematicReveal delay={0.8} className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <Button 
-            size="lg" 
-            className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
-            onClick={onOpenContactForm}
-          >
-            Schedule Visit
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide backdrop-blur-sm transition-all duration-500"
-            onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            View Masterplan
-          </Button>
-        </CinematicReveal>
-      </motion.div>
+          <CinematicReveal delay={0.6}>
+            <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+              Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
+              A sanctuary of 212 premium plots across 14 acres.
+            </p>
+          </CinematicReveal>
 
-      <motion.div 
-        style={{ opacity }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-primary/80">Scroll to Explore</span>
+          <CinematicReveal delay={0.8} className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <Button 
+              size="lg" 
+              className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
+              onClick={onOpenContactForm}
+            >
+              Schedule Visit
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide backdrop-blur-sm transition-all duration-500"
+              onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              View Masterplan
+            </Button>
+          </CinematicReveal>
+        </motion.div>
+
         <motion.div 
-          animate={{ height: [20, 40, 20] }} 
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[1px] bg-primary/50"
-        />
-      </motion.div>
-    </section>
-  );
-};
+          style={{ opacity }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em] text-primary/80">Scroll to Explore</span>
+          <motion.div 
+            animate={{ height: [20, 40, 20] }} 
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-[1px] bg-primary/50"
+          />
+        </motion.div>
+      </section>
+    );
+  }
+);
 
 const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   return (
