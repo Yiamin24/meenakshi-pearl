@@ -187,7 +187,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <Image
           src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
@@ -197,34 +197,34 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
       </motion.div>
 
-      <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 md:px-8 text-center">
+      <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
         <CinematicReveal delay={0.1}>
           <Image
             src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
             alt="Meenakshi Pearl Logo"
             width={400}
             height={140}
-            className="mx-auto mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)]"
+            className="mx-auto mb-4 sm:mb-6 md:mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)] w-auto h-auto max-w-xs sm:max-w-sm md:max-w-md"
           />
         </CinematicReveal>
         
         <CinematicReveal delay={0.3}>
-          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
+          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs sm:text-xs md:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
             Grade-A Plotted Development
           </span>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
+          <p className="font-paragraph text-base sm:text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres.
           </p>
         </CinematicReveal>
 
-        <CinematicReveal delay={0.8} className="flex flex-col md:flex-row items-center justify-center gap-6">
+        <CinematicReveal delay={0.8} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 flex-wrap">
           <Button 
             size="lg" 
-            className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
+            className="bg-primary text-black hover:bg-primary/90 font-paragraph text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-none w-full sm:w-auto tracking-wide transition-all duration-500 hover:scale-105"
             onClick={onOpenContactForm}
           >
             Schedule Visit
@@ -232,7 +232,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide backdrop-blur-sm transition-all duration-500"
+            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-none w-full sm:w-auto tracking-wide backdrop-blur-sm transition-all duration-500"
             onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
           >
             View Masterplan
@@ -242,9 +242,9 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
       <motion.div 
         style={{ opacity }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-primary/80">Scroll to Explore</span>
+        <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-primary/80">Scroll to Explore</span>
         <motion.div 
           animate={{ height: [20, 40, 20] }} 
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -257,9 +257,9 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
 const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   return (
-    <section className="relative py-32 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative py-16 sm:py-24 md:py-32 bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <CinematicReveal>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 group cursor-pointer" onClick={() => window.open('https://share.google/pDEnejBiRyZDm506a', '_blank')}>
@@ -283,7 +283,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                     transition={{ duration: 2, repeat: Infinity }}
                     className="absolute inset-0 bg-primary rounded-full blur-xl"
                   />
-                  <MapPin className="w-12 h-12 text-primary relative z-10 drop-shadow-[0_0_15px_rgba(184,134,11,0.8)]" fill="currentColor" />
+                  <MapPin className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-primary relative z-10 drop-shadow-[0_0_15px_rgba(184,134,11,0.8)]" fill="currentColor" />
                 </div>
               </div>
             </CinematicReveal>
@@ -291,19 +291,19 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
           <div className="order-1 lg:order-2">
             <CinematicReveal>
-              <h2 className="font-heading text-4xl md:text-6xl text-pearl-ivory mb-8">
+              <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl text-pearl-ivory mb-6 sm:mb-8">
                 Strategically <br />
                 <span className="text-primary italic">Positioned</span>
               </h2>
             </CinematicReveal>
             
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-lg text-champagne-beige/80 mb-12 leading-relaxed border-l-2 border-primary/30 pl-6">
+              <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/80 mb-8 sm:mb-12 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
                 Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity.
               </p>
             </CinematicReveal>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {[
                 { label: "Sarjapur Main Road", dist: "5 km" },
                 { label: "Electronic City", dist: "8 km" },
@@ -311,9 +311,9 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                 { label: "Intl. Airport", dist: "45 mins" }
               ].map((item, i) => (
                 <CinematicReveal key={i} delay={0.3 + (i * 0.1)}>
-                  <div className="flex items-center justify-between border-b border-white/10 pb-4 group hover:border-primary/50 transition-colors cursor-pointer" onClick={onOpenContactForm}>
-                    <span className="font-heading text-xl text-pearl-ivory group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
-                    <span className="font-paragraph text-primary font-medium">{item.dist}</span>
+                  <div className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4 group hover:border-primary/50 transition-colors cursor-pointer" onClick={onOpenContactForm}>
+                    <span className="font-heading text-lg sm:text-xl text-pearl-ivory group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
+                    <span className="font-paragraph text-primary font-medium text-sm sm:text-base">{item.dist}</span>
                   </div>
                 </CinematicReveal>
               ))}
@@ -330,20 +330,20 @@ const ProjectOverviewSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   
   return (
-    <section ref={ref} className="py-32 bg-champagne-beige/5 relative">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/20">
+    <section ref={ref} className="py-16 sm:py-24 md:py-32 bg-champagne-beige/5 relative">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/20">
           {[
             { value: 14, label: "Acres of Land", suffix: "" },
             { value: 212, label: "Premium Plots", suffix: "" },
             { value: 100, label: "Vastu Compliant", suffix: "%" }
           ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center justify-center p-8 text-center">
+            <div key={i} className="flex flex-col items-center justify-center p-6 sm:p-8 text-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 1, delay: i * 0.2 }}
-                className="font-heading text-7xl md:text-8xl lg:text-9xl text-primary/20 font-bold relative"
+                className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-primary/20 font-bold relative"
               >
                 <span className="absolute inset-0 text-primary blur-2xl opacity-30">{stat.value}</span>
                 <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-primary to-primary/40">
@@ -354,7 +354,7 @@ const ProjectOverviewSection = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                className="font-paragraph text-xl text-pearl-ivory mt-4 uppercase tracking-widest"
+                className="font-paragraph text-base sm:text-lg md:text-xl text-pearl-ivory mt-3 sm:mt-4 uppercase tracking-widest"
               >
                 {stat.label}
               </motion.p>
@@ -362,9 +362,9 @@ const ProjectOverviewSection = () => {
           ))}
         </div>
         
-        <div className="mt-24 text-center">
+        <div className="mt-16 sm:mt-20 md:mt-24 text-center">
           <CinematicReveal>
-            <p className="font-heading text-3xl md:text-4xl text-champagne-beige max-w-4xl mx-auto leading-normal">
+            <p className="font-heading text-2xl sm:text-3xl md:text-4xl text-champagne-beige max-w-4xl mx-auto leading-normal px-4">
               "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
             </p>
           </CinematicReveal>
@@ -376,42 +376,42 @@ const ProjectOverviewSection = () => {
 
 const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) => {
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
+    <section className="py-16 sm:py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
       
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 sm:gap-8">
           <div className="max-w-2xl">
             <CinematicReveal>
-              <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">
+              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
                 Uncompromising <br />
                 <span className="text-primary">Transparency</span>
               </h2>
             </CinematicReveal>
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-lg text-champagne-beige/70">
+              <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/70">
                 Your investment is secured by comprehensive legal approvals and clear titles. We believe trust is the ultimate luxury.
               </p>
             </CinematicReveal>
           </div>
           <CinematicReveal delay={0.3}>
-            <div className="flex items-center gap-2 text-primary border border-primary/30 px-6 py-3 rounded-full bg-primary/5">
-              <Check className="w-5 h-5" />
-              <span className="uppercase tracking-wider text-sm font-medium">RERA Approved</span>
+            <div className="flex items-center gap-2 text-primary border border-primary/30 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-primary/5 whitespace-nowrap">
+              <Check className="w-4 sm:w-5 h-4 sm:h-5" />
+              <span className="uppercase tracking-wider text-xs sm:text-sm font-medium">RERA Approved</span>
             </div>
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {legalApprovals.map((approval, index) => (
             <CinematicReveal key={approval._id} delay={index * 0.1}>
-              <div className="group relative p-8 border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 h-full flex flex-col">
+              <div className="group relative p-6 sm:p-8 border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 h-full flex flex-col">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                 
-                <div className="mb-6 flex justify-between items-start">
-                  <div className="p-3 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform duration-500">
-                    <Check className="w-6 h-6" />
+                <div className="mb-4 sm:mb-6 flex justify-between items-start">
+                  <div className="p-2 sm:p-3 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform duration-500">
+                    <Check className="w-5 sm:w-6 h-5 sm:h-6" />
                   </div>
                   {approval.approvalDate && (
                     <span className="text-xs text-white/30 font-mono">
@@ -420,15 +420,15 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
                   )}
                 </div>
                 
-                <h3 className="font-heading text-2xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-heading text-xl sm:text-2xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                   {approval.approvalName}
                 </h3>
-                <p className="font-paragraph text-sm text-champagne-beige/60 leading-relaxed mb-4 flex-grow">
+                <p className="font-paragraph text-xs sm:text-sm text-champagne-beige/60 leading-relaxed mb-3 sm:mb-4 flex-grow">
                   {approval.description}
                 </p>
                 
                 {approval.issuingAuthority && (
-                  <div className="pt-4 border-t border-white/5 mt-auto">
+                  <div className="pt-3 sm:pt-4 border-t border-white/5 mt-auto">
                     <p className="text-xs text-primary/80 uppercase tracking-wider">
                       {approval.issuingAuthority}
                     </p>
@@ -466,25 +466,25 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
   ];
 
   return (
-    <section id="plots" className="py-32 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section id="plots" className="py-16 sm:py-24 md:py-32 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <SectionDivider />
         
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal>
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
               Plot <span className="text-primary">Configurations</span>
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-2xl mx-auto">
+            <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/70 max-w-2xl mx-auto px-4">
               Choose from our thoughtfully designed plot options
             </p>
           </CinematicReveal>
         </div>
 
         {/* Configuration Cards Grid - Minimal Design */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20">
           {configCards.map((card, index) => (
             <CinematicReveal key={index} delay={index * 0.15}>
               <motion.div
@@ -492,7 +492,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                 className="group relative h-full flex flex-col overflow-hidden"
               >
                 {/* Image Container - Full Height */}
-                <div className="relative w-full h-80 overflow-hidden bg-white/5">
+                <div className="relative w-full h-60 sm:h-72 md:h-80 overflow-hidden bg-white/5">
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -503,22 +503,22 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                 </div>
 
                 {/* Content - Minimal and Clean */}
-                <div className="relative flex-1 flex flex-col justify-between p-8 bg-background/50 backdrop-blur-sm border border-white/5">
+                <div className="relative flex-1 flex flex-col justify-between p-6 sm:p-8 bg-background/50 backdrop-blur-sm border border-white/5">
                   {/* Header */}
                   <div>
-                    <p className="font-paragraph text-primary text-xs uppercase tracking-widest mb-3">
+                    <p className="font-paragraph text-primary text-xs uppercase tracking-widest mb-2 sm:mb-3">
                       {card.subtitle}
                     </p>
-                    <h3 className="font-heading text-3xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors duration-500">
+                    <h3 className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="font-paragraph text-champagne-beige/60 text-sm leading-relaxed">
+                    <p className="font-paragraph text-champagne-beige/60 text-xs sm:text-sm leading-relaxed">
                       {card.description}
                     </p>
                   </div>
 
                   {/* Bottom Accent */}
-                  <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-2">
+                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/10 flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="font-paragraph text-primary text-xs uppercase tracking-wider">Available</span>
                   </div>
@@ -530,14 +530,14 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
 
         {/* Stats Section - Minimal */}
         <CinematicReveal delay={0.5}>
-          <div className="grid grid-cols-3 gap-8 md:gap-12 text-center py-12 border-y border-white/10">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 text-center py-8 sm:py-12 border-y border-white/10">
             {[
               { number: "212", label: "Total Plots" },
               { number: "14", label: "Acres" },
               { number: "100%", label: "Vastu Compliant" }
             ].map((stat, i) => (
               <div key={i}>
-                <p className="font-heading text-4xl md:text-5xl text-primary mb-2">{stat.number}</p>
+                <p className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-1 sm:mb-2">{stat.number}</p>
                 <p className="font-paragraph text-champagne-beige/60 text-xs uppercase tracking-wider">{stat.label}</p>
               </div>
             ))}
@@ -804,7 +804,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
 
 const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenefits[] }) => {
   return (
-    <section className="relative py-32 bg-background overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 bg-background overflow-hidden">
       {/* Parallax Background */}
       <div className="absolute inset-0 opacity-20">
         <Image 
@@ -815,28 +815,28 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center mb-24">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <div className="text-center mb-16 sm:mb-20 md:mb-24">
           <CinematicReveal>
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-primary/30 bg-primary/5 mb-8">
-              <Lock className="w-6 h-6 text-primary" />
+            <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-full border border-primary/30 bg-primary/5 mb-6 sm:mb-8">
+              <Lock className="w-5 sm:w-6 md:w-6 h-5 sm:h-6 md:h-6 text-primary" />
             </div>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">Secure & Serene</h2>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">Secure & Serene</h2>
           </CinematicReveal>
           <CinematicReveal delay={0.3}>
-            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-2xl mx-auto">
+            <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/70 max-w-2xl mx-auto px-4">
               A sanctuary where privacy meets community. Experience the peace of mind that comes with premium gated living.
             </p>
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           {gatedBenefits.map((benefit, index) => (
             <CinematicReveal key={benefit._id} delay={index * 0.2}>
-              <div className="flex gap-8 items-start group">
-                <div className="w-1/3 overflow-hidden rounded-sm aspect-[4/5]">
+              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start group">
+                <div className="w-full sm:w-1/3 overflow-hidden rounded-sm aspect-[4/5] flex-shrink-0">
                   {benefit.benefitVisual && (
                     <Image
                       src={benefit.benefitVisual}
@@ -845,11 +845,11 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
                     />
                   )}
                 </div>
-                <div className="w-2/3 pt-4">
-                  <h3 className="font-heading text-3xl text-pearl-ivory mb-4 group-hover:text-primary transition-colors">
+                <div className="w-full sm:w-2/3 pt-0 sm:pt-4">
+                  <h3 className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-3 sm:mb-4 group-hover:text-primary transition-colors">
                     {benefit.benefitTitle}
                   </h3>
-                  <p className="font-paragraph text-champagne-beige/60 leading-relaxed">
+                  <p className="font-paragraph text-sm sm:text-base text-champagne-beige/60 leading-relaxed">
                     {benefit.benefitDescription}
                   </p>
                 </div>
@@ -867,32 +867,32 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
 
   return (
-    <section ref={sectionRef} className="py-32 bg-champagne-beige/5 relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8">
+    <section ref={sectionRef} className="py-16 sm:py-24 md:py-32 bg-champagne-beige/5 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
         <motion.div 
-          className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-primary/20 pb-8"
+          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 border-b border-primary/20 pb-6 sm:pb-8 gap-6 sm:gap-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <CinematicReveal>
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory">
               The Investment <br />
               <span className="text-primary">Advantage</span>
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <div className="flex items-center gap-3 text-white/50 mt-6 md:mt-0">
-              <TrendingUp className="w-6 h-6" />
-              <span className="uppercase tracking-widest text-sm">High Appreciation Potential</span>
+            <div className="flex items-center gap-2 sm:gap-3 text-white/50 mt-4 md:mt-0 whitespace-nowrap">
+              <TrendingUp className="w-5 sm:w-6 h-5 sm:h-6" />
+              <span className="uppercase tracking-widest text-xs sm:text-sm">High Appreciation Potential</span>
             </div>
           </CinematicReveal>
         </motion.div>
 
         {/* Right-to-Left Scroll Animation Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
           {investmentHighlights.map((highlight, index) => {
             const itemRef = useRef(null);
             const { scrollYProgress: itemProgress } = useScroll({ 
@@ -909,7 +909,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
                 key={highlight._id}
                 ref={itemRef}
                 style={{ x, opacity }}
-                className="relative pl-8 border-l border-white/10 hover:border-primary transition-colors duration-500 group"
+                className="relative pl-6 sm:pl-8 border-l border-white/10 hover:border-primary transition-colors duration-500 group"
               >
                 {/* Animated accent line */}
                 <motion.div 
@@ -921,7 +921,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
                 />
 
                 <motion.h3 
-                  className="font-heading text-3xl text-pearl-ivory mb-6 group-hover:text-primary transition-colors duration-300"
+                  className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-300"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -932,7 +932,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
                 
                 {highlight.highlightQuote && (
                   <motion.blockquote 
-                    className="font-heading text-xl md:text-2xl text-champagne-beige italic mb-6 leading-relaxed"
+                    className="font-heading text-lg sm:text-xl md:text-2xl text-champagne-beige italic mb-4 sm:mb-6 leading-relaxed"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: index * 0.15 + 0.2 }}
@@ -955,7 +955,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
 
                 {highlight.additionalContext && (
                   <motion.p 
-                    className="font-paragraph text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300"
+                    className="font-paragraph text-xs sm:text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: index * 0.15 + 0.3 }}
@@ -980,7 +980,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
 
         {/* Bottom accent line */}
         <motion.div
-          className="mt-20 h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
+          className="mt-12 sm:mt-16 md:mt-20 h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
@@ -994,53 +994,53 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
 
 const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   return (
-    <section id="contact" className="relative py-32 bg-background flex items-center justify-center overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32 bg-background flex items-center justify-center overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
+        <div className="text-center mb-12 sm:mb-16">
           <CinematicReveal>
-            <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl text-pearl-ivory mb-8 tracking-tight">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-pearl-ivory mb-6 sm:mb-8 tracking-tight">
               Own The <br />
               <span className="text-primary">Legacy</span>
             </h2>
           </CinematicReveal>
 
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-xl text-champagne-beige/80 max-w-2xl mx-auto mb-16 font-light">
+            <p className="font-paragraph text-base sm:text-lg md:text-xl text-champagne-beige/80 max-w-2xl mx-auto mb-12 sm:mb-16 font-light px-4">
               Limited plots available. Secure your piece of East Bangalore's finest address today.
             </p>
           </CinematicReveal>
         </div>
 
         {/* Contact Form */}
-        <div className="max-w-2xl mx-auto mb-20">
+        <div className="max-w-2xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal delay={0.3}>
-            <form onSubmit={(e) => { e.preventDefault(); onOpenContactForm(); }} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={(e) => { e.preventDefault(); onOpenContactForm(); }} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Name */}
                 <div>
-                  <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                  <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
                     placeholder="Your name"
                   />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                  <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                     Phone Number *
                   </label>
                   <input
                     type="tel"
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -1048,26 +1048,26 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
               {/* Email */}
               <div>
-                <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                   Email Address *
                 </label>
                 <input
                   type="email"
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
                   placeholder="your@email.com"
                 />
               </div>
 
               {/* Message */}
               <div>
-                <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                   Message *
                 </label>
                 <textarea
                   required
                   rows={4}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
                   placeholder="Tell us about your interest in Meenakshi Pearl..."
                 />
               </div>
@@ -1075,7 +1075,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-base py-3 rounded-lg mt-6 transition-all"
+                className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-sm sm:text-base py-2 sm:py-3 rounded-lg mt-4 sm:mt-6 transition-all"
               >
                 Send Message
               </Button>
@@ -1089,15 +1089,15 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
         {/* CTA Buttons */}
         <CinematicReveal delay={0.4}>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
-            <div className="relative group">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
+            <div className="relative group w-full sm:w-auto">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
               <Button 
                 size="lg" 
-                className="relative bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-12 py-8 rounded-none min-w-[240px]"
+                className="relative bg-primary text-black hover:bg-primary/90 font-paragraph text-sm sm:text-lg px-6 sm:px-12 py-6 sm:py-8 rounded-none w-full sm:w-auto"
                 onClick={onOpenContactForm}
               >
-                <Phone className="w-5 h-5 mr-3" />
+                <Phone className="w-4 sm:w-5 h-4 sm:h-5 mr-2 sm:mr-3" />
                 Request Callback
               </Button>
             </div>
@@ -1105,19 +1105,19 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white/20 text-white hover:bg-white/5 font-paragraph text-lg px-12 py-8 rounded-none min-w-[240px]"
+              className="border-white/20 text-white hover:bg-white/5 font-paragraph text-sm sm:text-lg px-6 sm:px-12 py-6 sm:py-8 rounded-none w-full sm:w-auto"
               onClick={onOpenContactForm}
             >
-              <Mail className="w-5 h-5 mr-3" />
+              <Mail className="w-4 sm:w-5 h-4 sm:h-5 mr-2 sm:mr-3" />
               Download Brochure
             </Button>
           </div>
         </CinematicReveal>
 
-        <CinematicReveal delay={0.6} className="pt-16 border-t border-white/5">
-          <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-white/30 font-paragraph uppercase tracking-widest">
+        <CinematicReveal delay={0.6} className="pt-8 sm:pt-12 md:pt-16 border-t border-white/5">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/30 font-paragraph uppercase tracking-widest text-center sm:text-left">
             <span>Sales Office: Sarjapur Road</span>
-            <span className="hidden md:inline">•</span>
+            <span className="hidden sm:inline">•</span>
             <span>Open Daily: 9:00 AM - 6:00 PM</span>
           </div>
         </CinematicReveal>

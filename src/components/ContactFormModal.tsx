@@ -79,39 +79,39 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
           >
             <div className="bg-background border border-white/10 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto scrollbar-hide">
               {/* Header */}
-              <div className="sticky top-0 bg-background border-b border-white/10 px-6 py-6 flex justify-between items-center">
-                <h2 className="font-heading text-2xl text-pearl-ivory">Get In Touch</h2>
+              <div className="sticky top-0 bg-background border-b border-white/10 px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
+                <h2 className="font-heading text-xl sm:text-2xl text-pearl-ivory">Get In Touch</h2>
                 <button
                   onClick={onClose}
                   className="text-white/50 hover:text-white transition-colors"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 sm:w-6 h-5 sm:h-6" />
                 </button>
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {submitSuccess ? (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center py-12"
+                    className="text-center py-8 sm:py-12"
                   >
-                    <div className="w-12 h-12 bg-muted-forest-green/20 border border-muted-forest-green rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-6 h-6 text-muted-forest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 bg-muted-forest-green/20 border border-muted-forest-green rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                      <svg className="w-5 sm:w-6 h-5 sm:h-6 text-muted-forest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="font-heading text-xl text-pearl-ivory mb-2">Thank You!</h3>
-                    <p className="font-paragraph text-champagne-beige/70">
+                    <h3 className="font-heading text-lg sm:text-xl text-pearl-ivory mb-2">Thank You!</h3>
+                    <p className="font-paragraph text-sm sm:text-base text-champagne-beige/70">
                       We've received your message. Our team will be in touch shortly.
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                     {/* Name */}
                     <div>
-                      <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -120,14 +120,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
                         placeholder="Your name"
                       />
                     </div>
 
                     {/* Phone */}
                     <div>
-                      <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -136,14 +136,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.phoneNumber}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
                         placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
 
                     {/* Email */}
                     <div>
-                      <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -152,14 +152,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
 
                     {/* Message */}
                     <div>
-                      <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
                         Message *
                       </label>
                       <textarea
@@ -168,7 +168,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
                         placeholder="Tell us about your interest in Meenakshi Pearl..."
                       />
                     </div>
@@ -177,12 +177,12 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-base py-3 rounded-lg mt-6 transition-all"
+                      className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-sm sm:text-base py-2 sm:py-3 rounded-lg mt-4 sm:mt-6 transition-all"
                     >
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
 
-                    <p className="font-paragraph text-xs text-white/30 text-center mt-4">
+                    <p className="font-paragraph text-xs text-white/30 text-center mt-3 sm:mt-4">
                       We respect your privacy. Your information will never be shared.
                     </p>
                   </form>
