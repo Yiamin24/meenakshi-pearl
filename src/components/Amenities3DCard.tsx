@@ -1,5 +1,5 @@
 import React, { useRef, useState, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { ProjectAmenities } from '@/entities';
 import { Image } from '@/components/ui/image';
 
@@ -182,98 +182,126 @@ interface Amenities3DProps {
 const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
   const sectionRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, margin: '-200px' });
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  
+  // Create scroll-based animations that reverse on scroll-up
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const headerY = useTransform(scrollYProgress, [0, 0.2], [40, 0]);
+  const dividerWidth = useTransform(scrollYProgress, [0.1, 0.3], [0, 96]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-champagne-beige/5 overflow-hidden"
+      className="relative py-20 md:py-28 bg-champagne-beige/5 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-8">
-        {/* Section Header - Always Visible */}
-        <div className="mb-20 md:mb-28">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">
-              The Collection
-            </h2>
-            <p className="font-paragraph text-primary uppercase tracking-widest text-sm">
-              World-Class Amenities with Dynamic Showcases
-            </p>
-          </motion.div>
+        {/* Modern Section Header with Scroll-Based Animation */}
+        <motion.div 
+          className="mb-16 md:mb-24"
+          style={{ opacity: headerOpacity, y: headerY }}
+        >
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8">
+            <div>
+              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-pearl-ivory mb-4">
+                The Collection
+              </h2>
+              <p className="font-paragraph text-primary uppercase tracking-widest text-xs md:text-sm">
+                World-Class Amenities
+              </p>
+            </div>
+            <motion.div
+              className="h-1 bg-gradient-to-r from-primary to-primary/30"
+              style={{ width: dividerWidth }}
+            />
+          </div>
+        </motion.div>
 
-          <motion.div
-            className="w-24 h-1 bg-primary mt-8"
-            initial={{ width: 0, opacity: 0 }}
-            animate={sectionInView ? { width: 96, opacity: 1 } : {}}
-            transition={{ duration: 1, delay: 0.2 }}
-          />
-        </div>
-
-        {/* 3D Cards Grid with Scroll-Triggered Animations */}
+        {/* Modern Grid Layout - Smaller Cards */}
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 auto-rows-max"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-max"
         >
-          {amenities.map((amenity, index) => (
-            <div 
-              key={amenity._id} 
-              className="h-96 md:h-[450px] lg:h-[500px] will-change-transform"
-              style={{
-                transform: 'translateZ(0)',
-              }}
-            >
-              <Card3D amenity={amenity} index={index} />
-              
-              {/* Text Content - Always Visible Below Card */}
-              <motion.div
-                className="mt-6 md:mt-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.12 + 0.3,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
+          {amenities.map((amenity, index) => {
+            const itemRef = useRef(null);
+            const itemInView = useInView(itemRef, { once: false, margin: '-50px' });
+            
+            return (
+              <div 
+                key={amenity._id}
+                ref={itemRef}
+                className="flex flex-col"
               >
-                <h3 className="font-heading text-2xl md:text-3xl text-pearl-ivory mb-3 hover:text-primary transition-colors duration-300">
-                  {amenity.amenityName}
-                </h3>
-                <p className="font-paragraph text-sm md:text-base text-champagne-beige/70 leading-relaxed">
-                  {amenity.description}
-                </p>
-                <div className="mt-4 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <span className="font-mono text-primary/60 text-xs uppercase tracking-widest">
-                    Amenity 0{index + 1}
-                  </span>
-                </div>
-              </motion.div>
-            </div>
-          ))}
+                {/* Smaller Card - 280px height */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  animate={itemInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.95 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.08,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  className="h-64 md:h-72 will-change-transform"
+                  style={{
+                    transform: 'translateZ(0)',
+                  }}
+                >
+                  <Card3D amenity={amenity} index={index} />
+                </motion.div>
+                
+                {/* Text Content - Always Visible, Animates with Card */}
+                <motion.div
+                  className="mt-5 md:mt-6 flex-grow"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={itemInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.08 + 0.15,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="font-heading text-lg md:text-xl text-pearl-ivory hover:text-primary transition-colors duration-300 flex-1">
+                      {amenity.amenityName}
+                    </h3>
+                    <span className="font-mono text-primary/60 text-xs uppercase tracking-widest whitespace-nowrap">
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 leading-relaxed line-clamp-2">
+                    {amenity.description}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                    <span className="font-paragraph text-xs text-primary/50 uppercase tracking-wider">
+                      Premium Amenity
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Bottom Stats Section - Scroll Triggered */}
+        {/* Modern Stats Section with Scroll Animation */}
         <motion.div
-          className="mt-24 md:mt-32 pt-16 border-t border-primary/20"
+          className="mt-20 md:mt-28 pt-12 md:pt-16 border-t border-primary/20"
           initial={{ opacity: 0, y: 40 }}
-          animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: false, margin: '-100px' }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-3 gap-6 md:gap-12">
             <motion.div 
               className="text-center"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={sectionInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: false }}
             >
-              <div className="font-heading text-3xl md:text-4xl text-primary mb-2">
+              <div className="font-heading text-2xl md:text-3xl text-primary mb-2">
                 {amenities.length}+
               </div>
-              <p className="font-paragraph text-sm text-champagne-beige/60">
+              <p className="font-paragraph text-xs md:text-sm text-champagne-beige/60">
                 Premium Amenities
               </p>
             </motion.div>
@@ -281,27 +309,29 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
             <motion.div 
               className="text-center"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={sectionInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: false }}
             >
-              <div className="font-heading text-3xl md:text-4xl text-primary mb-2">
+              <div className="font-heading text-2xl md:text-3xl text-primary mb-2">
                 100%
               </div>
-              <p className="font-paragraph text-sm text-champagne-beige/60">
+              <p className="font-paragraph text-xs md:text-sm text-champagne-beige/60">
                 World-Class Quality
               </p>
             </motion.div>
             
             <motion.div 
-              className="text-center col-span-2 md:col-span-1"
+              className="text-center"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={sectionInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: false }}
             >
-              <div className="font-heading text-3xl md:text-4xl text-primary mb-2">
+              <div className="font-heading text-2xl md:text-3xl text-primary mb-2">
                 ∞
               </div>
-              <p className="font-paragraph text-sm text-champagne-beige/60">
+              <p className="font-paragraph text-xs md:text-sm text-champagne-beige/60">
                 Timeless Design
               </p>
             </motion.div>
