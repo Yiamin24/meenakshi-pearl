@@ -175,6 +175,67 @@ const Card3D: React.FC<Card3DProps> = ({ amenity, index }) => {
   );
 };
 
+// Separate component for each amenity card to avoid hooks in loops
+const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({ amenity, index }) => {
+  const itemRef = useRef(null);
+  const itemInView = useInView(itemRef, { once: false, margin: '-50px' });
+
+  return (
+    <div 
+      key={amenity._id}
+      ref={itemRef}
+      className="flex flex-col"
+    >
+      {/* Smaller Card - 280px height */}
+      <motion.div
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        animate={itemInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.95 }}
+        transition={{ 
+          duration: 0.6, 
+          delay: index * 0.08,
+          ease: [0.22, 1, 0.36, 1]
+        }}
+        className="h-64 md:h-72 will-change-transform"
+        style={{
+          transform: 'translateZ(0)',
+        }}
+      >
+        <Card3D amenity={amenity} index={index} />
+      </motion.div>
+      
+      {/* Text Content - Always Visible, Animates with Card */}
+      <motion.div
+        className="mt-5 md:mt-6 flex-grow"
+        initial={{ opacity: 0, y: 20 }}
+        animate={itemInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ 
+          duration: 0.6, 
+          delay: index * 0.08 + 0.15,
+          ease: [0.22, 1, 0.36, 1]
+        }}
+      >
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="font-heading text-lg md:text-xl text-pearl-ivory hover:text-primary transition-colors duration-300 flex-1">
+            {amenity.amenityName}
+          </h3>
+          <span className="font-mono text-primary/60 text-xs uppercase tracking-widest whitespace-nowrap">
+            0{index + 1}
+          </span>
+        </div>
+        <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 leading-relaxed line-clamp-2">
+          {amenity.description}
+        </p>
+        <div className="mt-3 flex items-center gap-2">
+          <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+          <span className="font-paragraph text-xs text-primary/50 uppercase tracking-wider">
+            Premium Amenity
+          </span>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 interface Amenities3DProps {
   amenities: ProjectAmenities[];
 }
@@ -221,65 +282,9 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
           ref={containerRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-max"
         >
-          {amenities.map((amenity, index) => {
-            const itemRef = useRef(null);
-            const itemInView = useInView(itemRef, { once: false, margin: '-50px' });
-            
-            return (
-              <div 
-                key={amenity._id}
-                ref={itemRef}
-                className="flex flex-col"
-              >
-                {/* Smaller Card - 280px height */}
-                <motion.div
-                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                  animate={itemInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.95 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: index * 0.08,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                  className="h-64 md:h-72 will-change-transform"
-                  style={{
-                    transform: 'translateZ(0)',
-                  }}
-                >
-                  <Card3D amenity={amenity} index={index} />
-                </motion.div>
-                
-                {/* Text Content - Always Visible, Animates with Card */}
-                <motion.div
-                  className="mt-5 md:mt-6 flex-grow"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={itemInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: index * 0.08 + 0.15,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                >
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="font-heading text-lg md:text-xl text-pearl-ivory hover:text-primary transition-colors duration-300 flex-1">
-                      {amenity.amenityName}
-                    </h3>
-                    <span className="font-mono text-primary/60 text-xs uppercase tracking-widest whitespace-nowrap">
-                      0{index + 1}
-                    </span>
-                  </div>
-                  <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 leading-relaxed line-clamp-2">
-                    {amenity.description}
-                  </p>
-                  <div className="mt-3 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                    <span className="font-paragraph text-xs text-primary/50 uppercase tracking-wider">
-                      Premium Amenity
-                    </span>
-                  </div>
-                </motion.div>
-              </div>
-            );
-          })}
+          {amenities.map((amenity, index) => (
+            <AmenityCard key={amenity._id} amenity={amenity} index={index} />
+          ))}
         </div>
 
         {/* Modern Stats Section with Scroll Animation */}
