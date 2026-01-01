@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Image } from '@/components/ui/image';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
     { label: 'Home', href: '#home' },
@@ -12,6 +13,16 @@ export default function Header() {
     { label: 'Plots', href: '#plots' },
     { label: 'Contact', href: '#contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if scrolled past hero section (approximately 800px)
+      setIsScrolled(window.scrollY > 800);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
@@ -22,7 +33,11 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-lg' 
+        : 'bg-transparent border-b border-transparent'
+    }`}>
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
           {/* Logo */}
@@ -50,7 +65,11 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleNavClick(item.href)}
-                className="font-paragraph text-sm uppercase tracking-widest text-champagne-beige/80 hover:text-primary transition-colors duration-300"
+                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 ${
+                  isScrolled 
+                    ? 'text-foreground/70 hover:text-primary' 
+                    : 'text-pearl-ivory/80 hover:text-primary'
+                }`}
               >
                 {item.label}
               </motion.button>
@@ -63,7 +82,11 @@ export default function Header() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-champagne-beige hover:text-primary transition-colors"
+            className={`md:hidden p-2 transition-colors ${
+              isScrolled 
+                ? 'text-foreground hover:text-primary' 
+                : 'text-pearl-ivory hover:text-primary'
+            }`}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -81,13 +104,17 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden pb-4 space-y-3"
+            className={`md:hidden pb-4 space-y-3 ${isScrolled ? 'bg-background/50' : 'bg-black/20'}`}
           >
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className="block w-full text-left font-paragraph text-sm uppercase tracking-widest text-champagne-beige/80 hover:text-primary transition-colors duration-300 py-2"
+                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 ${
+                  isScrolled 
+                    ? 'text-foreground/70 hover:text-primary' 
+                    : 'text-pearl-ivory/80 hover:text-primary'
+                }`}
               >
                 {item.label}
               </button>

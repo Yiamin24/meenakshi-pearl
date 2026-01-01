@@ -97,7 +97,7 @@ export default function HomePage() {
   return (
     <div className="bg-background text-foreground min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
       {/* Cinematic Noise Overlay */}
-      <div className="fixed inset-0 z-[100] pointer-events-none opacity-[0.03] mix-blend-overlay" 
+      <div className="fixed inset-0 z-[100] pointer-events-none opacity-[0.02] mix-blend-overlay" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
       />
 
@@ -151,26 +151,23 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
       <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
         <CinematicReveal delay={0.1}>
-          <Image
-            src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
-            alt="Meenakshi Pearl Logo"
-            width={400}
-            height={140}
-            className="mx-auto mb-4 sm:mb-6 md:mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)] w-auto h-auto max-w-xs sm:max-w-sm md:max-w-md"
-          />
-        </CinematicReveal>
-        
-        <CinematicReveal delay={0.3}>
           <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs sm:text-xs md:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
             Grade-A Plotted Development
           </span>
         </CinematicReveal>
 
+        <CinematicReveal delay={0.3}>
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-pearl-ivory mb-6 sm:mb-8 font-light leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+            Meenakshi <br className="hidden sm:block" />
+            <span className="text-primary">Pearl</span>
+          </h1>
+        </CinematicReveal>
+
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-sm sm:text-base md:text-lg text-champagne-beige/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
+          <p className="font-paragraph text-sm sm:text-base md:text-lg text-pearl-ivory/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres. <br className="hidden md:block" />
-            <span className="text-primary font-semibold">Plots starting from 38 lac</span>
+            <span className="text-primary font-semibold text-base sm:text-lg">Plots starting from 38 lac</span>
           </p>
         </CinematicReveal>
 
@@ -215,12 +212,12 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <CinematicReveal>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 group cursor-pointer" onClick={() => window.open('https://share.google/pDEnejBiRyZDm506a', '_blank')}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-foreground/20 group cursor-pointer" onClick={() => window.open('https://share.google/pDEnejBiRyZDm506a', '_blank')}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0!2d77.7!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA3N8KwNDInMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(85%)' }}
+                  style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -244,14 +241,14 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
           <div className="order-1 lg:order-2">
             <CinematicReveal>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-pearl-ivory mb-6 sm:mb-8">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-foreground mb-6 sm:mb-8">
                 Strategically <br />
                 <span className="text-primary italic">Positioned</span>
               </h2>
             </CinematicReveal>
             
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-sm sm:text-base md:text-base text-champagne-beige/80 mb-8 sm:mb-12 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
+              <p className="font-paragraph text-sm sm:text-base md:text-base text-foreground/70 mb-8 sm:mb-12 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
                 Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity.
               </p>
             </CinematicReveal>
@@ -264,8 +261,8 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                 { label: "Intl. Airport", dist: "45 mins" }
               ].map((item, i) => (
                 <CinematicReveal key={i} delay={0.3 + (i * 0.1)}>
-                  <div className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4 group hover:border-primary/50 transition-colors cursor-pointer" onClick={onOpenContactForm}>
-                    <span className="font-heading text-lg sm:text-xl text-pearl-ivory group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
+                  <div className="flex items-center justify-between border-b border-foreground/10 pb-3 sm:pb-4 group hover:border-primary/50 transition-colors cursor-pointer" onClick={onOpenContactForm}>
+                    <span className="font-heading text-lg sm:text-xl text-foreground group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
                     <span className="font-paragraph text-primary font-medium text-sm sm:text-base">{item.dist}</span>
                   </div>
                 </CinematicReveal>
@@ -283,7 +280,7 @@ const ProjectOverviewSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   
   return (
-    <section ref={ref} className="py-16 sm:py-24 md:py-32 bg-champagne-beige/5 relative">
+    <section ref={ref} className="py-16 sm:py-24 md:py-32 bg-background/50 relative">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/20">
           {[
@@ -307,7 +304,7 @@ const ProjectOverviewSection = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                className="font-paragraph text-base sm:text-lg md:text-xl text-pearl-ivory mt-3 sm:mt-4 uppercase tracking-widest"
+                className="font-paragraph text-base sm:text-lg md:text-xl text-foreground mt-3 sm:mt-4 uppercase tracking-widest"
               >
                 {stat.label}
               </motion.p>
@@ -317,7 +314,7 @@ const ProjectOverviewSection = () => {
         
         <div className="mt-16 sm:mt-20 md:mt-24 text-center">
           <CinematicReveal>
-            <p className="font-heading text-2xl sm:text-3xl md:text-4xl text-champagne-beige max-w-4xl mx-auto leading-normal px-4">
+            <p className="font-heading text-2xl sm:text-3xl md:text-4xl text-foreground max-w-4xl mx-auto leading-normal px-4">
               "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
             </p>
           </CinematicReveal>
@@ -337,13 +334,13 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 sm:gap-8">
           <div className="max-w-2xl">
             <CinematicReveal>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground mb-4 sm:mb-6">
                 Uncompromising <br />
                 <span className="text-primary">Transparency</span>
               </h2>
             </CinematicReveal>
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-sm sm:text-base md:text-base text-champagne-beige/70">
+              <p className="font-paragraph text-sm sm:text-base md:text-base text-foreground/70">
                 Your investment is secured by comprehensive legal approvals and clear titles. We believe trust is the ultimate luxury.
               </p>
             </CinematicReveal>
@@ -359,7 +356,7 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {legalApprovals.map((approval, index) => (
             <CinematicReveal key={approval._id} delay={index * 0.1}>
-              <div className="group relative p-6 sm:p-8 border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 h-full flex flex-col">
+              <div className="group relative p-6 sm:p-8 border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-all duration-500 h-full flex flex-col">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                 
                 <div className="mb-4 sm:mb-6 flex justify-between items-start">
@@ -367,21 +364,21 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
                     <Check className="w-5 sm:w-6 h-5 sm:h-6" />
                   </div>
                   {approval.approvalDate && (
-                    <span className="text-xs text-white/30 font-mono">
+                    <span className="text-xs text-foreground/30 font-mono">
                       {new Date(approval.approvalDate).getFullYear()}
                     </span>
                   )}
                 </div>
                 
-                <h3 className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-heading text-2xl sm:text-3xl text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                   {approval.approvalName}
                 </h3>
-                <p className="font-paragraph text-xs sm:text-sm text-champagne-beige/60 leading-relaxed mb-3 sm:mb-4 flex-grow">
+                <p className="font-paragraph text-xs sm:text-sm text-foreground/60 leading-relaxed mb-3 sm:mb-4 flex-grow">
                   {approval.description}
                 </p>
                 
                 {approval.issuingAuthority && (
-                  <div className="pt-3 sm:pt-4 border-t border-white/5 mt-auto">
+                  <div className="pt-3 sm:pt-4 border-t border-foreground/5 mt-auto">
                     <p className="text-xs text-primary/80 uppercase tracking-wider">
                       {approval.issuingAuthority}
                     </p>
@@ -425,12 +422,12 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
         
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground mb-4 sm:mb-6">
               Plot <span className="text-primary">Configurations</span>
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-sm sm:text-base md:text-base text-champagne-beige/70 max-w-2xl mx-auto px-4">
+            <p className="font-paragraph text-sm sm:text-base md:text-base text-foreground/70 max-w-2xl mx-auto px-4">
               Choose from our thoughtfully designed plot options
             </p>
           </CinematicReveal>
@@ -445,7 +442,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                 className="group relative h-full flex flex-col overflow-hidden"
               >
                 {/* Image Container - Full Height */}
-                <div className="relative w-full h-60 sm:h-72 md:h-80 overflow-hidden bg-white/5">
+                <div className="relative w-full h-60 sm:h-72 md:h-80 overflow-hidden bg-foreground/5">
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -456,22 +453,22 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                 </div>
 
                 {/* Content - Minimal and Clean */}
-                <div className="relative flex-1 flex flex-col justify-between p-6 sm:p-8 bg-background/50 backdrop-blur-sm border border-white/5">
+                <div className="relative flex-1 flex flex-col justify-between p-6 sm:p-8 bg-background/50 backdrop-blur-sm border border-foreground/5">
                   {/* Header */}
                   <div>
                     <p className="font-paragraph text-primary text-xs uppercase tracking-widest mb-2 sm:mb-3">
                       {card.subtitle}
                     </p>
-                    <h3 className="font-heading text-3xl sm:text-4xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
+                    <h3 className="font-heading text-3xl sm:text-4xl text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="font-paragraph text-champagne-beige/60 text-xs sm:text-sm leading-relaxed">
+                    <p className="font-paragraph text-foreground/60 text-xs sm:text-sm leading-relaxed">
                       {card.description}
                     </p>
                   </div>
 
                   {/* Bottom Accent */}
-                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/10 flex items-center gap-2">
+                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-foreground/10 flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="font-paragraph text-primary text-xs uppercase tracking-wider">Available</span>
                   </div>
@@ -483,7 +480,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
 
         {/* Stats Section - Minimal */}
         <CinematicReveal delay={0.5}>
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 text-center py-8 sm:py-12 border-y border-white/10">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 text-center py-8 sm:py-12 border-y border-foreground/10">
             {[
               { number: "212", label: "Total Plots" },
               { number: "14", label: "Acres" },
@@ -491,7 +488,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
             ].map((stat, i) => (
               <div key={i}>
                 <p className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-1 sm:mb-2">{stat.number}</p>
-                <p className="font-paragraph text-champagne-beige/60 text-xs uppercase tracking-wider">{stat.label}</p>
+                <p className="font-paragraph text-foreground/60 text-xs uppercase tracking-wider">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -517,7 +514,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
         <div className="mb-20 md:mb-28">
           <CinematicReveal>
             <motion.h2 
-              className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6 leading-tight"
+              className="font-heading text-5xl md:text-7xl text-foreground mb-6 leading-tight"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -529,7 +526,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
           
           <CinematicReveal delay={0.2}>
             <motion.p 
-              className="font-paragraph text-sm md:text-base text-champagne-beige/80 max-w-3xl"
+              className="font-paragraph text-sm md:text-base text-foreground/70 max-w-3xl"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -574,7 +571,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative h-64 md:h-72 rounded-xl overflow-hidden border border-primary/30 group-hover:border-primary/70 transition-all duration-500 bg-gradient-to-br from-white/[0.08] to-white/[0.02]">
+                  <div className="relative h-64 md:h-72 rounded-xl overflow-hidden border border-primary/30 group-hover:border-primary/70 transition-all duration-500 bg-gradient-to-br from-foreground/[0.08] to-foreground/[0.02]">
                     {item.featureIcon && (
                       <Image
                         src={item.featureIcon}
@@ -584,10 +581,10 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h4 className="font-heading text-xl md:text-2xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
+                      <h4 className="font-heading text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
                         {item.featureName}
                       </h4>
-                      <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 mt-2 line-clamp-2">
+                      <p className="font-paragraph text-xs md:text-sm text-foreground/70 mt-2 line-clamp-2">
                         {item.featureDescription}
                       </p>
                     </div>
@@ -603,7 +600,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative h-64 md:h-72 rounded-xl overflow-hidden border border-primary/30 group-hover:border-primary/70 transition-all duration-500 bg-gradient-to-br from-white/[0.08] to-white/[0.02]">
+                  <div className="relative h-64 md:h-72 rounded-xl overflow-hidden border border-primary/30 group-hover:border-primary/70 transition-all duration-500 bg-gradient-to-br from-foreground/[0.08] to-foreground/[0.02]">
                     {item.featureIcon && (
                       <Image
                         src={item.featureIcon}
@@ -613,10 +610,10 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h4 className="font-heading text-xl md:text-2xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
+                      <h4 className="font-heading text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
                         {item.featureName}
                       </h4>
-                      <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 mt-2 line-clamp-2">
+                      <p className="font-paragraph text-xs md:text-sm text-foreground/70 mt-2 line-clamp-2">
                         {item.featureDescription}
                       </p>
                     </div>
@@ -641,19 +638,19 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
         >
           <div className="text-center">
             <div className="font-heading text-3xl md:text-4xl text-primary mb-2">{infrastructure.length}+</div>
-            <p className="font-paragraph text-sm text-champagne-beige/60">Premium Features</p>
+            <p className="font-paragraph text-sm text-foreground/60">Premium Features</p>
           </div>
           <div className="text-center">
             <div className="font-heading text-3xl md:text-4xl text-primary mb-2">100%</div>
-            <p className="font-paragraph text-sm text-champagne-beige/60">Global Standards</p>
+            <p className="font-paragraph text-sm text-foreground/60">Global Standards</p>
           </div>
           <div className="text-center">
             <div className="font-heading text-3xl md:text-4xl text-primary mb-2">24/7</div>
-            <p className="font-paragraph text-sm text-champagne-beige/60">Maintenance</p>
+            <p className="font-paragraph text-sm text-foreground/60">Maintenance</p>
           </div>
           <div className="text-center">
             <div className="font-heading text-3xl md:text-4xl text-primary mb-2">∞</div>
-            <p className="font-paragraph text-sm text-champagne-beige/60">Durability</p>
+            <p className="font-paragraph text-sm text-foreground/60">Durability</p>
           </div>
         </motion.div>
       </div>
@@ -681,7 +678,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
   const headerOpacity = useTransform(sectionProgress, [0.85, 1], [1, 0]);
 
   return (
-    <section ref={sectionRef} className="relative py-16 md:py-20 bg-champagne-beige/5">
+    <section ref={sectionRef} className="relative py-16 md:py-20 bg-background/50">
       <div className="container mx-auto px-4 md:px-8">
         {/* Sticky Header */}
         <motion.div 
@@ -691,13 +688,13 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
         >
           <div>
             <CinematicReveal>
-              <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-4">The Collection</h2>
+              <h2 className="font-heading text-5xl md:text-7xl text-foreground mb-4">The Collection</h2>
             </CinematicReveal>
             <CinematicReveal delay={0.1}>
               <p className="font-paragraph text-primary uppercase tracking-widest text-sm">World-Class Amenities</p>
             </CinematicReveal>
           </div>
-          <CinematicReveal delay={0.2} className="hidden md:flex items-center gap-4 text-white/30">
+          <CinematicReveal delay={0.2} className="hidden md:flex items-center gap-4 text-foreground/30">
             <span>Scroll to Explore</span>
             <ArrowRight className="w-5 h-5 animate-pulse" />
           </CinematicReveal>
@@ -729,13 +726,13 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-baseline justify-between border-b border-white/20 pb-4">
-                    <h3 className="font-heading text-3xl md:text-4xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
+                  <div className="flex items-baseline justify-between border-b border-foreground/20 pb-4">
+                    <h3 className="font-heading text-3xl md:text-4xl text-foreground group-hover:text-primary transition-colors duration-300">
                       {amenity.amenityName}
                     </h3>
                     <span className="font-mono text-primary/50 text-xl">0{index + 1}</span>
                   </div>
-                  <p className="font-paragraph text-sm text-champagne-beige/60 mt-4 max-w-md line-clamp-2">
+                  <p className="font-paragraph text-sm text-foreground/60 mt-4 max-w-md line-clamp-2">
                     {amenity.description}
                   </p>
                 </motion.div>
@@ -744,8 +741,8 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
           </motion.div>
 
           {/* Gradient Fade Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-champagne-beige/5 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-champagne-beige/5 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-background/50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-background/50 to-transparent z-10 pointer-events-none" />
         </div>
 
         {/* Bottom Spacing */}
@@ -776,10 +773,10 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
             </div>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">Secure & Serene</h2>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-foreground mb-4 sm:mb-6">Secure & Serene</h2>
           </CinematicReveal>
           <CinematicReveal delay={0.3}>
-            <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/70 max-w-2xl mx-auto px-4">
+            <p className="font-paragraph text-base sm:text-lg md:text-lg text-foreground/70 max-w-2xl mx-auto px-4">
               A sanctuary where privacy meets community. Experience the peace of mind that comes with premium gated living.
             </p>
           </CinematicReveal>
@@ -799,10 +796,10 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
                   )}
                 </div>
                 <div className="w-full sm:w-2/3 pt-0 sm:pt-4">
-                  <h3 className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-3 sm:mb-4 group-hover:text-primary transition-colors">
+                  <h3 className="font-heading text-2xl sm:text-3xl text-foreground mb-3 sm:mb-4 group-hover:text-primary transition-colors">
                     {benefit.benefitTitle}
                   </h3>
-                  <p className="font-paragraph text-sm sm:text-base text-champagne-beige/60 leading-relaxed">
+                  <p className="font-paragraph text-sm sm:text-base text-foreground/60 leading-relaxed">
                     {benefit.benefitDescription}
                   </p>
                 </div>
@@ -832,7 +829,7 @@ const InvestmentHighlightItem = ({ highlight, index }: { highlight: InvestmentHi
       key={highlight._id}
       ref={itemRef}
       style={{ x, opacity }}
-      className="relative pl-6 sm:pl-8 border-l border-white/10 hover:border-primary transition-colors duration-500 group"
+      className="relative pl-6 sm:pl-8 border-l border-foreground/10 hover:border-primary transition-colors duration-500 group"
     >
       {/* Animated accent line */}
       <motion.div 
@@ -844,7 +841,7 @@ const InvestmentHighlightItem = ({ highlight, index }: { highlight: InvestmentHi
       />
 
       <motion.h3 
-        className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-300"
+        className="font-heading text-2xl sm:text-3xl text-foreground mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-300"
         initial={{ opacity: 0, x: 20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -855,7 +852,7 @@ const InvestmentHighlightItem = ({ highlight, index }: { highlight: InvestmentHi
       
       {highlight.highlightQuote && (
         <motion.blockquote 
-          className="font-heading text-lg sm:text-xl md:text-2xl text-champagne-beige italic mb-4 sm:mb-6 leading-relaxed"
+          className="font-heading text-lg sm:text-xl md:text-2xl text-foreground/80 italic mb-4 sm:mb-6 leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: index * 0.15 + 0.2 }}
@@ -878,7 +875,7 @@ const InvestmentHighlightItem = ({ highlight, index }: { highlight: InvestmentHi
 
       {highlight.additionalContext && (
         <motion.p 
-          className="font-paragraph text-xs sm:text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300"
+          className="font-paragraph text-xs sm:text-sm text-foreground/40 group-hover:text-foreground/60 transition-colors duration-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: index * 0.15 + 0.3 }}
@@ -905,7 +902,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-24 md:py-32 bg-champagne-beige/5 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 sm:py-24 md:py-32 bg-background/50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
         <motion.div 
@@ -916,13 +913,13 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
           viewport={{ once: true }}
         >
           <CinematicReveal>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-foreground">
               The Investment <br />
               <span className="text-primary">Advantage</span>
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <div className="flex items-center gap-2 sm:gap-3 text-white/50 mt-4 md:mt-0 whitespace-nowrap">
+            <div className="flex items-center gap-2 sm:gap-3 text-foreground/50 mt-4 md:mt-0 whitespace-nowrap">
               <TrendingUp className="w-5 sm:w-6 h-5 sm:h-6" />
               <span className="uppercase tracking-widest text-xs sm:text-sm">High Appreciation Potential</span>
             </div>
@@ -959,14 +956,14 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
         <div className="text-center mb-12 sm:mb-16">
           <CinematicReveal>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-pearl-ivory mb-6 sm:mb-8 tracking-tight">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-foreground mb-6 sm:mb-8 tracking-tight">
               Own The <br />
               <span className="text-primary">Legacy</span>
             </h2>
           </CinematicReveal>
 
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-base sm:text-lg md:text-xl text-champagne-beige/80 max-w-2xl mx-auto mb-12 sm:mb-16 font-light px-4">
+            <p className="font-paragraph text-base sm:text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-12 sm:mb-16 font-light px-4">
               Limited plots available. Secure your piece of East Bangalore's finest address today.
             </p>
           </CinematicReveal>
@@ -979,26 +976,26 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Name */}
                 <div>
-                  <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                  <label className="block font-paragraph text-xs sm:text-sm text-foreground/80 mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                    className="w-full bg-foreground/5 border border-foreground/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all"
                     placeholder="Your name"
                   />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                  <label className="block font-paragraph text-xs sm:text-sm text-foreground/80 mb-2">
                     Phone Number *
                   </label>
                   <input
                     type="tel"
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                    className="w-full bg-foreground/5 border border-foreground/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -1006,26 +1003,26 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
               {/* Email */}
               <div>
-                <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                <label className="block font-paragraph text-xs sm:text-sm text-foreground/80 mb-2">
                   Email Address *
                 </label>
                 <input
                   type="email"
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                  className="w-full bg-foreground/5 border border-foreground/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all"
                   placeholder="your@email.com"
                 />
               </div>
 
               {/* Message */}
               <div>
-                <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                <label className="block font-paragraph text-xs sm:text-sm text-foreground/80 mb-2">
                   Message *
                 </label>
                 <textarea
                   required
                   rows={4}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
+                  className="w-full bg-foreground/5 border border-foreground/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all resize-none"
                   placeholder="Tell us about your interest in Meenakshi Pearl..."
                 />
               </div>
@@ -1038,7 +1035,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                 Send Message
               </Button>
 
-              <p className="font-paragraph text-xs text-white/30 text-center">
+              <p className="font-paragraph text-xs text-foreground/30 text-center">
                 We respect your privacy. Your information will never be shared.
               </p>
             </form>
@@ -1063,7 +1060,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white/20 text-white hover:bg-white/5 font-paragraph text-sm sm:text-lg px-6 sm:px-12 py-6 sm:py-8 rounded-none w-full sm:w-auto"
+              className="border-foreground/20 text-foreground hover:bg-foreground/5 font-paragraph text-sm sm:text-lg px-6 sm:px-12 py-6 sm:py-8 rounded-none w-full sm:w-auto"
               onClick={onOpenContactForm}
             >
               <Mail className="w-4 sm:w-5 h-4 sm:h-5 mr-2 sm:mr-3" />
@@ -1072,8 +1069,8 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
           </div>
         </CinematicReveal>
 
-        <CinematicReveal delay={0.6} className="pt-8 sm:pt-12 md:pt-16 border-t border-white/5">
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/30 font-paragraph uppercase tracking-widest text-center sm:text-left">
+        <CinematicReveal delay={0.6} className="pt-8 sm:pt-12 md:pt-16 border-t border-foreground/5">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-foreground/30 font-paragraph uppercase tracking-widest text-center sm:text-left">
             <span>Sales Office: Sarjapur Road</span>
             <span className="hidden sm:inline">•</span>
             <span>Open Daily: 9:00 AM - 6:00 PM</span>
