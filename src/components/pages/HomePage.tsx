@@ -148,104 +148,55 @@ const HeroSection = () => {
   return (
     <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        <Image
+          src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
+          alt="Meenakshi Pearl Aerial View"
           className="w-full h-full object-cover"
-        >
-          <source src="https://video.wixstatic.com/video/cef78c_3fdbf53a388748deb2e7bb1354e2faca/720p/mp4/file.mp4" type="video/mp4" />
-          <Image
-            src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
-            alt="Meenakshi Pearl Aerial View"
-            className="w-full h-full object-cover"
-          />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
       </motion.div>
 
       <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 md:px-8 text-center">
-        {/* Logo with enhanced reveal */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, filter: "blur(20px)" }}
-          whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8"
-        >
+        <CinematicReveal delay={0.1}>
           <Image
             src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
             alt="Meenakshi Pearl Logo"
             width={400}
             height={140}
-            className="mx-auto drop-shadow-[0_0_30px_rgba(184,134,11,0.6)]"
+            className="mx-auto mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)]"
           />
-        </motion.div>
+        </CinematicReveal>
         
-        {/* Tagline with staggered reveal */}
-        <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6"
-        >
-          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase">
+        <CinematicReveal delay={0.3}>
+          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
             Grade-A Plotted Development
           </span>
-        </motion.div>
+        </CinematicReveal>
 
-        {/* Description with word-by-word reveal effect */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12"
-        >
-          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto font-light leading-relaxed">
+        <CinematicReveal delay={0.6}>
+          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres.
           </p>
-        </motion.div>
+        </CinematicReveal>
 
-        {/* CTA Buttons with staggered entrance */}
-        <motion.div 
-          className="flex flex-col md:flex-row items-center justify-center gap-6"
-          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+        <CinematicReveal delay={0.8} className="flex flex-col md:flex-row items-center justify-center gap-6">
+          <Button 
+            size="lg" 
+            className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <Button 
-              size="lg" 
-              className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Schedule Visit
-            </Button>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+            Schedule Visit
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide backdrop-blur-sm transition-all duration-500"
+            onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide backdrop-blur-sm transition-all duration-500"
-              onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Masterplan
-            </Button>
-          </motion.div>
-        </motion.div>
+            View Masterplan
+          </Button>
+        </CinematicReveal>
       </motion.div>
 
       <motion.div 
