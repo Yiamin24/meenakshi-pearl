@@ -15,6 +15,8 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, ArrowRight, Check, Lock, TrendingUp } from 'lucide-react';
 import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
+import Amenities3DSection from '@/components/Amenities3DCard';
+
 
 // --- Utility Components ---
 
@@ -122,7 +124,7 @@ export default function HomePage() {
             <LegalSection legalApprovals={legalApprovals} />
             <PlotConfigurationsSection plotConfigs={plotConfigs} />
             <InfrastructureSection infrastructure={infrastructure} />
-            <AmenitiesSection amenities={amenities} />
+            <Amenities3DSection amenities={amenities} />
             <GatedLivingSection gatedBenefits={gatedBenefits} />
             <InvestmentSection investmentHighlights={investmentHighlights} />
             <FinalCTASection />
