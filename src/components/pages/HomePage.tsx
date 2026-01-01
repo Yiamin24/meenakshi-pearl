@@ -447,138 +447,100 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
   const configCards = [
     { 
       title: "1500 Sqft", 
-      subtitle: "(30x50)", 
-      description: "Perfect for modern family homes with spacious layouts and optimal space utilization",
+      subtitle: "30x50", 
+      description: "Perfect for modern family homes",
       image: "https://static.wixstatic.com/media/cef78c_1ed0e26987f94f4da1faa6988026c93d~mv2.png?originWidth=1152&originHeight=768",
-      features: ["Optimal Layout", "Family Friendly", "Modern Design"]
     },
     { 
       title: "1800 Sqft", 
-      subtitle: "(30x60)", 
-      description: "Premium configurations for luxury residences with enhanced living spaces",
+      subtitle: "30x60", 
+      description: "Premium luxury residences",
       image: "https://static.wixstatic.com/media/cef78c_3afbc2ed677e4695a734f9bc4f870313~mv2.png?originWidth=1152&originHeight=768",
-      features: ["Premium Layout", "Luxury Living", "Spacious Design"]
     },
     { 
-      title: "Larger Premium Plots", 
-      subtitle: "Custom Sizes", 
-      description: "Exclusive configurations for bespoke architectural designs and grand estates",
+      title: "Custom Plots", 
+      subtitle: "Bespoke Sizes", 
+      description: "Exclusive architectural designs",
       image: "https://static.wixstatic.com/media/cef78c_3dec255cbbec4e8e8c3a0710bcec325c~mv2.png?originWidth=1152&originHeight=768",
-      features: ["Custom Design", "Exclusive", "Estate Living"]
     }
   ];
 
   return (
-    <section id="plots" className="pt-0 pb-32 bg-background relative overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 translate-y-1/2" />
-
+    <section id="plots" className="py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <SectionDivider />
         
-        <div className="text-center mb-24">
+        <div className="text-center mb-20">
           <CinematicReveal>
             <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">
               Plot <span className="text-primary">Configurations</span>
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-3xl mx-auto">
-              Discover our thoughtfully designed plot options, each crafted to inspire your dream home. From contemporary to classical, find your perfect canvas.
+            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-2xl mx-auto">
+              Choose from our thoughtfully designed plot options
             </p>
           </CinematicReveal>
         </div>
 
-        {/* Configuration Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Configuration Cards Grid - Minimal Design */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {configCards.map((card, index) => (
             <CinematicReveal key={index} delay={index * 0.15}>
               <motion.div
-                whileHover={{ y: -12 }}
-                className="group relative h-full flex flex-col"
+                whileHover={{ y: -8 }}
+                className="group relative h-full flex flex-col overflow-hidden"
               >
-                {/* Image Container */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg mb-6 border border-primary/20 group-hover:border-primary/50 transition-all duration-500">
+                {/* Image Container - Full Height */}
+                <div className="relative w-full h-80 overflow-hidden bg-white/5">
                   <Image
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-500" />
-                  
-                  {/* Size Badge */}
-                  <div className="absolute top-4 right-4 bg-primary text-black px-4 py-2 rounded-full font-heading text-sm font-bold">
-                    {card.title}
-                  </div>
+                  {/* Minimal Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                 </div>
 
-                {/* Content */}
-                <div className="relative flex-1 flex flex-col">
+                {/* Content - Minimal and Clean */}
+                <div className="relative flex-1 flex flex-col justify-between p-8 bg-background/50 backdrop-blur-sm border border-white/5">
                   {/* Header */}
-                  <div className="mb-6">
-                    <p className="font-paragraph text-primary text-sm uppercase tracking-widest font-medium mb-2">
+                  <div>
+                    <p className="font-paragraph text-primary text-xs uppercase tracking-widest mb-3">
                       {card.subtitle}
                     </p>
-                    <h3 className="font-heading text-2xl md:text-3xl text-pearl-ivory group-hover:text-primary transition-colors duration-500">
-                      Plot Configuration
+                    <h3 className="font-heading text-3xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors duration-500">
+                      {card.title}
                     </h3>
+                    <p className="font-paragraph text-champagne-beige/60 text-sm leading-relaxed">
+                      {card.description}
+                    </p>
                   </div>
 
-                  {/* Description */}
-                  <p className="font-paragraph text-champagne-beige/70 text-sm leading-relaxed mb-6 flex-grow">
-                    {card.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="grid grid-cols-3 gap-3 mb-8 pt-6 border-t border-white/10">
-                    {card.features.map((feature, i) => (
-                      <div key={i} className="text-center">
-                        <p className="font-paragraph text-xs text-primary uppercase tracking-wider font-medium">
-                          {feature}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Bottom CTA */}
-                  <div className="flex items-center justify-between pt-6 border-t border-primary/10 group-hover:border-primary/30 transition-colors">
-                    <span className="font-paragraph text-primary text-xs uppercase tracking-widest font-medium">
-                      Explore Details
-                    </span>
-                    <motion.div
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <ArrowRight className="w-4 h-4 text-primary" />
-                    </motion.div>
+                  {/* Bottom Accent */}
+                  <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary rounded-full" />
+                    <span className="font-paragraph text-primary text-xs uppercase tracking-wider">Available</span>
                   </div>
                 </div>
-
-                {/* Hover Border Animation */}
-                <div className="absolute inset-0 rounded-lg border border-primary/0 group-hover:border-primary/30 transition-all duration-700 pointer-events-none" />
               </motion.div>
             </CinematicReveal>
           ))}
         </div>
 
-        {/* Additional Info Section */}
+        {/* Stats Section - Minimal */}
         <CinematicReveal delay={0.5}>
-          <div className="relative mt-20 p-12 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-lg">
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              {[
-                { number: "212", label: "Total Plots Available" },
-                { number: "14", label: "Acres of Premium Land" },
-                { number: "100%", label: "Vastu Compliant Designs" }
-              ].map((stat, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <p className="font-heading text-5xl text-primary mb-2">{stat.number}</p>
-                  <p className="font-paragraph text-champagne-beige/70 text-sm uppercase tracking-wider">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-3 gap-8 md:gap-12 text-center py-12 border-y border-white/10">
+            {[
+              { number: "212", label: "Total Plots" },
+              { number: "14", label: "Acres" },
+              { number: "100%", label: "Vastu Compliant" }
+            ].map((stat, i) => (
+              <div key={i}>
+                <p className="font-heading text-4xl md:text-5xl text-primary mb-2">{stat.number}</p>
+                <p className="font-paragraph text-champagne-beige/60 text-xs uppercase tracking-wider">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </CinematicReveal>
       </div>
