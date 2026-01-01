@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Image } from '@/components/ui/image';
 
 export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -29,35 +30,13 @@ export default function Footer() {
           animate={{ opacity: footerInView ? 1 : 0, y: footerInView ? 0 : 20 }}
           transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
         >
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 80 80"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <Image
+            src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
+            alt="Meenakshi Pearl Logo"
+            width={240}
+            height={85}
             className="mx-auto mb-4 drop-shadow-[0_0_15px_rgba(184,134,11,0.4)]"
-          >
-            <defs>
-              <linearGradient id="footerGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#D4AF37" />
-                <stop offset="50%" stopColor="#B8860B" />
-                <stop offset="100%" stopColor="#8B6914" />
-              </linearGradient>
-            </defs>
-            <text
-              x="50%"
-              y="50%"
-              dominantBaseline="middle"
-              textAnchor="middle"
-              fontSize="60"
-              fontWeight="700"
-              fontFamily="cormorantgaramond"
-              fill="url(#footerGoldGradient)"
-            >
-              M
-            </text>
-          </svg>
-          <h3 className="font-heading text-3xl text-primary mb-2">Meenakshi Pearl</h3>
+          />
         </motion.div>
 
         {/* Brand Statement */}

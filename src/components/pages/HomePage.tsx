@@ -157,17 +157,20 @@ const HeroSection = () => {
       </motion.div>
 
       <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 md:px-8 text-center">
-        <CinematicReveal delay={0.2}>
+        <CinematicReveal delay={0.1}>
+          <Image
+            src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
+            alt="Meenakshi Pearl Logo"
+            width={400}
+            height={140}
+            className="mx-auto mb-8 drop-shadow-[0_0_30px_rgba(184,134,11,0.6)]"
+          />
+        </CinematicReveal>
+        
+        <CinematicReveal delay={0.3}>
           <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
             Grade-A Plotted Development
           </span>
-        </CinematicReveal>
-        
-        <CinematicReveal delay={0.4}>
-          <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold text-pearl-ivory mb-6 tracking-tight leading-[0.9]">
-            MEENAKSHI <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-primary to-primary/60">PEARL</span>
-          </h1>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>

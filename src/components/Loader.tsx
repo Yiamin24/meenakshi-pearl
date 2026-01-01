@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Image } from '@/components/ui/image';
 
 export default function Loader() {
   const [stage, setStage] = useState(0);
@@ -23,41 +24,20 @@ export default function Loader() {
       animate={{ opacity: stage >= 3 ? 0 : 1 }}
       transition={{ duration: 1, ease: 'easeOut' }}
     >
-      {/* Gold M Monogram */}
+      {/* Meenakshi Pearl Logo */}
       <motion.div
         className="mb-8"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: stage >= 0 ? 1 : 0, scale: stage >= 0 ? 1 : 0.8 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <svg
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <Image
+          src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
+          alt="Meenakshi Pearl Logo"
+          width={280}
+          height={100}
           className="drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]"
-        >
-          <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D4AF37" />
-              <stop offset="50%" stopColor="#B8860B" />
-              <stop offset="100%" stopColor="#8B6914" />
-            </linearGradient>
-          </defs>
-          <text
-            x="50%"
-            y="50%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            fontSize="80"
-            fontWeight="700"
-            fontFamily="cormorantgaramond"
-            fill="url(#goldGradient)"
-          >
-            M
-          </text>
-        </svg>
+        />
       </motion.div>
 
       {/* Wave Line */}
@@ -94,9 +74,6 @@ export default function Loader() {
         animate={{ opacity: stage >= 2 ? 1 : 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <h2 className="font-heading text-2xl md:text-3xl text-primary mb-2">
-          Meenakshi Pearl
-        </h2>
         <p className="font-paragraph text-champagne-beige text-sm">
           Loading your luxury experience...
         </p>
