@@ -262,7 +262,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <CinematicReveal>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 group cursor-pointer" onClick={onOpenContactForm}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 group cursor-pointer" onClick={() => window.open('https://share.google/pDEnejBiRyZDm506a', '_blank')}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0!2d77.7!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA3N8KwNDInMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
                   width="100%"
@@ -272,7 +272,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Meenakshi Pearl Location Map"
-                  className="opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                  className="opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 />
                 <div className="absolute inset-0 pointer-events-none border border-primary/20" />
                 
