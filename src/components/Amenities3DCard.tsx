@@ -284,7 +284,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
 
         {/* Modern Stats Section with Scroll Animation */}
         <motion.div
-          className="mt-20 md:mt-28 pt-12 md:pt-16 border-t border-primary/20"
+          className="mt-8 md:mt-12 pt-8 md:pt-12 border-t border-primary/20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
