@@ -444,91 +444,112 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
 };
 
 const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigurations[] }) => {
+  const configCards = [
+    { title: "🏡 1500 Sqft", subtitle: "(30x50)", description: "Perfect for modern family homes with spacious layouts" },
+    { title: "🏡 1800 Sqft", subtitle: "(30x60)", description: "Premium configurations for luxury residences" },
+    { title: "🏡 Larger Premium Plots", subtitle: "Available", description: "Custom sizes for exclusive architectural designs" }
+  ];
+
   return (
-    <section id="plots" className="pt-0 pb-32 bg-champagne-beige/5">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="plots" className="pt-0 pb-32 bg-background relative overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 translate-y-1/2" />
+
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <SectionDivider />
         
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <CinematicReveal>
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">Curated Configurations</h2>
+            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">
+              Plot <span className="text-primary">Configurations</span>
+            </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-2xl mx-auto">
-              Choose from a selection of perfectly proportioned plots, designed to accommodate your architectural vision.
+            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-3xl mx-auto">
+              Discover our thoughtfully designed plot options, each crafted to inspire your dream home. From contemporary to classical, find your perfect canvas.
             </p>
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {plotConfigs.map((plot, index) => (
-            <CinematicReveal key={plot._id} delay={index * 0.15}>
-              <motion.div 
-                whileHover={{ y: -10 }}
-                className="group relative bg-background border border-white/10 overflow-hidden"
+        {/* Configuration Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {configCards.map((card, index) => (
+            <CinematicReveal key={index} delay={index * 0.15}>
+              <motion.div
+                whileHover={{ y: -12, boxShadow: "0 20px 40px rgba(184, 134, 11, 0.15)" }}
+                className="group relative h-full"
               >
-                {/* Image Container */}
-                <div className="relative h-64 overflow-hidden">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                  {plot.plotImage ? (
-                    <Image
-                      src={plot.plotImage}
-                      alt={plot.plotName || "Plot Layout"}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                      <span className="text-white/20 font-heading text-4xl italic">Layout</span>
-                    </div>
-                  )}
-                  
-                  {/* Availability Badge */}
-                  {plot.availabilityStatus && (
-                    <div className="absolute top-4 right-4 z-20">
-                      <span className={`px-3 py-1 text-xs uppercase tracking-widest font-medium backdrop-blur-md border ${
-                        plot.availabilityStatus.toLowerCase().includes('available') 
-                          ? 'bg-muted-forest-green/20 border-muted-forest-green text-white' 
-                          : 'bg-red-900/20 border-red-900 text-red-200'
-                      }`}>
-                        {plot.availabilityStatus}
-                      </span>
-                    </div>
-                  )}
+                {/* Card Background with Border */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/[0.02] border border-primary/20 rounded-lg overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
 
                 {/* Content */}
-                <div className="p-8 relative">
-                  <div className="absolute top-0 left-0 w-full h-[1px] bg-primary/20" />
-                  
-                  <h3 className="font-heading text-3xl text-pearl-ivory mb-2 group-hover:text-primary transition-colors">
-                    {plot.plotName}
-                  </h3>
-                  
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="font-paragraph text-2xl text-primary font-light">{plot.areaSqFt}</span>
-                    <span className="font-paragraph text-sm text-white/40 uppercase">Sq. Ft.</span>
+                <div className="relative p-10 h-full flex flex-col justify-between">
+                  {/* Top Section */}
+                  <div>
+                    {/* Icon/Number Background */}
+                    <div className="mb-8 relative">
+                      <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-700" />
+                      <div className="relative z-10">
+                        <h3 className="font-heading text-4xl md:text-5xl text-pearl-ivory mb-2 group-hover:text-primary transition-colors duration-500">
+                          {card.title}
+                        </h3>
+                        <p className="font-paragraph text-primary text-lg font-medium">
+                          {card.subtitle}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="font-paragraph text-champagne-beige/70 text-base leading-relaxed">
+                      {card.description}
+                    </p>
                   </div>
 
-                  {plot.dimensions && (
-                    <div className="flex items-center gap-2 text-champagne-beige/60 text-sm mb-4">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                      <span>{plot.dimensions}</span>
+                  {/* Bottom CTA */}
+                  <div className="mt-10 pt-8 border-t border-primary/10 group-hover:border-primary/30 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <span className="font-paragraph text-primary text-sm uppercase tracking-widest font-medium">
+                        Learn More
+                      </span>
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <ArrowRight className="w-5 h-5 text-primary" />
+                      </motion.div>
                     </div>
-                  )}
-
-                  <p className="font-paragraph text-sm text-white/50 leading-relaxed line-clamp-2 group-hover:text-white/70 transition-colors">
-                    {plot.description}
-                  </p>
-
-                  <div className="mt-6 pt-6 border-t border-white/5 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <span className="text-primary text-sm uppercase tracking-widest">View Details</span>
-                    <ArrowRight className="w-4 h-4 text-primary" />
                   </div>
                 </div>
+
+                {/* Hover Border Animation */}
+                <div className="absolute inset-0 rounded-lg border border-primary/0 group-hover:border-primary/50 transition-all duration-700 pointer-events-none" />
               </motion.div>
             </CinematicReveal>
           ))}
         </div>
+
+        {/* Additional Info Section */}
+        <CinematicReveal delay={0.5}>
+          <div className="relative mt-20 p-12 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-lg">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              {[
+                { number: "212", label: "Total Plots Available" },
+                { number: "14", label: "Acres of Premium Land" },
+                { number: "100%", label: "Vastu Compliant Designs" }
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <p className="font-heading text-5xl text-primary mb-2">{stat.number}</p>
+                  <p className="font-paragraph text-champagne-beige/70 text-sm uppercase tracking-wider">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
