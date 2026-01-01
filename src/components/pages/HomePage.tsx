@@ -811,6 +811,91 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
   );
 };
 
+// Separate component for each investment highlight to avoid hooks in loops
+const InvestmentHighlightItem = ({ highlight, index }: { highlight: InvestmentHighlights; index: number }) => {
+  const itemRef = useRef(null);
+  const { scrollYProgress: itemProgress } = useScroll({ 
+    target: itemRef, 
+    offset: ["start 80%", "start 20%"] 
+  });
+  
+  // Right-to-left animation: starts from right (100px), ends at left (0px)
+  const x = useTransform(itemProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(itemProgress, [0, 0.5], [0, 1]);
+
+  return (
+    <motion.div
+      key={highlight._id}
+      ref={itemRef}
+      style={{ x, opacity }}
+      className="relative pl-6 sm:pl-8 border-l border-white/10 hover:border-primary transition-colors duration-500 group"
+    >
+      {/* Animated accent line */}
+      <motion.div 
+        className="absolute -left-[1px] top-0 w-[1px] bg-gradient-to-b from-primary to-transparent"
+        initial={{ height: 0 }}
+        whileInView={{ height: "100%" }}
+        transition={{ duration: 1.2, delay: index * 0.15 }}
+        viewport={{ once: false }}
+      />
+
+      <motion.h3 
+        className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-300"
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        viewport={{ once: false }}
+      >
+        {highlight.highlightTitle}
+      </motion.h3>
+      
+      {highlight.highlightQuote && (
+        <motion.blockquote 
+          className="font-heading text-lg sm:text-xl md:text-2xl text-champagne-beige italic mb-4 sm:mb-6 leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: index * 0.15 + 0.2 }}
+          viewport={{ once: false }}
+        >
+          "{highlight.highlightQuote.split(" ").map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + (i * 0.05) }}
+              viewport={{ once: false }}
+              className={highlight.emphasizedPhrase?.includes(word) ? "text-primary border-b border-primary" : ""}
+            >
+              {word}{" "}
+            </motion.span>
+          ))}"
+        </motion.blockquote>
+      )}
+
+      {highlight.additionalContext && (
+        <motion.p 
+          className="font-paragraph text-xs sm:text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: index * 0.15 + 0.3 }}
+          viewport={{ once: false }}
+        >
+          {highlight.additionalContext}
+        </motion.p>
+      )}
+
+      {/* Hover accent indicator */}
+      <motion.div 
+        className="absolute -left-3 top-0 w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: false }}
+      />
+    </motion.div>
+  );
+};
+
 const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: InvestmentHighlights[] }) => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
@@ -842,89 +927,9 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
 
         {/* Right-to-Left Scroll Animation Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-          {investmentHighlights.map((highlight, index) => {
-            const itemRef = useRef(null);
-            const { scrollYProgress: itemProgress } = useScroll({ 
-              target: itemRef, 
-              offset: ["start 80%", "start 20%"] 
-            });
-            
-            // Right-to-left animation: starts from right (100px), ends at left (0px)
-            const x = useTransform(itemProgress, [0, 1], [100, 0]);
-            const opacity = useTransform(itemProgress, [0, 0.5], [0, 1]);
-
-            return (
-              <motion.div
-                key={highlight._id}
-                ref={itemRef}
-                style={{ x, opacity }}
-                className="relative pl-6 sm:pl-8 border-l border-white/10 hover:border-primary transition-colors duration-500 group"
-              >
-                {/* Animated accent line */}
-                <motion.div 
-                  className="absolute -left-[1px] top-0 w-[1px] bg-gradient-to-b from-primary to-transparent"
-                  initial={{ height: 0 }}
-                  whileInView={{ height: "100%" }}
-                  transition={{ duration: 1.2, delay: index * 0.15 }}
-                  viewport={{ once: false }}
-                />
-
-                <motion.h3 
-                  className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-300"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: false }}
-                >
-                  {highlight.highlightTitle}
-                </motion.h3>
-                
-                {highlight.highlightQuote && (
-                  <motion.blockquote 
-                    className="font-heading text-lg sm:text-xl md:text-2xl text-champagne-beige italic mb-4 sm:mb-6 leading-relaxed"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: index * 0.15 + 0.2 }}
-                    viewport={{ once: false }}
-                  >
-                    "{highlight.highlightQuote.split(" ").map((word, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 + (i * 0.05) }}
-                        viewport={{ once: false }}
-                        className={highlight.emphasizedPhrase?.includes(word) ? "text-primary border-b border-primary" : ""}
-                      >
-                        {word}{" "}
-                      </motion.span>
-                    ))}"
-                  </motion.blockquote>
-                )}
-
-                {highlight.additionalContext && (
-                  <motion.p 
-                    className="font-paragraph text-xs sm:text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: index * 0.15 + 0.3 }}
-                    viewport={{ once: false }}
-                  >
-                    {highlight.additionalContext}
-                  </motion.p>
-                )}
-
-                {/* Hover accent indicator */}
-                <motion.div 
-                  className="absolute -left-3 top-0 w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: false }}
-                />
-              </motion.div>
-            );
-          })}
+          {investmentHighlights.map((highlight, index) => (
+            <InvestmentHighlightItem key={highlight._id} highlight={highlight} index={index} />
+          ))}
         </div>
 
         {/* Bottom accent line */}
