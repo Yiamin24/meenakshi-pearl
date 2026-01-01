@@ -130,7 +130,7 @@ export default function HomePage() {
               muted
               playsInline
               onEnded={() => setVideoEnded(true)}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             >
               <source src="https://video.wixstatic.com/video/cef78c_3fdbf53a388748deb2e7bb1354e2faca/720p/mp4/file.mp4" type="video/mp4" />
             </video>
