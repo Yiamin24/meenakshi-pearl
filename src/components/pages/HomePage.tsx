@@ -445,9 +445,27 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
 
 const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigurations[] }) => {
   const configCards = [
-    { title: "🏡 1500 Sqft", subtitle: "(30x50)", description: "Perfect for modern family homes with spacious layouts" },
-    { title: "🏡 1800 Sqft", subtitle: "(30x60)", description: "Premium configurations for luxury residences" },
-    { title: "🏡 Larger Premium Plots", subtitle: "Available", description: "Custom sizes for exclusive architectural designs" }
+    { 
+      title: "1500 Sqft", 
+      subtitle: "(30x50)", 
+      description: "Perfect for modern family homes with spacious layouts and optimal space utilization",
+      image: "https://static.wixstatic.com/media/cef78c_1ed0e26987f94f4da1faa6988026c93d~mv2.png?originWidth=1152&originHeight=768",
+      features: ["Optimal Layout", "Family Friendly", "Modern Design"]
+    },
+    { 
+      title: "1800 Sqft", 
+      subtitle: "(30x60)", 
+      description: "Premium configurations for luxury residences with enhanced living spaces",
+      image: "https://static.wixstatic.com/media/cef78c_3afbc2ed677e4695a734f9bc4f870313~mv2.png?originWidth=1152&originHeight=768",
+      features: ["Premium Layout", "Luxury Living", "Spacious Design"]
+    },
+    { 
+      title: "Larger Premium Plots", 
+      subtitle: "Custom Sizes", 
+      description: "Exclusive configurations for bespoke architectural designs and grand estates",
+      image: "https://static.wixstatic.com/media/cef78c_3dec255cbbec4e8e8c3a0710bcec325c~mv2.png?originWidth=1152&originHeight=768",
+      features: ["Custom Design", "Exclusive", "Estate Living"]
+    }
   ];
 
   return (
@@ -477,55 +495,68 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
           {configCards.map((card, index) => (
             <CinematicReveal key={index} delay={index * 0.15}>
               <motion.div
-                whileHover={{ y: -12, boxShadow: "0 20px 40px rgba(184, 134, 11, 0.15)" }}
-                className="group relative h-full"
+                whileHover={{ y: -12 }}
+                className="group relative h-full flex flex-col"
               >
-                {/* Card Background with Border */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/[0.02] border border-primary/20 rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Image Container */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg mb-6 border border-primary/20 group-hover:border-primary/50 transition-all duration-500">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-500" />
+                  
+                  {/* Size Badge */}
+                  <div className="absolute top-4 right-4 bg-primary text-black px-4 py-2 rounded-full font-heading text-sm font-bold">
+                    {card.title}
+                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative p-10 h-full flex flex-col justify-between">
-                  {/* Top Section */}
-                  <div>
-                    {/* Icon/Number Background */}
-                    <div className="mb-8 relative">
-                      <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-700" />
-                      <div className="relative z-10">
-                        <h3 className="font-heading text-4xl md:text-5xl text-pearl-ivory mb-2 group-hover:text-primary transition-colors duration-500">
-                          {card.title}
-                        </h3>
-                        <p className="font-paragraph text-primary text-lg font-medium">
-                          {card.subtitle}
+                <div className="relative flex-1 flex flex-col">
+                  {/* Header */}
+                  <div className="mb-6">
+                    <p className="font-paragraph text-primary text-sm uppercase tracking-widest font-medium mb-2">
+                      {card.subtitle}
+                    </p>
+                    <h3 className="font-heading text-2xl md:text-3xl text-pearl-ivory group-hover:text-primary transition-colors duration-500">
+                      Plot Configuration
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="font-paragraph text-champagne-beige/70 text-sm leading-relaxed mb-6 flex-grow">
+                    {card.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="grid grid-cols-3 gap-3 mb-8 pt-6 border-t border-white/10">
+                    {card.features.map((feature, i) => (
+                      <div key={i} className="text-center">
+                        <p className="font-paragraph text-xs text-primary uppercase tracking-wider font-medium">
+                          {feature}
                         </p>
                       </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="font-paragraph text-champagne-beige/70 text-base leading-relaxed">
-                      {card.description}
-                    </p>
+                    ))}
                   </div>
 
                   {/* Bottom CTA */}
-                  <div className="mt-10 pt-8 border-t border-primary/10 group-hover:border-primary/30 transition-colors">
-                    <div className="flex items-center justify-between">
-                      <span className="font-paragraph text-primary text-sm uppercase tracking-widest font-medium">
-                        Learn More
-                      </span>
-                      <motion.div
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <ArrowRight className="w-5 h-5 text-primary" />
-                      </motion.div>
-                    </div>
+                  <div className="flex items-center justify-between pt-6 border-t border-primary/10 group-hover:border-primary/30 transition-colors">
+                    <span className="font-paragraph text-primary text-xs uppercase tracking-widest font-medium">
+                      Explore Details
+                    </span>
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <ArrowRight className="w-4 h-4 text-primary" />
+                    </motion.div>
                   </div>
                 </div>
 
                 {/* Hover Border Animation */}
-                <div className="absolute inset-0 rounded-lg border border-primary/0 group-hover:border-primary/50 transition-all duration-700 pointer-events-none" />
+                <div className="absolute inset-0 rounded-lg border border-primary/0 group-hover:border-primary/30 transition-all duration-700 pointer-events-none" />
               </motion.div>
             </CinematicReveal>
           ))}
