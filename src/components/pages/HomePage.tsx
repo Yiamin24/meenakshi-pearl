@@ -161,13 +161,11 @@ export default function HomePage() {
           >
             <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <ProjectOverviewSection />
-            <InfrastructureSection infrastructure={infrastructure} />
-            <GatedLivingSection gatedBenefits={gatedBenefits} />
-            <Amenities3DSection amenities={amenities} />
             <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <PlotConfigurationsSection plotConfigs={plotConfigs} />
+            <InfrastructureSection infrastructure={infrastructure} />
+            <GatedLivingSection gatedBenefits={gatedBenefits} />
             <LegalSection legalApprovals={legalApprovals} />
-            <InvestmentSection investmentHighlights={investmentHighlights} />
             <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <Footer />
           </motion.main>
@@ -210,14 +208,14 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         
         <CinematicReveal delay={0.3}>
           <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
-            Grade-A Plotted Development
+            Premium Plotted Community
           </span>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-            Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
-            A sanctuary of 212 premium plots across 14 acres.
+          <p className="font-paragraph text-lg md:text-2xl text-champagne-beige/90 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+            Discover your dream plot in East Bangalore's most coveted address. <br className="hidden md:block" />
+            <span className="text-primary font-medium">212 premium plots</span> across <span className="text-primary font-medium">14 acres</span> of meticulously planned luxury living.
           </p>
         </CinematicReveal>
 
@@ -227,7 +225,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
             className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
             onClick={onOpenContactForm}
           >
-            Schedule Visit
+            Schedule Site Visit
           </Button>
           <Button 
             size="lg" 
@@ -235,7 +233,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
             className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide backdrop-blur-sm transition-all duration-500"
             onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            View Masterplan
+            Explore Plot Sizes
           </Button>
         </CinematicReveal>
       </motion.div>
@@ -299,7 +297,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
             
             <CinematicReveal delay={0.2}>
               <p className="font-paragraph text-lg text-champagne-beige/80 mb-12 leading-relaxed border-l-2 border-primary/30 pl-6">
-                Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity.
+                Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity. Your plots are positioned for both lifestyle and investment growth.
               </p>
             </CinematicReveal>
 
@@ -330,12 +328,64 @@ const ProjectOverviewSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   
   return (
-    <section ref={ref} className="py-32 bg-champagne-beige/5 relative">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/20">
+    <section ref={ref} className="py-32 bg-background relative overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <CinematicReveal>
+            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6">
+              Why Choose <span className="text-primary">Meenakshi Pearl</span>
+            </h2>
+          </CinematicReveal>
+          <CinematicReveal delay={0.2}>
+            <p className="font-paragraph text-lg text-champagne-beige/70 max-w-3xl mx-auto">
+              A meticulously planned ecosystem where luxury meets legacy. Every plot is designed to appreciate in value and quality of life.
+            </p>
+          </CinematicReveal>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
-            { value: 14, label: "Acres of Land", suffix: "" },
-            { value: 212, label: "Premium Plots", suffix: "" },
+            { 
+              icon: "📍", 
+              title: "Prime Location", 
+              description: "Strategically positioned in East Bangalore's rapid-growth corridor with excellent connectivity to IT hubs and major landmarks." 
+            },
+            { 
+              icon: "🏗️", 
+              title: "World-Class Infrastructure", 
+              description: "Built to global standards with premium amenities, gated security, and 24/7 maintenance for seamless living." 
+            },
+            { 
+              icon: "📈", 
+              title: "Investment Potential", 
+              description: "High appreciation potential in one of Bangalore's most sought-after addresses with strong market fundamentals." 
+            }
+          ].map((item, i) => (
+            <CinematicReveal key={i} delay={i * 0.15}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                className="relative p-8 bg-gradient-to-br from-white/5 to-white/[0.02] border border-primary/20 rounded-lg group hover:border-primary/50 transition-all duration-500"
+              >
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="font-heading text-2xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+                <p className="font-paragraph text-champagne-beige/70 leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            </CinematicReveal>
+          ))}
+        </div>
+
+        {/* Key Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/20 py-12 border-y border-primary/20">
+          {[
+            { value: 14, label: "Acres of Premium Land", suffix: "" },
+            { value: 212, label: "Thoughtfully Designed Plots", suffix: "" },
             { value: 100, label: "Vastu Compliant", suffix: "%" }
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center justify-center p-8 text-center">
@@ -343,7 +393,7 @@ const ProjectOverviewSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 1, delay: i * 0.2 }}
-                className="font-heading text-7xl md:text-8xl lg:text-9xl text-primary/20 font-bold relative"
+                className="font-heading text-6xl md:text-7xl text-primary/20 font-bold relative"
               >
                 <span className="absolute inset-0 text-primary blur-2xl opacity-30">{stat.value}</span>
                 <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-primary to-primary/40">
@@ -354,20 +404,12 @@ const ProjectOverviewSection = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                className="font-paragraph text-xl text-pearl-ivory mt-4 uppercase tracking-widest"
+                className="font-paragraph text-lg text-pearl-ivory mt-4 uppercase tracking-widest"
               >
                 {stat.label}
               </motion.p>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-24 text-center">
-          <CinematicReveal>
-            <p className="font-heading text-3xl md:text-4xl text-champagne-beige max-w-4xl mx-auto leading-normal">
-              "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
-            </p>
-          </CinematicReveal>
         </div>
       </div>
     </section>
@@ -1009,93 +1051,20 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         <div className="text-center mb-16">
           <CinematicReveal>
             <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl text-pearl-ivory mb-8 tracking-tight">
-              Own The <br />
-              <span className="text-primary">Legacy</span>
+              Secure Your <br />
+              <span className="text-primary">Plot Today</span>
             </h2>
           </CinematicReveal>
 
           <CinematicReveal delay={0.2}>
             <p className="font-paragraph text-xl text-champagne-beige/80 max-w-2xl mx-auto mb-16 font-light">
-              Limited plots available. Secure your piece of East Bangalore's finest address today.
+              Limited premium plots available. Connect with our sales team to explore your perfect plot and investment opportunity.
             </p>
           </CinematicReveal>
         </div>
 
-        {/* Contact Form */}
-        <div className="max-w-2xl mx-auto mb-20">
-          <CinematicReveal delay={0.3}>
-            <form onSubmit={(e) => { e.preventDefault(); onOpenContactForm(); }} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Name */}
-                <div>
-                  <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
-                    placeholder="+91 XXXXX XXXXX"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block font-paragraph text-sm text-champagne-beige/80 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-paragraph text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
-                  placeholder="Tell us about your interest in Meenakshi Pearl..."
-                />
-              </div>
-
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-base py-3 rounded-lg mt-6 transition-all"
-              >
-                Send Message
-              </Button>
-
-              <p className="font-paragraph text-xs text-white/30 text-center">
-                We respect your privacy. Your information will never be shared.
-              </p>
-            </form>
-          </CinematicReveal>
-        </div>
-
         {/* CTA Buttons */}
-        <CinematicReveal delay={0.4}>
+        <CinematicReveal delay={0.3}>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
@@ -1116,14 +1085,14 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
               onClick={onOpenContactForm}
             >
               <Mail className="w-5 h-5 mr-3" />
-              Download Brochure
+              Get Brochure
             </Button>
           </div>
         </CinematicReveal>
 
-        <CinematicReveal delay={0.6} className="pt-16 border-t border-white/5">
+        <CinematicReveal delay={0.4} className="pt-16 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-white/30 font-paragraph uppercase tracking-widest">
-            <span>Sales Office: Sarjapur Road</span>
+            <span>Sales Office: Sarjapur Road, East Bangalore</span>
             <span className="hidden md:inline">•</span>
             <span>Open Daily: 9:00 AM - 6:00 PM</span>
           </div>
