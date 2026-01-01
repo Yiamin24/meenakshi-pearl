@@ -143,8 +143,8 @@ export default function HomePage() {
             transition={{ duration: 1 }}
           >
             <HeroSection />
-            <LocationSection />
             <ProjectOverviewSection />
+            <LocationSection />
             <LegalSection legalApprovals={legalApprovals} />
             <PlotConfigurationsSection plotConfigs={plotConfigs} />
             <InfrastructureSection infrastructure={infrastructure} />
