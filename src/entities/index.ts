@@ -4,27 +4,6 @@
  */
 
 /**
- * Collection ID: contactformsubmissions
- * Interface for ContactFormSubmissions
- */
-export interface ContactFormSubmissions {
-  _id: string;
-  _createdDate?: Date;
-  _updatedDate?: Date;
-  /** @wixFieldType text */
-  name?: string;
-  /** @wixFieldType text */
-  phoneNumber?: string;
-  /** @wixFieldType text */
-  email?: string;
-  /** @wixFieldType text */
-  message?: string;
-  /** @wixFieldType datetime */
-  submissionDate?: Date | string;
-}
-
-
-/**
  * Collection ID: gatedlivingbenefits
  * Interface for GatedLivingBenefits
  */
