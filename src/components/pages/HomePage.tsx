@@ -103,15 +103,6 @@ export default function HomePage() {
     fetchData();
   }, []);
 
-  // Auto-open contact form 5 seconds after page load
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsContactModalOpen(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="bg-background text-foreground min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
       {/* Cinematic Noise Overlay */}
