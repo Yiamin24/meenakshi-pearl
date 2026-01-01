@@ -60,6 +60,8 @@ const ParallaxText = ({ children, className = "", speed = 1 }: { children: React
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
   const [legalApprovals, setLegalApprovals] = useState<LegalApprovals[]>([]);
   const [plotConfigs, setPlotConfigs] = useState<PlotConfigurations[]>([]);
   const [infrastructure, setInfrastructure] = useState<InfrastructureDetails[]>([]);
@@ -89,7 +91,10 @@ export default function HomePage() {
         console.error("Failed to fetch data", error);
       } finally {
         // Minimum load time to ensure smooth transition
-        setTimeout(() => setIsLoading(false), 2500);
+        setTimeout(() => {
+          setIsLoading(false);
+          setShowVideo(true);
+        }, 2500);
       }
     };
 
@@ -112,8 +117,27 @@ export default function HomePage() {
           >
             <Loader />
           </motion.div>
+        ) : showVideo && !videoEnded ? (
+          <motion.div
+            key="video"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
+            className="fixed inset-0 z-[150] bg-black flex items-center justify-center"
+          >
+            <video
+              autoPlay
+              muted
+              playsInline
+              onEnded={() => setVideoEnded(true)}
+              className="w-full h-full object-cover"
+            >
+              <source src="https://video.wixstatic.com/video/cef78c_3fdbf53a388748deb2e7bb1354e2faca/720p/mp4/file.mp4" type="video/mp4" />
+            </video>
+          </motion.div>
         ) : (
           <motion.main
+            key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
