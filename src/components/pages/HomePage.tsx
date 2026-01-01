@@ -147,7 +147,7 @@ const HeroSection = () => {
     <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <Image
-          src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=hero-background"
+          src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
           alt="Meenakshi Pearl Aerial View"
           className="w-full h-full object-cover"
         />
@@ -487,56 +487,112 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
 };
 
 const InfrastructureSection = ({ infrastructure }: { infrastructure: InfrastructureDetails[] }) => {
-  return (
-    <section className="py-32 bg-background relative">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col lg:flex-row gap-16">
-          <div className="lg:w-1/3 sticky top-32 self-start">
-            <CinematicReveal>
-              <h2 className="font-heading text-5xl md:text-6xl text-pearl-ivory mb-8 leading-tight">
-                Infrastructure <br />
-                <span className="text-white/20">Reimagined</span>
-              </h2>
-            </CinematicReveal>
-            <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-lg text-champagne-beige/70 mb-8">
-                We don't just build roads and pipes; we engineer a seamless living experience. Every detail is executed to global standards.
-              </p>
-            </CinematicReveal>
-            <CinematicReveal delay={0.4}>
-              <div className="w-20 h-1 bg-primary" />
-            </CinematicReveal>
-          </div>
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-10%" });
 
-          <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            {infrastructure.map((item, index) => (
-              <CinematicReveal key={item._id} delay={index * 0.1}>
-                <div className="flex gap-6 group">
-                  <div className="relative flex-shrink-0">
-                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] group-hover:border-primary/50 transition-colors duration-500">
-                      {item.featureIcon && (
-                        <Image 
-                          src={item.featureIcon} 
-                          alt={item.featureName || "Icon"} 
-                          className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
-                        />
-                      )}
-                    </div>
-                    <div className="absolute -inset-2 border border-primary/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-700 opacity-50" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-2xl text-pearl-ivory mb-3 group-hover:translate-x-2 transition-transform duration-300">
-                      {item.featureName}
-                    </h3>
-                    <p className="font-paragraph text-sm text-champagne-beige/60 leading-relaxed">
-                      {item.featureDescription}
-                    </p>
-                  </div>
-                </div>
-              </CinematicReveal>
-            ))}
-          </div>
+  return (
+    <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+        {/* Section Header */}
+        <div className="mb-16 md:mb-20">
+          <CinematicReveal>
+            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6 leading-tight">
+              Infrastructure <span className="text-primary">Reimagined</span>
+            </h2>
+          </CinematicReveal>
+          <CinematicReveal delay={0.2}>
+            <p className="font-paragraph text-lg md:text-xl text-champagne-beige/80 max-w-3xl">
+              We don't just build roads and pipes; we engineer a seamless living experience. Every detail is executed to global standards.
+            </p>
+          </CinematicReveal>
+          <CinematicReveal delay={0.4}>
+            <div className="w-24 h-1 bg-primary mt-8" />
+          </CinematicReveal>
         </div>
+
+        {/* Modern Card Grid - No Gaps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {infrastructure.map((item, index) => (
+            <CinematicReveal key={item._id} delay={index * 0.08}>
+              <motion.div
+                className="group relative h-full bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-primary/20 rounded-xl p-6 md:p-8 overflow-hidden cursor-pointer transition-all duration-500 hover:border-primary/60 hover:shadow-[0_0_40px_rgba(184,134,11,0.2)]"
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              >
+                {/* Background Gradient Accent */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Icon Container */}
+                <motion.div
+                  className="relative mb-6 inline-flex"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center group-hover:border-primary/60 transition-all duration-500">
+                    {item.featureIcon && (
+                      <Image
+                        src={item.featureIcon}
+                        alt={item.featureName || "Infrastructure feature"}
+                        className="w-10 h-10 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                    )}
+                  </div>
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-1 bg-primary/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+                </motion.div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="font-heading text-2xl md:text-3xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors duration-300">
+                    {item.featureName}
+                  </h3>
+                  <p className="font-paragraph text-sm md:text-base text-champagne-beige/75 leading-relaxed group-hover:text-champagne-beige transition-colors duration-300">
+                    {item.featureDescription}
+                  </p>
+                </div>
+
+                {/* Bottom Accent Line */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-transparent"
+                  initial={{ width: "0%" }}
+                  whileInView={{ width: isInView ? "100%" : "0%" }}
+                  transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
+                  viewport={{ once: true }}
+                />
+
+                {/* Corner Accent */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </motion.div>
+            </CinematicReveal>
+          ))}
+        </div>
+
+        {/* Stats Bar Below Cards */}
+        <motion.div
+          className="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-primary/20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center">
+            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">
+              {infrastructure.length}+
+            </div>
+            <p className="font-paragraph text-sm text-champagne-beige/60">Premium Features</p>
+          </div>
+          <div className="text-center">
+            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">100%</div>
+            <p className="font-paragraph text-sm text-champagne-beige/60">Global Standards</p>
+          </div>
+          <div className="text-center">
+            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">24/7</div>
+            <p className="font-paragraph text-sm text-champagne-beige/60">Maintenance</p>
+          </div>
+          <div className="text-center">
+            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">∞</div>
+            <p className="font-paragraph text-sm text-champagne-beige/60">Durability</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -605,7 +661,7 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
       {/* Parallax Background */}
       <div className="absolute inset-0 opacity-20">
         <Image 
-          src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=gated-living-bg"
+          src="https://static.wixstatic.com/media/cef78c_f9065b5bb9c444d8956454710255821f~mv2.png?originWidth=1920&originHeight=1024"
           alt="Background Pattern"
           className="w-full h-full object-cover"
         />
