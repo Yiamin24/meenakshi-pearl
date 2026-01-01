@@ -144,12 +144,12 @@ export default function HomePage() {
           >
             <HeroSection />
             <ProjectOverviewSection />
-            <LocationSection />
-            <LegalSection legalApprovals={legalApprovals} />
-            <PlotConfigurationsSection plotConfigs={plotConfigs} />
             <InfrastructureSection infrastructure={infrastructure} />
-            <Amenities3DSection amenities={amenities} />
             <GatedLivingSection gatedBenefits={gatedBenefits} />
+            <Amenities3DSection amenities={amenities} />
+            <LocationSection />
+            <PlotConfigurationsSection plotConfigs={plotConfigs} />
+            <LegalSection legalApprovals={legalApprovals} />
             <InvestmentSection investmentHighlights={investmentHighlights} />
             <FinalCTASection />
             <Footer />
