@@ -77,7 +77,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[1000] flex items-center justify-center p-4"
           >
-            <div className="bg-background border border-white/10 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div className="bg-background border border-white/10 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto scrollbar-hide">
               {/* Header */}
               <div className="sticky top-0 bg-background border-b border-white/10 px-6 py-6 flex justify-between items-center">
                 <h2 className="font-heading text-2xl text-pearl-ivory">Get In Touch</h2>
