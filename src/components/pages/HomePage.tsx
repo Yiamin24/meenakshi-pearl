@@ -16,6 +16,7 @@ import { MapPin, Phone, Mail, ArrowRight, Check, Lock, TrendingUp } from 'lucide
 import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
 import Amenities3DSection from '@/components/Amenities3DCard';
+import ContactFormModal from '@/components/ContactFormModal';
 
 
 // --- Utility Components ---
@@ -68,6 +69,10 @@ export default function HomePage() {
   const [amenities, setAmenities] = useState<ProjectAmenities[]>([]);
   const [gatedBenefits, setGatedBenefits] = useState<GatedLivingBenefits[]>([]);
   const [investmentHighlights, setInvestmentHighlights] = useState<InvestmentHighlights[]>([]);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [showContactModalOnHeroView, setShowContactModalOnHeroView] = useState(false);
+  const heroRef = useRef(null);
+  const heroInView = useInView(heroRef, { once: false });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,11 +106,24 @@ export default function HomePage() {
     fetchData();
   }, []);
 
+  // Auto-open modal when hero section becomes visible
+  useEffect(() => {
+    if (heroInView && !showContactModalOnHeroView && !isLoading) {
+      setShowContactModalOnHeroView(true);
+      setIsContactModalOpen(true);
+    }
+  }, [heroInView, showContactModalOnHeroView, isLoading]);
+
   return (
     <div className="bg-background text-foreground min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
       {/* Cinematic Noise Overlay */}
       <div className="fixed inset-0 z-[100] pointer-events-none opacity-[0.03] mix-blend-overlay" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+      />
+
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
       />
 
       <AnimatePresence mode="wait">
@@ -142,7 +160,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <HeroSection />
+            <HeroSection ref={heroRef} onOpenContactForm={() => setIsContactModalOpen(true)} />
             <ProjectOverviewSection />
             <InfrastructureSection infrastructure={infrastructure} />
             <GatedLivingSection gatedBenefits={gatedBenefits} />
@@ -151,7 +169,7 @@ export default function HomePage() {
             <PlotConfigurationsSection plotConfigs={plotConfigs} />
             <LegalSection legalApprovals={legalApprovals} />
             <InvestmentSection investmentHighlights={investmentHighlights} />
-            <FinalCTASection />
+            <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
             <Footer />
           </motion.main>
         )}
@@ -162,9 +180,9 @@ export default function HomePage() {
 
 // --- Sections ---
 
-const HeroSection = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+const HeroSection = React.forwardRef<HTMLDivElement, { onOpenContactForm: () => void }>(({ onOpenContactForm }, ref) => {
+  const scrollRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: scrollRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.2]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -208,7 +226,7 @@ const HeroSection = () => {
           <Button 
             size="lg" 
             className="bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-10 py-8 rounded-none min-w-[200px] tracking-wide transition-all duration-500 hover:scale-105"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={onOpenContactForm}
           >
             Schedule Visit
           </Button>
@@ -236,7 +254,9 @@ const HeroSection = () => {
       </motion.div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = 'HeroSection';
 
 const LocationSection = () => {
   return (
@@ -708,7 +728,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
               <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-4">The Collection</h2>
             </CinematicReveal>
             <CinematicReveal delay={0.1}>
-              <p className="font-paragraph text-primary uppercase tracking-widest text-sm\">World-Class Amenities</p>
+              <p className="font-paragraph text-primary uppercase tracking-widest text-sm">World-Class Amenities</p>
             </CinematicReveal>
           </div>
           <CinematicReveal delay={0.2} className="hidden md:flex items-center gap-4 text-white/30">
@@ -726,7 +746,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
                 className="relative w-[85vw] md:w-[600px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0 group"
               >
                 <div className="absolute inset-0 overflow-hidden rounded-sm">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10\" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
                   {amenity.galleryImage && (
                     <Image
                       src={amenity.galleryImage}
@@ -747,7 +767,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
                     <h3 className="font-heading text-3xl md:text-4xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
                       {amenity.amenityName}
                     </h3>
-                    <span className="font-mono text-primary/50 text-xl\">0{index + 1}</span>
+                    <span className="font-mono text-primary/50 text-xl">0{index + 1}</span>
                   </div>
                   <p className="font-paragraph text-sm text-champagne-beige/60 mt-4 max-w-md line-clamp-2">
                     {amenity.description}
@@ -758,8 +778,8 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
           </motion.div>
 
           {/* Gradient Fade Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-champagne-beige/5 to-transparent z-10 pointer-events-none\" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-champagne-beige/5 to-transparent z-10 pointer-events-none\" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-champagne-beige/5 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-champagne-beige/5 to-transparent z-10 pointer-events-none" />
         </div>
 
         {/* Bottom Spacing */}
@@ -959,7 +979,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
   );
 };
 
-const FinalCTASection = () => {
+const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   return (
     <section id="contact" className="relative py-32 bg-background flex items-center justify-center overflow-hidden">
       {/* Background Glow */}
@@ -986,6 +1006,7 @@ const FinalCTASection = () => {
               <Button 
                 size="lg" 
                 className="relative bg-primary text-black hover:bg-primary/90 font-paragraph text-lg px-12 py-8 rounded-none min-w-[240px]"
+                onClick={onOpenContactForm}
               >
                 <Phone className="w-5 h-5 mr-3" />
                 Request Callback
@@ -996,6 +1017,7 @@ const FinalCTASection = () => {
               size="lg" 
               variant="outline" 
               className="border-white/20 text-white hover:bg-white/5 font-paragraph text-lg px-12 py-8 rounded-none min-w-[240px]"
+              onClick={onOpenContactForm}
             >
               <Mail className="w-5 h-5 mr-3" />
               Download Brochure
