@@ -493,61 +493,116 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
   return (
     <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-        {/* Section Header */}
-        <div className="mb-16 md:mb-20">
+        {/* Section Header with Animated Text */}
+        <div className="mb-20 md:mb-28">
           <CinematicReveal>
-            <h2 className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6 leading-tight">
-              Infrastructure <span className="text-primary">Reimagined</span>
-            </h2>
+            <div className="overflow-hidden">
+              <motion.h2 
+                className="font-heading text-5xl md:text-7xl text-pearl-ivory mb-6 leading-tight"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true }}
+              >
+                Infrastructure <span className="text-primary">Reimagined</span>
+              </motion.h2>
+            </div>
           </CinematicReveal>
+          
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-lg md:text-xl text-champagne-beige/80 max-w-3xl">
-              We don't just build roads and pipes; we engineer a seamless living experience. Every detail is executed to global standards.
-            </p>
+            <div className="overflow-hidden">
+              <motion.p 
+                className="font-paragraph text-lg md:text-xl text-champagne-beige/80 max-w-3xl"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true }}
+              >
+                We don't just build roads and pipes; we engineer a seamless living experience. Every detail is executed to global standards.
+              </motion.p>
+            </div>
           </CinematicReveal>
+          
           <CinematicReveal delay={0.4}>
-            <div className="w-24 h-1 bg-primary mt-8" />
+            <motion.div 
+              className="w-24 h-1 bg-primary mt-8"
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: 96, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              viewport={{ once: true }}
+            />
           </CinematicReveal>
         </div>
 
-        {/* Modern Card Grid - No Gaps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Enhanced Card Grid with Large Images */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
           {infrastructure.map((item, index) => (
             <CinematicReveal key={item._id} delay={index * 0.08}>
               <motion.div
-                className="group relative h-full bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-primary/20 rounded-xl p-6 md:p-8 overflow-hidden cursor-pointer transition-all duration-500 hover:border-primary/60 hover:shadow-[0_0_40px_rgba(184,134,11,0.2)]"
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group relative h-full bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-primary/20 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 hover:border-primary/60"
+                whileHover={{ y: -12, transition: { duration: 0.3 } }}
               >
-                {/* Background Gradient Accent */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                {/* Icon Container */}
-                <motion.div
-                  className="relative mb-6 inline-flex"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center group-hover:border-primary/60 transition-all duration-500">
-                    {item.featureIcon && (
+                {/* Large Image Container */}
+                <div className="relative h-48 md:h-56 overflow-hidden bg-black/40">
+                  {item.featureIcon && (
+                    <motion.div
+                      className="w-full h-full"
+                      whileHover={{ scale: 1.15 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
                       <Image
                         src={item.featureIcon}
                         alt={item.featureName || "Infrastructure feature"}
-                        className="w-10 h-10 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                       />
-                    )}
-                  </div>
-                  {/* Glow Effect */}
-                  <div className="absolute -inset-1 bg-primary/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
-                </motion.div>
+                    </motion.div>
+                  )}
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 group-hover:to-background/60 transition-all duration-500" />
+                </div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="font-heading text-2xl md:text-3xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors duration-300">
+                {/* Content Section */}
+                <div className="p-6 md:p-8 relative z-10">
+                  {/* Animated Icon */}
+                  <motion.div
+                    className="mb-4 inline-flex"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/40 flex items-center justify-center group-hover:border-primary/70 transition-all duration-500">
+                      {item.featureIcon && (
+                        <Image
+                          src={item.featureIcon}
+                          alt={item.featureName || "Icon"}
+                          className="w-7 h-7 object-contain opacity-90"
+                        />
+                      )}
+                    </div>
+                  </motion.div>
+
+                  {/* Animated Title */}
+                  <motion.h3 
+                    className="font-heading text-2xl md:text-3xl text-pearl-ivory mb-3 group-hover:text-primary transition-colors duration-300 overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                    viewport={{ once: true }}
+                  >
                     {item.featureName}
-                  </h3>
-                  <p className="font-paragraph text-sm md:text-base text-champagne-beige/75 leading-relaxed group-hover:text-champagne-beige transition-colors duration-300">
+                  </motion.h3>
+
+                  {/* Animated Description */}
+                  <motion.p 
+                    className="font-paragraph text-sm md:text-base text-champagne-beige/75 leading-relaxed group-hover:text-champagne-beige transition-colors duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
+                    viewport={{ once: true }}
+                  >
                     {item.featureDescription}
-                  </p>
+                  </motion.p>
                 </div>
 
                 {/* Bottom Accent Line */}
@@ -555,18 +610,99 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                   className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-transparent"
                   initial={{ width: "0%" }}
                   whileInView={{ width: isInView ? "100%" : "0%" }}
-                  transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
+                  transition={{ duration: 1, delay: index * 0.1 + 0.6 }}
                   viewport={{ once: true }}
                 />
 
                 {/* Corner Accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/15 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             </CinematicReveal>
           ))}
         </div>
 
-        {/* Stats Bar Below Cards */}
+        {/* Continuously Looping Right-to-Left Carousel */}
+        <div className="relative py-12 md:py-16 border-t border-primary/20">
+          <CinematicReveal delay={0.3}>
+            <p className="font-paragraph text-sm uppercase tracking-widest text-primary mb-8">Featured Infrastructure</p>
+          </CinematicReveal>
+
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex gap-6 md:gap-8"
+              animate={{ x: [0, -2000] }}
+              transition={{
+                duration: 30,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              {/* Original Items */}
+              {infrastructure.map((item, index) => (
+                <motion.div
+                  key={`carousel-${item._id}-1`}
+                  className="flex-shrink-0 w-80 md:w-96 group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative h-64 md:h-72 rounded-xl overflow-hidden border border-primary/30 group-hover:border-primary/70 transition-all duration-500 bg-gradient-to-br from-white/[0.08] to-white/[0.02]">
+                    {item.featureIcon && (
+                      <Image
+                        src={item.featureIcon}
+                        alt={item.featureName || "Feature"}
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h4 className="font-heading text-xl md:text-2xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
+                        {item.featureName}
+                      </h4>
+                      <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 mt-2 line-clamp-2">
+                        {item.featureDescription}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Duplicated Items for Seamless Loop */}
+              {infrastructure.map((item, index) => (
+                <motion.div
+                  key={`carousel-${item._id}-2`}
+                  className="flex-shrink-0 w-80 md:w-96 group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative h-64 md:h-72 rounded-xl overflow-hidden border border-primary/30 group-hover:border-primary/70 transition-all duration-500 bg-gradient-to-br from-white/[0.08] to-white/[0.02]">
+                    {item.featureIcon && (
+                      <Image
+                        src={item.featureIcon}
+                        alt={item.featureName || "Feature"}
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h4 className="font-heading text-xl md:text-2xl text-pearl-ivory group-hover:text-primary transition-colors duration-300">
+                        {item.featureName}
+                      </h4>
+                      <p className="font-paragraph text-xs md:text-sm text-champagne-beige/70 mt-2 line-clamp-2">
+                        {item.featureDescription}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Gradient Fade Edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Stats Bar Below */}
         <motion.div
           className="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-primary/20 grid grid-cols-2 md:grid-cols-4 gap-8"
           initial={{ opacity: 0, y: 20 }}
@@ -574,24 +710,54 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
           transition={{ duration: 1, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="text-center">
-            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="font-heading text-3xl md:text-4xl text-primary mb-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
               {infrastructure.length}+
-            </div>
+            </motion.div>
             <p className="font-paragraph text-sm text-champagne-beige/60">Premium Features</p>
-          </div>
-          <div className="text-center">
-            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">100%</div>
+          </motion.div>
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <motion.div className="font-heading text-3xl md:text-4xl text-primary mb-2">100%</motion.div>
             <p className="font-paragraph text-sm text-champagne-beige/60">Global Standards</p>
-          </div>
-          <div className="text-center">
-            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">24/7</div>
+          </motion.div>
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.div className="font-heading text-3xl md:text-4xl text-primary mb-2">24/7</motion.div>
             <p className="font-paragraph text-sm text-champagne-beige/60">Maintenance</p>
-          </div>
-          <div className="text-center">
-            <div className="font-heading text-3xl md:text-4xl text-primary mb-2">∞</div>
+          </motion.div>
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            viewport={{ once: true }}
+          >
+            <motion.div className="font-heading text-3xl md:text-4xl text-primary mb-2">∞</motion.div>
             <p className="font-paragraph text-sm text-champagne-beige/60">Durability</p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
