@@ -164,7 +164,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-base sm:text-lg md:text-2xl text-champagne-beige/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
+          <p className="font-paragraph text-sm sm:text-base md:text-lg text-champagne-beige/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres.
           </p>
@@ -240,14 +240,14 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
           <div className="order-1 lg:order-2">
             <CinematicReveal>
-              <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl text-pearl-ivory mb-6 sm:mb-8">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-pearl-ivory mb-6 sm:mb-8">
                 Strategically <br />
                 <span className="text-primary italic">Positioned</span>
               </h2>
             </CinematicReveal>
             
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/80 mb-8 sm:mb-12 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
+              <p className="font-paragraph text-sm sm:text-base md:text-base text-champagne-beige/80 mb-8 sm:mb-12 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
                 Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity.
               </p>
             </CinematicReveal>
@@ -333,13 +333,13 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 sm:gap-8">
           <div className="max-w-2xl">
             <CinematicReveal>
-              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
                 Uncompromising <br />
                 <span className="text-primary">Transparency</span>
               </h2>
             </CinematicReveal>
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/70">
+              <p className="font-paragraph text-sm sm:text-base md:text-base text-champagne-beige/70">
                 Your investment is secured by comprehensive legal approvals and clear titles. We believe trust is the ultimate luxury.
               </p>
             </CinematicReveal>
@@ -369,7 +369,7 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
                   )}
                 </div>
                 
-                <h3 className="font-heading text-xl sm:text-2xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                   {approval.approvalName}
                 </h3>
                 <p className="font-paragraph text-xs sm:text-sm text-champagne-beige/60 leading-relaxed mb-3 sm:mb-4 flex-grow">
@@ -421,12 +421,12 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
         
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pearl-ivory mb-4 sm:mb-6">
               Plot <span className="text-primary">Configurations</span>
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-base sm:text-lg md:text-lg text-champagne-beige/70 max-w-2xl mx-auto px-4">
+            <p className="font-paragraph text-sm sm:text-base md:text-base text-champagne-beige/70 max-w-2xl mx-auto px-4">
               Choose from our thoughtfully designed plot options
             </p>
           </CinematicReveal>
@@ -458,7 +458,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                     <p className="font-paragraph text-primary text-xs uppercase tracking-widest mb-2 sm:mb-3">
                       {card.subtitle}
                     </p>
-                    <h3 className="font-heading text-2xl sm:text-3xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
+                    <h3 className="font-heading text-3xl sm:text-4xl text-pearl-ivory mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
                       {card.title}
                     </h3>
                     <p className="font-paragraph text-champagne-beige/60 text-xs sm:text-sm leading-relaxed">
@@ -525,7 +525,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
           
           <CinematicReveal delay={0.2}>
             <motion.p 
-              className="font-paragraph text-lg md:text-xl text-champagne-beige/80 max-w-3xl"
+              className="font-paragraph text-sm md:text-base text-champagne-beige/80 max-w-3xl"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
