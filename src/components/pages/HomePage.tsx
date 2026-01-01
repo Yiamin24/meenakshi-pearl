@@ -536,7 +536,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
         </div>
 
         {/* Optimized Infinite Carousel */}
-        <div className="relative overflow-hidden py-8">
+        <div className="relative overflow-hidden mb-8">
           <CinematicReveal delay={0.3}>
             <p className="font-paragraph text-sm uppercase tracking-widest text-primary mb-8">Featured Infrastructure</p>
           </CinematicReveal>
@@ -618,7 +618,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
 
         {/* Stats Bar */}
         <motion.div
-          className="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-primary/20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="border-t border-primary/20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
