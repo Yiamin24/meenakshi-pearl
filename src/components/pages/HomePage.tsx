@@ -496,7 +496,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
   const totalWidth = infrastructure.length * (itemWidth + gap);
 
   return (
-    <section ref={sectionRef} className="py-12 md:py-16 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="max-w-[100rem] mx-auto px-4 md:px-8">
         {/* Section Header */}
         <div className="mb-20 md:mb-28">
