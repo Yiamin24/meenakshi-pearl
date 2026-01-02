@@ -106,7 +106,6 @@ export default function HomePage() {
         <LegalSection legalApprovals={legalApprovals} />
         <InvestmentSection investmentHighlights={investmentHighlights} />
         <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
-        <ContactSection />
         <Footer />
       </motion.main>
     </div>
@@ -754,62 +753,6 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
 };
 
 const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
-  return (
-    <section className="relative py-20 sm:py-28 md:py-36 bg-old-lace flex items-center justify-center overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full opacity-15 pointer-events-none" />
-
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
-        <div className="text-center mb-16">
-          <CinematicReveal>
-            <h2 className="font-heading text-5xl sm:text-6xl md:text-8xl text-soft-charcoal mb-8 tracking-tight">
-              Own The <br />
-              <span className="text-primary">Legacy</span>
-            </h2>
-          </CinematicReveal>
-
-          <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-lg md:text-xl text-muted-gray max-w-2xl mx-auto mb-16 font-light px-4">
-              Limited plots available. Secure your piece of East Bangalore's finest address today.
-            </p>
-          </CinematicReveal>
-        </div>
-
-        <CinematicReveal delay={0.3}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
-            <Button 
-              size="lg" 
-              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-base px-10 py-6 rounded-lg w-full sm:w-auto shadow-sm hover:shadow-md transition-all"
-              onClick={onOpenContactForm}
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Request Callback
-            </Button>
-            
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-primary/30 text-soft-charcoal hover:bg-pale-sage font-paragraph text-base px-10 py-6 rounded-lg w-full sm:w-auto transition-all"
-              onClick={onOpenContactForm}
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Download Brochure
-            </Button>
-          </div>
-        </CinematicReveal>
-
-        <CinematicReveal delay={0.6} className="pt-12 md:pt-16 border-t border-primary/10">
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-muted-gray font-paragraph uppercase tracking-widest text-center">
-            <span>Sales Office: Sarjapur Road</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Open Daily: 9:00 AM - 6:00 PM</span>
-          </div>
-        </CinematicReveal>
-      </div>
-    </section>
-  );
-};
-
-const ContactSection = () => {
   const [formData, setFormData] = React.useState({
     name: '',
     phoneNumber: '',
@@ -856,131 +799,144 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28 md:py-36 bg-warm-beige overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16 sm:mb-20 md:mb-24">
-            <CinematicReveal>
-              <h2 className="font-heading text-5xl sm:text-6xl md:text-7xl text-soft-charcoal mb-6">
-                Get In <span className="text-primary">Touch</span>
-              </h2>
-            </CinematicReveal>
-            <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-base md:text-lg text-muted-gray max-w-2xl mx-auto">
-                Have questions about Meenakshi Pearl? Our team is here to help. Fill out the form below and we'll get back to you shortly.
-              </p>
-            </CinematicReveal>
-          </div>
+    <section className="relative py-20 sm:py-28 md:py-36 bg-old-lace overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full opacity-15 pointer-events-none" />
 
-          <CinematicReveal delay={0.3}>
-            <div className="bg-old-lace border border-primary/20 rounded-2xl p-8 sm:p-12 md:p-16 shadow-sm">
-              {submitSuccess ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center py-12"
-                >
-                  <div className="w-16 sm:w-20 h-16 sm:h-20 bg-pale-sage/40 border border-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Check className="w-8 sm:w-10 h-8 sm:h-10 text-primary" />
-                  </div>
-                  <h3 className="font-heading text-2xl sm:text-3xl text-soft-charcoal mb-3">Thank You!</h3>
-                  <p className="font-paragraph text-base sm:text-lg text-muted-gray">
-                    We've received your message. Our team will be in touch shortly.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                    {/* Name */}
-                    <div>
-                      <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full bg-white border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
-                        placeholder="Your name"
-                      />
-                    </div>
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
+        <div className="text-center mb-16 sm:mb-20">
+          <CinematicReveal>
+            <h2 className="font-heading text-5xl sm:text-6xl md:text-8xl text-soft-charcoal mb-8 tracking-tight">
+              Own The <br />
+              <span className="text-primary">Legacy</span>
+            </h2>
+          </CinematicReveal>
 
-                    {/* Phone */}
-                    <div>
-                      <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
-                        required
-                        className="w-full bg-white border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
-                        placeholder="+91 XXXXX XXXXX"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-white border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
-                      Message *
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full bg-white border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all resize-none"
-                      placeholder="Tell us about your interest in Meenakshi Pearl..."
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-primary text-white hover:bg-primary/90 font-paragraph text-base sm:text-lg py-3 sm:py-4 rounded-lg transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </Button>
-                  </motion.div>
-
-                  <p className="font-paragraph text-xs sm:text-sm text-muted-gray text-center">
-                    We respect your privacy. Your information will never be shared.
-                  </p>
-                </form>
-              )}
-            </div>
+          <CinematicReveal delay={0.2}>
+            <p className="font-paragraph text-lg md:text-xl text-muted-gray max-w-2xl mx-auto mb-12 font-light px-4">
+              Limited plots available. Secure your piece of East Bangalore's finest address today.
+            </p>
           </CinematicReveal>
         </div>
+
+        {/* Contact Form */}
+        <CinematicReveal delay={0.3}>
+          <div className="max-w-3xl mx-auto bg-white border border-primary/20 rounded-2xl p-8 sm:p-12 md:p-16 shadow-sm mb-12">
+            {submitSuccess ? (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-12"
+              >
+                <div className="w-16 sm:w-20 h-16 sm:h-20 bg-pale-sage/40 border border-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Check className="w-8 sm:w-10 h-8 sm:h-10 text-primary" />
+                </div>
+                <h3 className="font-heading text-2xl sm:text-3xl text-soft-charcoal mb-3">Thank You!</h3>
+                <p className="font-paragraph text-base sm:text-lg text-muted-gray">
+                  We've received your message. Our team will be in touch shortly.
+                </p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                  {/* Name */}
+                  <div>
+                    <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-old-lace border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
+                      placeholder="Your name"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-old-lace border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
+                      placeholder="+91 XXXXX XXXXX"
+                    />
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-old-lace border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block font-paragraph text-sm text-soft-charcoal mb-3 font-medium">
+                    Message *
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="w-full bg-old-lace border border-primary/20 rounded-lg px-4 sm:px-6 py-3 sm:py-4 font-paragraph text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all resize-none"
+                    placeholder="Tell us about your interest in Meenakshi Pearl..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-white hover:bg-primary/90 font-paragraph text-base sm:text-lg py-3 sm:py-4 rounded-lg transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </motion.div>
+
+                <p className="font-paragraph text-xs sm:text-sm text-muted-gray text-center">
+                  We respect your privacy. Your information will never be shared.
+                </p>
+              </form>
+            )}
+          </div>
+        </CinematicReveal>
+
+        <CinematicReveal delay={0.6} className="pt-8 md:pt-12 border-t border-primary/10">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-muted-gray font-paragraph uppercase tracking-widest text-center">
+            <span>Sales Office: Sarjapur Road</span>
+            <span className="hidden sm:inline">•</span>
+            <span>Open Daily: 9:00 AM - 6:00 PM</span>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
 };
+
+
