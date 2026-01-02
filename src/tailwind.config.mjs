@@ -19,20 +19,23 @@ export default {
                 '9xl': ['8rem', { lineHeight: '1', letterSpacing: '-0.05em', fontWeight: '700' }],
             },
             fontFamily: {
-                heading: "cormorantgaramond",
-                paragraph: "sora"
+                heading: "playfair display",
+                paragraph: "inter"
             },
             colors: {
-                'pearl-ivory': '#F8F8FF',
-                'champagne-beige': '#F5F5DC',
-                'muted-forest-green': '#228B22',
+                'old-lace': '#FFF8EB',
+                'warm-beige': '#EDE2D1',
+                'pale-sage': '#DDE5D4',
+                'soft-charcoal': '#5F5C58',
+                'muted-gray': '#8A857F',
+                'light-gray': '#A8A39D',
                 destructive: '#D32F2F',
                 'destructive-foreground': '#FFFFFF',
-                background: '#FFFFFF',
-                secondary: '#A9A9A9',
-                foreground: '#1a1a1a',
-                'secondary-foreground': '#FFFFFF',
-                'primary-foreground': '#FFFFFF',
+                background: '#FFF8EB',
+                secondary: '#EDE2D1',
+                foreground: '#5F5C58',
+                'secondary-foreground': '#5F5C58',
+                'primary-foreground': '#5F5C58',
                 primary: '#B8860B'
             },
         },
