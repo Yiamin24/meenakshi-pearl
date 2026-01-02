@@ -146,7 +146,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
           alt="Meenakshi Pearl Aerial View"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
       </motion.div>
 
       <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
