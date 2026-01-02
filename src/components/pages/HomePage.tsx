@@ -692,8 +692,8 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
           <div className="max-w-2xl">
             <CinematicReveal>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-4 sm:mb-6">
-                What Meenakshi delivers to you ? <br />
-                <span className="text-primary">Transparency</span>
+                What  <br />
+                <span className="text-primary">Meenakshi</span>
               </h2>
             </CinematicReveal>
             <CinematicReveal delay={0.2}>
