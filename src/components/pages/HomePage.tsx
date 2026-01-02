@@ -125,7 +125,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
     <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0 pt-0 bg-old-lace">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <Image
-          src="https://static.wixstatic.com/media/cef78c_d590afb701c74112bfd539f7018ff47b~mv2.png?originWidth=1920&originHeight=1024"
+          src="https://static.wixstatic.com/media/cef78c_9763d12ab5be44aca799a7f822f51380~mv2.png"
           alt="Meenakshi Pearl Aerial View"
           className="w-full h-full object-cover"
         />
