@@ -820,7 +820,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
         {/* Contact Form */}
         <CinematicReveal delay={0.3}>
-          <div className="max-w-3xl mx-auto bg-white border border-primary/20 rounded-2xl p-8 sm:p-12 md:p-16 shadow-sm mb-12">
+          <div className="max-w-3xl mx-auto bg-warm-beige border border-primary/15 rounded-2xl p-8 sm:p-12 md:p-16 mb-12">
             {submitSuccess ? (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
