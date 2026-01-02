@@ -448,8 +448,6 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                     alt={card.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  {/* Minimal Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                 </div>
 
                 {/* Content - Minimal and Clean */}
