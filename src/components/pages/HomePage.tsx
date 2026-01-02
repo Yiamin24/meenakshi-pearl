@@ -139,10 +139,10 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0 mt-16 sm:mt-20 md:mt-24">
+    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0 pt-0">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <Image
-          src="https://static.wixstatic.com/media/cef78c_272ae46537a349c4a4a5b74d1d886332~mv2.png?originWidth=1920&originHeight=1024"
+          src="https://static.wixstatic.com/media/cef78c_d590afb701c74112bfd539f7018ff47b~mv2.png?originWidth=1920&originHeight=1024"
           alt="Meenakshi Pearl Aerial View"
           className="w-full h-full object-cover"
         />

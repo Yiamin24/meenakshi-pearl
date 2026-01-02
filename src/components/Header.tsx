@@ -16,8 +16,8 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if scrolled past hero section (approximately 800px)
-      setIsScrolled(window.scrollY > 800);
+      // Check if scrolled past hero section (approximately 600px)
+      setIsScrolled(window.scrollY > 600);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -33,7 +33,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
         ? 'bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-lg' 
         : 'bg-transparent border-b border-transparent'
