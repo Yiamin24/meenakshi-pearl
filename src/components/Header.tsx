@@ -16,8 +16,8 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if scrolled past hero section (approximately 600px)
-      setIsScrolled(window.scrollY > 600);
+      // Check if scrolled past hero section (approximately 200px for faster trigger)
+      setIsScrolled(window.scrollY > 200);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -33,7 +33,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-background/95 border-b border-primary/20 shadow-lg' 
         : 'bg-transparent border-b border-transparent'
@@ -65,10 +65,10 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleNavClick(item.href)}
-                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 ${
+                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 drop-shadow-md ${
                   isScrolled 
-                    ? 'text-foreground/70 hover:text-primary' 
-                    : 'text-foreground/80 hover:text-primary'
+                    ? 'text-warm-espresso hover:text-primary' 
+                    : 'text-warm-espresso hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -82,10 +82,10 @@ export default function Header() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 transition-colors ${
+            className={`md:hidden p-2 transition-colors drop-shadow-md ${
               isScrolled 
-                ? 'text-foreground hover:text-primary' 
-                : 'text-foreground hover:text-primary'
+                ? 'text-warm-espresso hover:text-primary' 
+                : 'text-warm-espresso hover:text-primary'
             }`}
             aria-label="Toggle menu"
           >
@@ -110,10 +110,10 @@ export default function Header() {
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 ${
+                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 drop-shadow-md ${
                   isScrolled 
-                    ? 'text-foreground/70 hover:text-primary' 
-                    : 'text-foreground/80 hover:text-primary'
+                    ? 'text-warm-espresso hover:text-primary' 
+                    : 'text-warm-espresso hover:text-primary'
                 }`}
               >
                 {item.label}
