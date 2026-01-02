@@ -23,7 +23,7 @@ import Header from '@/components/Header';
 // --- Utility Components ---
 
 const SectionDivider = () => (
-  <div className="w-full flex justify-center py-6 md:py-12">
+  <div className="w-full flex justify-center py-12 md:py-24">
     <motion.div 
       initial={{ scaleX: 0, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
@@ -139,7 +139,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-6 sm:py-8 md:py-0 pt-0">
+    <section ref={ref} className="relative min-h-screen w-full overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-0 pt-0">
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <Image
           src="https://static.wixstatic.com/media/cef78c_d590afb701c74112bfd539f7018ff47b~mv2.png?originWidth=1920&originHeight=1024"
@@ -151,20 +151,20 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
       <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
         <CinematicReveal delay={0.1}>
-          <span className="inline-block py-1 px-2 border border-primary/50 rounded-full bg-black/30 text-primary text-xs sm:text-xs md:text-sm tracking-[0.2em] uppercase mb-2 sm:mb-3 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
+          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 text-primary text-xs sm:text-xs md:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
             Grade-A Plotted Development
           </span>
         </CinematicReveal>
 
         <CinematicReveal delay={0.3}>
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-pearl-ivory mb-3 sm:mb-4 font-light leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-pearl-ivory mb-6 sm:mb-8 font-light leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
             Meenakshi <br className="hidden sm:block" />
             <span className="text-primary">Pearl</span>
           </h1>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-sm sm:text-base md:text-lg text-pearl-ivory/90 max-w-2xl mx-auto mb-4 sm:mb-6 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
+          <p className="font-paragraph text-sm sm:text-base md:text-lg text-pearl-ivory/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres. <br className="hidden md:block" />
             <span className="text-primary font-semibold text-base sm:text-lg">Plots starting from 38 lac</span>
@@ -241,14 +241,14 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
           <div className="order-1 lg:order-2">
             <CinematicReveal>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-foreground mb-3 sm:mb-4">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-foreground mb-6 sm:mb-8">
                 Strategically <br />
                 <span className="text-primary italic">Positioned</span>
               </h2>
             </CinematicReveal>
             
             <CinematicReveal delay={0.2}>
-              <p className="font-paragraph text-sm sm:text-base md:text-base text-foreground/70 mb-4 sm:mb-6 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
+              <p className="font-paragraph text-sm sm:text-base md:text-base text-foreground/70 mb-8 sm:mb-12 leading-relaxed border-l-2 border-primary/30 pl-4 sm:pl-6">
                 Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity.
               </p>
             </CinematicReveal>
@@ -312,7 +312,7 @@ const ProjectOverviewSection = () => {
           ))}
         </div>
         
-        <div className="mt-12 sm:mt-16 md:mt-20 text-center">
+        <div className="mt-16 sm:mt-20 md:mt-24 text-center">
           <CinematicReveal>
             <p className="font-heading text-2xl sm:text-3xl md:text-4xl text-foreground max-w-4xl mx-auto leading-normal px-4">
               "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
@@ -331,7 +331,7 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
       <div className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-primary/5 rounded-full opacity-30 pointer-events-none" />
       
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 md:mb-16 gap-6 sm:gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 sm:gap-8">
           <div className="max-w-2xl">
             <CinematicReveal>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground mb-4 sm:mb-6">
@@ -420,7 +420,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <SectionDivider />
         
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground mb-4 sm:mb-6">
               Plot <span className="text-primary">Configurations</span>
@@ -434,7 +434,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
         </div>
 
         {/* Configuration Cards Grid - Minimal Design */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20">
           {configCards.map((card, index) => (
             <CinematicReveal key={index} delay={index * 0.15}>
               <motion.div
@@ -480,7 +480,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
 
         {/* Stats Section - Minimal */}
         <CinematicReveal delay={0.5}>
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 text-center py-6 sm:py-8 border-y border-foreground/10">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 text-center py-8 sm:py-12 border-y border-foreground/10">
             {[
               { number: "212", label: "Total Plots" },
               { number: "14", label: "Acres" },
@@ -511,7 +511,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
     <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="max-w-[100rem] mx-auto px-4 md:px-8">
         {/* Section Header */}
-        <div className="mb-16 md:mb-20">
+        <div className="mb-20 md:mb-28">
           <CinematicReveal>
             <motion.h2 
               className="font-heading text-5xl md:text-7xl text-foreground mb-6 leading-tight"
@@ -548,7 +548,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
         </div>
 
         {/* Optimized Infinite Carousel */}
-        <div className="relative overflow-hidden mb-6">
+        <div className="relative overflow-hidden mb-8">
           <CinematicReveal delay={0.3}>
             <p className="font-paragraph text-sm uppercase tracking-widest text-primary mb-8">Featured Infrastructure</p>
           </CinematicReveal>
@@ -630,7 +630,7 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
 
         {/* Stats Bar */}
         <motion.div
-          className="border-t border-primary/20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-6"
+          className="border-t border-primary/20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -678,13 +678,13 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
   const headerOpacity = useTransform(sectionProgress, [0.85, 1], [1, 0]);
 
   return (
-    <section ref={sectionRef} className="relative py-12 md:py-16 bg-background/50">
+    <section ref={sectionRef} className="relative py-16 md:py-20 bg-background/50">
       <div className="container mx-auto px-4 md:px-8">
         {/* Sticky Header */}
         <motion.div 
           ref={headerRef}
           style={{ y: headerY, opacity: headerOpacity }}
-          className="sticky top-[20%] z-20 mb-8 md:mb-12 flex justify-between items-end pb-6 border-b border-primary/20"
+          className="sticky top-[20%] z-20 mb-12 md:mb-16 flex justify-between items-end pb-8 border-b border-primary/20"
         >
           <div>
             <CinematicReveal>
@@ -746,7 +746,7 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
         </div>
 
         {/* Bottom Spacing */}
-        <div className="mt-24 md:mt-32" />
+        <div className="mt-32 md:mt-40" />
       </div>
     </section>
   );
@@ -766,7 +766,7 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-14">
+        <div className="text-center mb-16 sm:mb-20 md:mb-24">
           <CinematicReveal>
             <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-full border border-primary/30 bg-primary/5 mb-6 sm:mb-8">
               <Lock className="w-5 sm:w-6 md:w-6 h-5 sm:h-6 md:h-6 text-primary" />
@@ -782,7 +782,7 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           {gatedBenefits.map((benefit, index) => (
             <CinematicReveal key={benefit._id} delay={index * 0.2}>
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start group">
@@ -906,7 +906,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
         <motion.div 
-          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 md:mb-16 border-b border-primary/20 pb-4 sm:pb-6 gap-6 sm:gap-8"
+          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 border-b border-primary/20 pb-6 sm:pb-8 gap-6 sm:gap-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -927,7 +927,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
         </motion.div>
 
         {/* Right-to-Left Scroll Animation Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
           {investmentHighlights.map((highlight, index) => (
             <InvestmentHighlightItem key={highlight._id} highlight={highlight} index={index} />
           ))}
@@ -935,7 +935,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
 
         {/* Bottom accent line */}
         <motion.div
-          className="mt-8 sm:mt-12 md:mt-16 h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
+          className="mt-12 sm:mt-16 md:mt-20 h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
@@ -954,7 +954,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full opacity-30 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-12 sm:mb-16">
           <CinematicReveal>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-foreground mb-6 sm:mb-8 tracking-tight">
               Own The <br />
@@ -970,7 +970,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         </div>
 
         {/* Contact Form */}
-        <div className="max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16">
+        <div className="max-w-2xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal delay={0.3}>
             <form onSubmit={(e) => { e.preventDefault(); onOpenContactForm(); }} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -1044,7 +1044,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
         {/* CTA Buttons */}
         <CinematicReveal delay={0.4}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="relative group w-full sm:w-auto">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
               <Button 
@@ -1069,7 +1069,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
           </div>
         </CinematicReveal>
 
-        <CinematicReveal delay={0.6} className="pt-6 sm:pt-8 md:pt-12 border-t border-foreground/5">
+        <CinematicReveal delay={0.6} className="pt-8 sm:pt-12 md:pt-16 border-t border-foreground/5">
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-foreground/30 font-paragraph uppercase tracking-widest text-center sm:text-left">
             <span>Sales Office: Sarjapur Road</span>
             <span className="hidden sm:inline">•</span>
