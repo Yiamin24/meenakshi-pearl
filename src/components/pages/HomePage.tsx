@@ -140,14 +140,14 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         </CinematicReveal>
 
         <CinematicReveal delay={0.3}>
-          <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-soft-charcoal mb-6 sm:mb-8 font-light leading-tight">
+          <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-warm-espresso mb-6 sm:mb-8 font-light leading-tight">
             Meenakshi <br className="hidden sm:block" />
             <span className="text-primary">Pearl</span>
           </h1>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-base sm:text-lg md:text-xl text-soft-charcoal/75 max-w-3xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed">
+          <p className="font-paragraph text-base sm:text-lg md:text-xl text-warm-espresso max-w-3xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres. <br className="hidden md:block" />
             <span className="text-primary font-semibold">Plots starting from 38 lac</span>
