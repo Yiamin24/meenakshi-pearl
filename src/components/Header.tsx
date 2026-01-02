@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Image } from '@/components/ui/image';
+import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
@@ -56,8 +57,8 @@ export default function Header() {
             />
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-12">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-12 flex-1 justify-center">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.label}
@@ -76,25 +77,49 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 transition-colors drop-shadow-md ${
-              isScrolled 
-                ? 'text-warm-espresso hover:text-primary' 
-                : 'text-warm-espresso hover:text-primary'
-            }`}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </motion.button>
+          {/* Right Section - Enquire Now Button + Mobile Menu */}
+          <div className="flex items-center gap-4 md:gap-6">
+            {/* Enquire Now Button - Desktop */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hidden md:block"
+            >
+              <Button 
+                size="sm"
+                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-6 py-2 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Enquire Now
+              </Button>
+            </motion.div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`md:hidden p-2 transition-colors drop-shadow-md ${
+                isScrolled 
+                  ? 'text-warm-espresso hover:text-primary' 
+                  : 'text-warm-espresso hover:text-primary'
+              }`}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -119,6 +144,21 @@ export default function Header() {
                 {item.label}
               </button>
             ))}
+            <div className="pt-4 border-t border-primary/20">
+              <Button 
+                size="sm"
+                className="w-full bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-6 py-2 rounded-lg tracking-wide transition-all duration-300"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Enquire Now
+              </Button>
+            </div>
           </motion.nav>
         )}
       </div>
