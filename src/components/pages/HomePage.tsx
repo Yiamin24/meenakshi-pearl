@@ -775,10 +775,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
             </CinematicReveal>
           </div>
           <CinematicReveal delay={0.3}>
-            <div className="flex items-center gap-2 text-primary border border-primary/30 px-4 sm:px-6 py-2 sm:py-3 rounded-lg bg-pale-sage/30 whitespace-nowrap text-xs sm:text-sm">
-              <Check className="w-4 sm:w-5 h-4 sm:h-5" />
-              <span className="uppercase tracking-wider font-medium">RERA Approved</span>
-            </div>
+            
           </CinematicReveal>
         </div>
 
