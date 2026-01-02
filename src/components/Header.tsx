@@ -45,7 +45,7 @@ export default function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 drop-shadow-lg"
           >
             <Image
               src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
@@ -65,10 +65,10 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleNavClick(item.href)}
-                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 ${
+                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 drop-shadow-md ${
                   isScrolled 
-                    ? 'text-foreground/70 hover:text-primary' 
-                    : 'text-foreground/80 hover:text-primary'
+                    ? 'text-warm-espresso hover:text-primary' 
+                    : 'text-primary hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -84,8 +84,8 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`md:hidden p-2 transition-colors ${
               isScrolled 
-                ? 'text-foreground hover:text-primary' 
-                : 'text-foreground hover:text-primary'
+                ? 'text-warm-espresso hover:text-primary' 
+                : 'text-primary hover:text-primary'
             }`}
             aria-label="Toggle menu"
           >
@@ -110,10 +110,10 @@ export default function Header() {
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 ${
+                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 drop-shadow-md ${
                   isScrolled 
-                    ? 'text-foreground/70 hover:text-primary' 
-                    : 'text-foreground/80 hover:text-primary'
+                    ? 'text-warm-espresso hover:text-primary' 
+                    : 'text-primary hover:text-primary'
                 }`}
               >
                 {item.label}
