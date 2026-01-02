@@ -82,6 +82,15 @@ export default function HomePage() {
     fetchData();
   }, []);
 
+  // Auto-open contact form after 7 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsContactModalOpen(true);
+    }, 7000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="bg-old-lace text-soft-charcoal min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
       <Header onOpenContactForm={() => setIsContactModalOpen(true)} />
