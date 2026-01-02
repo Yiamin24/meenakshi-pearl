@@ -285,17 +285,21 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
             { value: 100, label: "Vastu Compliant", suffix: "%" }
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center justify-center p-6 sm:p-10 md:p-12 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 1, delay: i * 0.2 }}
-                className="font-heading text-5xl sm:text-6xl md:text-8xl text-primary/15 font-bold relative"
-              >
-                <span className="absolute inset-0 text-primary opacity-40">{stat.value}</span>
-                <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-primary to-primary/50">
-                  {stat.value}{stat.suffix}
-                </span>
-              </motion.div>
+             <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={isInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 1, delay: i * 0.2 }}
+  className="font-heading text-5xl sm:text-6xl md:text-8xl 
+             font-semibold text-primary
+             tracking-tight leading-none
+             drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]"
+>
+  {stat.value}
+  <span className="text-4xl sm:text-5xl md:text-7xl align-top ml-1">
+    {stat.suffix}
+  </span>
+</motion.div>
+
               <motion.p 
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
