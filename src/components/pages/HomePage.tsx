@@ -166,15 +166,15 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   {/* Hero Content */}
   <motion.div
     style={{ opacity }}
-    className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-8 sm:py-12 md:py-20"
+    className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-10 sm:py-16 md:py-24"
   >
     {/* Heading */}
     <CinematicReveal delay={0.3}>
       <h1
-        className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl 
-                   text-warm-espresso mb-4 sm:mb-6 md:mb-8 
+        className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl
+                   text-[#F6F1E8] mb-6 sm:mb-8
                    font-medium leading-tight tracking-tight
-                   drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
+                   drop-shadow-[0_6px_28px_rgba(0,0,0,0.55)]"
       >
         Plots Starting From <br className="hidden sm:block" />
         <span className="text-primary font-semibold">38 Lac</span>
@@ -184,11 +184,11 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
     {/* Description */}
     <CinematicReveal delay={0.6}>
       <p
-        className="font-paragraph text-sm sm:text-base md:text-xl 
-                   text-warm-espresso max-w-3xl mx-auto 
-                   mb-6 sm:mb-8 md:mb-12 
+        className="font-paragraph text-sm sm:text-base md:text-xl
+                   text-[#F6F1E8]/85 max-w-3xl mx-auto
+                   mb-8 sm:mb-10 md:mb-14
                    leading-relaxed tracking-normal
-                   drop-shadow-[0_2px_12px_rgba(0,0,0,0.18)]"
+                   drop-shadow-[0_4px_22px_rgba(0,0,0,0.45)]"
       >
         Your gateway to luxury living in the heart of East Bangalore.
         <br className="hidden md:block" />
@@ -203,16 +203,18 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
     {/* CTA Buttons */}
     <CinematicReveal
       delay={0.8}
-      className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 flex-wrap"
+      className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap"
     >
       <Button
         size="lg"
-        className="bg-primary text-white hover:bg-primary/90 
-                   font-paragraph text-sm sm:text-base 
-                   px-6 sm:px-8 py-3 sm:py-4 md:py-6 
-                   rounded-lg w-full sm:w-auto tracking-wide 
-                   transition-all duration-500 hover:scale-105 
-                   shadow-lg hover:shadow-xl ring-1 ring-primary/40"
+        className="bg-primary text-white hover:bg-primary/90
+                   font-paragraph text-base sm:text-lg
+                   px-8 sm:px-10 md:px-12
+                   py-4 sm:py-5 md:py-6
+                   rounded-xl w-full sm:w-auto tracking-wide
+                   transition-all duration-500 hover:scale-105
+                   shadow-xl hover:shadow-2xl
+                   ring-1 ring-primary/40"
         onClick={onOpenContactForm}
       >
         Schedule Visit
@@ -221,11 +223,12 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
       <Button
         size="lg"
         variant="outline"
-        className="border-2 border-primary text-primary 
-                   hover:bg-pale-sage 
-                   font-paragraph text-sm sm:text-base 
-                   px-6 sm:px-8 py-3 sm:py-4 md:py-6 
-                   rounded-lg w-full sm:w-auto tracking-wide 
+        className="border-2 border-primary text-primary
+                   hover:bg-pale-sage
+                   font-paragraph text-base sm:text-lg
+                   px-8 sm:px-10 md:px-12
+                   py-4 sm:py-5 md:py-6
+                   rounded-xl w-full sm:w-auto tracking-wide
                    transition-all duration-500"
         onClick={() =>
           document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
@@ -241,13 +244,13 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
     style={{ opacity }}
     className="absolute bottom-4 sm:bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
   >
-    <span className="text-[9px] uppercase tracking-[0.3em] text-primary/60">
+    <span className="text-[9px] uppercase tracking-[0.3em] text-primary/70">
       Scroll to Explore
     </span>
     <motion.div
       animate={{ height: [20, 40, 20] }}
       transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-      className="w-[1px] bg-primary/40"
+      className="w-[1px] bg-primary/50"
     />
   </motion.div>
 </section>
