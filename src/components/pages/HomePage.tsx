@@ -157,7 +157,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   {/* Background Image */}
   <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
     <Image
-      src="https://static.wixstatic.com/media/cef78c_9763d12ab5be44aca799a7f822f51380~mv2.png"
+      src="https://static.wixstatic.com/media/cef78c_9f6ae7f7159b499c8a4b8f9931587cfb~mv2.png"
       alt="Meenakshi Pearl Aerial View"
       className="w-full h-full object-cover"
     />
