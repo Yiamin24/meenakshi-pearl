@@ -246,6 +246,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
 
   return (
     <section
+      id="amenities"
       ref={sectionRef}
       className="relative py-20 md:py-28 bg-foreground/5 overflow-hidden"
     >
