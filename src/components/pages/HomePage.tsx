@@ -799,7 +799,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
   };
 
   return (
-    <section className="relative py-20 sm:py-28 md:py-36 bg-old-lace overflow-hidden">
+    <section id="own-legacy" className="relative py-20 sm:py-28 md:py-36 bg-old-lace overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full opacity-15 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
