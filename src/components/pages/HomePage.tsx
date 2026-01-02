@@ -166,35 +166,47 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   {/* Hero Content */}
   <motion.div
     style={{ opacity }}
-    className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-10 sm:py-16 md:py-24"
+    className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-12 sm:py-20 md:py-28"
   >
     {/* Heading */}
     <CinematicReveal delay={0.3}>
       <h1
-        className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl
-                   text-[#F6F1E8] mb-6 sm:mb-8
-                   font-medium leading-tight tracking-tight
-                   drop-shadow-[0_6px_28px_rgba(0,0,0,0.55)]"
+        className="font-heading
+                   text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+                   text-[#F6F1E8]
+                   mb-6 sm:mb-8
+                   font-semibold leading-tight tracking-tight
+                   drop-shadow-[0_8px_32px_rgba(0,0,0,0.65)]"
       >
         Plots Starting From <br className="hidden sm:block" />
-        <span className="text-primary font-semibold">38 Lac</span>
+        <span
+          className="text-primary font-semibold
+                     drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)]"
+        >
+          38 Lac
+        </span>
       </h1>
     </CinematicReveal>
 
     {/* Description */}
     <CinematicReveal delay={0.6}>
       <p
-        className="font-paragraph text-sm sm:text-base md:text-xl
-                   text-[#F6F1E8]/85 max-w-3xl mx-auto
-                   mb-8 sm:mb-10 md:mb-14
+        className="font-paragraph
+                   text-base sm:text-lg md:text-xl lg:text-2xl
+                   text-[#F6F1E8]/90
+                   max-w-4xl mx-auto
+                   mb-10 sm:mb-12 md:mb-16
                    leading-relaxed tracking-normal
-                   drop-shadow-[0_4px_22px_rgba(0,0,0,0.45)]"
+                   drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
       >
         Your gateway to luxury living in the heart of East Bangalore.
         <br className="hidden md:block" />
         A sanctuary of 212 premium plots across 14 acres.
         <br className="hidden md:block" />
-        <span className="text-primary font-semibold">
+        <span
+          className="text-primary font-semibold
+                     drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]"
+        >
           Grade-A Plotted Development
         </span>
       </p>
@@ -229,7 +241,8 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                    px-8 sm:px-10 md:px-12
                    py-4 sm:py-5 md:py-6
                    rounded-xl w-full sm:w-auto tracking-wide
-                   transition-all duration-500"
+                   transition-all duration-500
+                   shadow-lg"
         onClick={() =>
           document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
         }
@@ -244,7 +257,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
     style={{ opacity }}
     className="absolute bottom-4 sm:bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
   >
-    <span className="text-[9px] uppercase tracking-[0.3em] text-primary/70">
+    <span className="text-[9px] uppercase tracking-[0.3em] text-primary/70 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
       Scroll to Explore
     </span>
     <motion.div
