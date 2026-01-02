@@ -216,7 +216,7 @@ const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({ a
             0{index + 1}
           </span>
         </div>
-        <p className="font-paragraph text-sm md:text-base text-foreground/70 leading-relaxed line-clamp-2">
+        <p className="font-paragraph text-sm md:text-base text-foreground/70 leading-relaxed">
           {amenity.description}
         </p>
         
