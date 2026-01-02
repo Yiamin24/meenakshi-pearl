@@ -17,6 +17,7 @@ import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
 import Amenities3DSection from '@/components/Amenities3DCard';
 import ContactFormModal from '@/components/ContactFormModal';
+import Header from '@/components/Header';
 
 // --- Utility Components ---
 
@@ -83,6 +84,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-old-lace text-soft-charcoal min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+      <Header />
+
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
