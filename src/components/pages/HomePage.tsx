@@ -579,7 +579,6 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                       />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h4 className="font-heading text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
                         {item.featureName}
@@ -608,7 +607,6 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                       />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h4 className="font-heading text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
                         {item.featureName}
