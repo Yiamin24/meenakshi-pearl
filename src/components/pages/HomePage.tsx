@@ -122,14 +122,14 @@ export default function HomePage() {
               transition={{ duration: 1 }}
             >
               <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-              <ProjectOverviewSection />
-              <InfrastructureSection infrastructure={infrastructure} />
-              <GatedLivingSection gatedBenefits={gatedBenefits} />
+              <ProjectOverviewSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <InfrastructureSection infrastructure={infrastructure} onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <GatedLivingSection gatedBenefits={gatedBenefits} onOpenContactForm={() => setIsContactModalOpen(true)} />
               <Amenities3DSection amenities={amenities} />
               <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-              <PlotConfigurationsSection plotConfigs={plotConfigs} />
-              <LegalSection legalApprovals={legalApprovals} />
-              <InvestmentSection investmentHighlights={investmentHighlights} />
+              <PlotConfigurationsSection plotConfigs={plotConfigs} onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <LegalSection legalApprovals={legalApprovals} onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <InvestmentSection investmentHighlights={investmentHighlights} onOpenContactForm={() => setIsContactModalOpen(true)} />
               <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
               <Footer />
             </motion.main>
@@ -217,7 +217,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   );
 };
 
-const ProjectOverviewSection = () => {
+const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   
@@ -256,9 +256,18 @@ const ProjectOverviewSection = () => {
         
         <div className="mt-12 sm:mt-20 md:mt-32 text-center">
           <CinematicReveal>
-            <p className="font-heading text-2xl sm:text-3xl md:text-5xl text-soft-charcoal max-w-4xl mx-auto leading-relaxed px-4">
+            <p className="font-heading text-2xl sm:text-3xl md:text-5xl text-soft-charcoal max-w-4xl mx-auto leading-relaxed px-4 mb-8 sm:mb-12">
               "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
             </p>
+          </CinematicReveal>
+          
+          <CinematicReveal delay={0.2}>
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Learn More About Our Vision
+            </Button>
           </CinematicReveal>
         </div>
       </div>
@@ -336,7 +345,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
   );
 };
 
-const InfrastructureSection = ({ infrastructure }: { infrastructure: InfrastructureDetails[] }) => {
+const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastructure: InfrastructureDetails[], onOpenContactForm: () => void }) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-10%" });
 
@@ -479,12 +488,23 @@ const InfrastructureSection = ({ infrastructure }: { infrastructure: Infrastruct
             <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Durability</p>
           </div>
         </motion.div>
+
+        <CinematicReveal delay={0.7}>
+          <div className="mt-12 sm:mt-16 md:mt-20 text-center">
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Explore Our Infrastructure
+            </Button>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
 };
 
-const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenefits[] }) => {
+const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefits: GatedLivingBenefits[], onOpenContactForm: () => void }) => {
   return (
     <section className="relative py-12 sm:py-20 md:py-36 bg-old-lace overflow-hidden">
       <div className="absolute inset-0 opacity-10">
@@ -513,7 +533,7 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-16 mb-12 sm:mb-16 md:mb-20">
           {gatedBenefits.map((benefit, index) => (
             <CinematicReveal key={benefit._id} delay={index * 0.2}>
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
@@ -538,12 +558,23 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
             </CinematicReveal>
           ))}
         </div>
+
+        <CinematicReveal delay={0.6}>
+          <div className="text-center">
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Discover Gated Living Benefits
+            </Button>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
 };
 
-const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigurations[] }) => {
+const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotConfigs: PlotConfigurations[], onOpenContactForm: () => void }) => {
   const configCards = [
     { 
       title: "1500 Sqft", 
@@ -622,7 +653,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
         </div>
 
         <CinematicReveal delay={0.5}>
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 text-center py-8 sm:py-12 md:py-16 border-y border-primary/15">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 text-center py-8 sm:py-12 md:py-16 border-y border-primary/15 mb-12 sm:mb-16 md:mb-20">
             {[
               { number: "212", label: "Total Plots" },
               { number: "14", label: "Acres" },
@@ -635,12 +666,23 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
             ))}
           </div>
         </CinematicReveal>
+
+        <CinematicReveal delay={0.7}>
+          <div className="text-center">
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Reserve Your Plot Today
+            </Button>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
 };
 
-const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) => {
+const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: LegalApprovals[], onOpenContactForm: () => void }) => {
   return (
     <section className="py-12 sm:py-20 md:py-36 bg-old-lace relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[250px] sm:w-[350px] md:w-[500px] h-[250px] sm:h-[350px] md:h-[500px] bg-primary/5 rounded-full opacity-20 pointer-events-none" />
@@ -668,7 +710,7 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-12 sm:mb-16 md:mb-20">
           {legalApprovals.map((approval, index) => (
             <CinematicReveal key={approval._id} delay={index * 0.1}>
               <div className="group relative p-6 sm:p-7 md:p-8 border border-primary/15 bg-warm-beige/50 hover:bg-warm-beige transition-all duration-500 h-full flex flex-col rounded-xl shadow-sm hover:shadow-md">
@@ -703,12 +745,23 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
             </CinematicReveal>
           ))}
         </div>
+
+        <CinematicReveal delay={0.5}>
+          <div className="text-center">
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Verify Legal Approvals
+            </Button>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
 };
 
-const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: InvestmentHighlights[] }) => {
+const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { investmentHighlights: InvestmentHighlights[], onOpenContactForm: () => void }) => {
   const sectionRef = useRef(null);
 
   return (
@@ -735,7 +788,7 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
           </CinematicReveal>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-16 mb-12 sm:mb-16 md:mb-20">
           {investmentHighlights.map((highlight, index) => (
             <CinematicReveal key={highlight._id} delay={index * 0.15}>
               <div className="relative pl-6 sm:pl-8 border-l-2 border-primary/30 hover:border-primary transition-colors duration-500 group">
@@ -767,14 +820,29 @@ const InvestmentSection = ({ investmentHighlights }: { investmentHighlights: Inv
           ))}
         </div>
 
-        <motion.div
-          className="mt-12 sm:mt-16 md:mt-24 h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
-          viewport={{ once: false }}
-          style={{ originX: 0 }}
-        />
+        <CinematicReveal delay={0.5}>
+          <div className="text-center mb-12 sm:mb-16">
+            <motion.div
+              className="h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              viewport={{ once: false }}
+              style={{ originX: 0 }}
+            />
+          </div>
+        </CinematicReveal>
+
+        <CinematicReveal delay={0.7}>
+          <div className="text-center">
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Explore Investment Opportunities
+            </Button>
+          </div>
+        </CinematicReveal>
       </div>
     </section>
   );
