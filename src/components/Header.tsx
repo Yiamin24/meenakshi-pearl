@@ -68,7 +68,7 @@ export default function Header() {
                 className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 ${
                   isScrolled 
                     ? 'text-foreground/70 hover:text-primary' 
-                    : 'text-pearl-ivory/80 hover:text-primary'
+                    : 'text-foreground/80 hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -85,7 +85,7 @@ export default function Header() {
             className={`md:hidden p-2 transition-colors ${
               isScrolled 
                 ? 'text-foreground hover:text-primary' 
-                : 'text-pearl-ivory hover:text-primary'
+                : 'text-foreground hover:text-primary'
             }`}
             aria-label="Toggle menu"
           >
@@ -113,7 +113,7 @@ export default function Header() {
                 className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 ${
                   isScrolled 
                     ? 'text-foreground/70 hover:text-primary' 
-                    : 'text-pearl-ivory/80 hover:text-primary'
+                    : 'text-foreground/80 hover:text-primary'
                 }`}
               >
                 {item.label}

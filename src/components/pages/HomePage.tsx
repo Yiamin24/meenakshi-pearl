@@ -157,14 +157,14 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         </CinematicReveal>
 
         <CinematicReveal delay={0.3}>
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-pearl-ivory mb-6 sm:mb-8 font-light leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-foreground mb-6 sm:mb-8 font-light leading-tight">
             Meenakshi <br className="hidden sm:block" />
             <span className="text-primary">Pearl</span>
           </h1>
         </CinematicReveal>
 
         <CinematicReveal delay={0.6}>
-          <p className="font-paragraph text-sm sm:text-base md:text-lg text-pearl-ivory/90 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]">
+          <p className="font-paragraph text-sm sm:text-base md:text-lg text-foreground/80 max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed">
             Your gateway to luxury living in the heart of East Bangalore. <br className="hidden md:block" />
             A sanctuary of 212 premium plots across 14 acres. <br className="hidden md:block" />
             <span className="text-primary font-semibold text-base sm:text-lg">Plots starting from 38 lac</span>
@@ -182,7 +182,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-none w-full sm:w-auto tracking-wide transition-all duration-500"
+            className="border-foreground text-foreground hover:bg-foreground hover:text-background font-paragraph text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-none w-full sm:w-auto tracking-wide transition-all duration-500"
             onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
           >
             View Masterplan

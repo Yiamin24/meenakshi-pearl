@@ -21,7 +21,7 @@ const NestedCarousel: React.FC<{ imageUrl?: string; amenityName?: string }> = ({
   if (!imageUrl || carouselImages.length === 0) {
     return (
       <div className="w-full h-full bg-white/5 flex items-center justify-center">
-        <span className="text-white/20 font-heading text-2xl italic">{amenityName || 'Amenity'}</span>
+        <span className="text-foreground/20 font-heading text-2xl italic">{amenityName || 'Amenity'}</span>
       </div>
     );
   }
@@ -132,7 +132,7 @@ const Card3D: React.FC<Card3DProps> = ({ amenity, index }) => {
           transformStyle: 'preserve-3d',
         }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 group hover:border-primary/50 transition-colors duration-500"
+        className="relative w-full h-full rounded-lg overflow-hidden border border-foreground/20 group hover:border-primary/50 transition-colors duration-500"
       >
         {/* Card Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-white/[0.02]" />
@@ -215,14 +215,14 @@ const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({ a
         }}
       >
         <div className="flex items-start justify-between gap-3 mb-3">
-          <h3 className="font-heading text-xl md:text-2xl text-pearl-ivory hover:text-primary transition-colors duration-300 flex-1">
+          <h3 className="font-heading text-xl md:text-2xl text-foreground hover:text-primary transition-colors duration-300 flex-1">
             {amenity.amenityName}
           </h3>
           <span className="font-mono text-primary/60 text-xs uppercase tracking-widest whitespace-nowrap">
             0{index + 1}
           </span>
         </div>
-        <p className="font-paragraph text-sm md:text-base text-champagne-beige/70 leading-relaxed line-clamp-2">
+        <p className="font-paragraph text-sm md:text-base text-foreground/70 leading-relaxed line-clamp-2">
           {amenity.description}
         </p>
         <div className="mt-3 flex items-center gap-2">
@@ -253,7 +253,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 bg-champagne-beige/5 overflow-hidden"
+      className="relative py-20 md:py-28 bg-foreground/5 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-8">
         {/* Modern Section Header with Scroll-Based Animation */}
@@ -263,7 +263,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
         >
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8">
             <div>
-              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-pearl-ivory mb-4">
+              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-foreground mb-4">
                 The Collection
               </h2>
               <p className="font-paragraph text-primary uppercase tracking-widest text-xs md:text-sm">
@@ -306,7 +306,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
               <div className="font-heading text-2xl md:text-3xl text-primary mb-2">
                 {amenities.length}+
               </div>
-              <p className="font-paragraph text-xs md:text-sm text-champagne-beige/60">
+              <p className="font-paragraph text-xs md:text-sm text-foreground/60">
                 Premium Amenities
               </p>
             </motion.div>
@@ -321,7 +321,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
               <div className="font-heading text-2xl md:text-3xl text-primary mb-2">
                 100%
               </div>
-              <p className="font-paragraph text-xs md:text-sm text-champagne-beige/60">
+              <p className="font-paragraph text-xs md:text-sm text-foreground/60">
                 World-Class Quality
               </p>
             </motion.div>
@@ -336,7 +336,7 @@ const Amenities3DSection: React.FC<Amenities3DProps> = ({ amenities }) => {
               <div className="font-heading text-2xl md:text-3xl text-primary mb-2">
                 ∞
               </div>
-              <p className="font-paragraph text-xs md:text-sm text-champagne-beige/60">
+              <p className="font-paragraph text-xs md:text-sm text-foreground/60">
                 Timeless Design
               </p>
             </motion.div>

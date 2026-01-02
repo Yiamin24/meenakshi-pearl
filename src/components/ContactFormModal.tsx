@@ -77,13 +77,13 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[1000] flex items-center justify-center p-4"
           >
-            <div className="bg-background border border-white/10 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto scrollbar-hide">
+            <div className="bg-background border border-foreground/20 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto scrollbar-hide">
               {/* Header */}
-              <div className="sticky top-0 bg-background border-b border-white/10 px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
-                <h2 className="font-heading text-xl sm:text-2xl text-pearl-ivory">Get In Touch</h2>
+              <div className="sticky top-0 bg-background border-b border-foreground/20 px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
+                <h2 className="font-heading text-xl sm:text-2xl text-foreground">Get In Touch</h2>
                 <button
                   onClick={onClose}
-                  className="text-white/50 hover:text-white transition-colors"
+                  className="text-foreground/50 hover:text-foreground transition-colors"
                 >
                   <X className="w-5 sm:w-6 h-5 sm:h-6" />
                 </button>
@@ -102,8 +102,8 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="font-heading text-lg sm:text-xl text-pearl-ivory mb-2">Thank You!</h3>
-                    <p className="font-paragraph text-sm sm:text-base text-champagne-beige/70">
+                    <h3 className="font-heading text-lg sm:text-xl text-foreground mb-2">Thank You!</h3>
+                    <p className="font-paragraph text-sm sm:text-base text-foreground/70">
                       We've received your message. Our team will be in touch shortly.
                     </p>
                   </motion.div>
@@ -111,7 +111,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                   <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                     {/* Name */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -120,14 +120,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                        className="w-full bg-foreground/5 border border-foreground/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all"
                         placeholder="Your name"
                       />
                     </div>
 
                     {/* Phone */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -136,14 +136,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.phoneNumber}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                        className="w-full bg-foreground/5 border border-foreground/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all"
                         placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
 
                     {/* Email */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -152,14 +152,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                        className="w-full bg-foreground/5 border border-foreground/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
 
                     {/* Message */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-champagne-beige/80 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
                         Message *
                       </label>
                       <textarea
@@ -168,7 +168,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
+                        className="w-full bg-foreground/5 border border-foreground/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all resize-none"
                         placeholder="Tell us about your interest in Meenakshi Pearl..."
                       />
                     </div>
@@ -182,7 +182,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
 
-                    <p className="font-paragraph text-xs text-white/30 text-center mt-3 sm:mt-4">
+                    <p className="font-paragraph text-xs text-foreground/30 text-center mt-3 sm:mt-4">
                       We respect your privacy. Your information will never be shared.
                     </p>
                   </form>

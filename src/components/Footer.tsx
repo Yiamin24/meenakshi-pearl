@@ -41,7 +41,7 @@ export default function Footer() {
 
         {/* Brand Statement */}
         <motion.p
-          className="font-paragraph text-champagne-beige text-center max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base"
+          className="font-paragraph text-foreground/70 text-center max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: footerInView ? 1 : 0, y: footerInView ? 0 : 20 }}
           transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
@@ -51,7 +51,7 @@ export default function Footer() {
 
         {/* Contact Info */}
         <motion.div
-          className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 sm:mb-12 font-paragraph text-champagne-beige text-sm sm:text-base"
+          className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 sm:mb-12 font-paragraph text-foreground/70 text-sm sm:text-base"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: footerInView ? 1 : 0, y: footerInView ? 0 : 20 }}
           transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
@@ -79,10 +79,10 @@ export default function Footer() {
           animate={{ opacity: footerInView ? 1 : 0 }}
           transition={{ duration: 1, delay: 0.8, ease: 'easeOut' }}
         >
-          <p className="font-paragraph text-champagne-beige/60 text-xs text-center max-w-4xl mx-auto leading-relaxed mb-4 sm:mb-6">
+          <p className="font-paragraph text-foreground/50 text-xs text-center max-w-4xl mx-auto leading-relaxed mb-4 sm:mb-6">
             Disclaimer: All information provided is for general informational purposes only. While we strive to ensure accuracy, specifications, amenities, and pricing are subject to change without notice. Please verify all details with our sales team before making any investment decisions. Images and renderings are for representational purposes only and may not reflect the actual product. RERA registration details available on request.
           </p>
-          <p className="font-paragraph text-champagne-beige/40 text-xs text-center">
+          <p className="font-paragraph text-foreground/30 text-xs text-center">
             © {new Date().getFullYear()} Meenakshi Pearl. All rights reserved.
           </p>
         </motion.div>
