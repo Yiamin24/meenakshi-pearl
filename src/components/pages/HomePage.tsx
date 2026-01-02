@@ -817,12 +817,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
 
         <CinematicReveal delay={0.5}>
           <div className="text-center">
-            <Button 
-              onClick={onOpenContactForm}
-              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
-            >
-              Verify Legal Approvals
-            </Button>
+            
           </div>
         </CinematicReveal>
       </div>
