@@ -735,10 +735,6 @@ const AmenitiesSection = ({ amenities }: { amenities: ProjectAmenities[] }) => {
               </div>
             ))}
           </motion.div>
-
-          {/* Gradient Fade Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-background/50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-background/50 to-transparent z-10 pointer-events-none" />
         </div>
 
         {/* Bottom Spacing */}
