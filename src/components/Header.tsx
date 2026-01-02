@@ -38,7 +38,13 @@ export default function Header() {
         ? 'bg-background/95 border-b border-primary/20 shadow-lg' 
         : 'bg-transparent border-b border-transparent'
     }`}>
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+      {/* Subtle overlay that appears on scroll */}
+      <div className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
+        isScrolled 
+          ? 'bg-old-lace/40 opacity-100' 
+          : 'bg-old-lace/0 opacity-0'
+      }`} />
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
           {/* Logo */}
           <motion.div
