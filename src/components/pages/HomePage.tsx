@@ -161,12 +161,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         <div className="absolute inset-0 bg-gradient-to-b from-soft-charcoal/30 via-soft-charcoal/15 to-soft-charcoal/5" />
       </motion.div>
 
-      // <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full bg-gradient-to-b from-soft-charcoal/5 to-transparent rounded-2xl py-8 sm:py-12 md:py-20 shadow-lg">
-      //   <CinematicReveal delay={0.1}>
-      //     <span className="inline-block py-1.5 px-3 border border-primary rounded-lg bg-white/50 text-primary text-[10px] sm:text-xs md:text-sm tracking-[0.15em] uppercase mb-3 sm:mb-6">      
-      //     </span>
-      //   </CinematicReveal>
-
+     
         <CinematicReveal delay={0.3}>
           <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-warm-espresso mb-4 sm:mb-6 md:mb-8 font-light leading-tight">
             Plots Starting From  <br className="hidden sm:block" />
