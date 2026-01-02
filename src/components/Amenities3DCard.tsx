@@ -219,12 +219,7 @@ const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({ a
         <p className="font-paragraph text-sm md:text-base text-foreground/70 leading-relaxed line-clamp-2">
           {amenity.description}
         </p>
-        <div className="mt-3 flex items-center gap-2">
-          <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-          <span className="font-paragraph text-xs text-primary/50 uppercase tracking-wider">
-            Premium Amenity
-          </span>
-        </div>
+        
       </motion.div>
     </div>
   );
