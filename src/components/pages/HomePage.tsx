@@ -412,157 +412,153 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
   const totalWidth = infrastructure.length * (itemWidth + gap);
 
   return (
-    <section
-  ref={sectionRef}
-  className="py-16 sm:py-24 md:py-36 bg-warm-beige relative overflow-hidden"
->
-  <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-    {/* Heading */}
-    <div className="mb-16 sm:mb-24 md:mb-32">
-      <CinematicReveal>
-        <motion.h2
-          className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-6 leading-tight"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-        >
-          Infrastructure <span className="text-primary">Reimagined</span>
-        </motion.h2>
-      </CinematicReveal>
-
-      <CinematicReveal delay={0.2}>
-        <motion.p
-          className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray max-w-3xl"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-        >
-          We don't just build roads and pipes; we engineer a seamless living
-          experience. Every detail is executed to global standards.
-        </motion.p>
-      </CinematicReveal>
-
-      <CinematicReveal delay={0.4}>
-        <motion.div
-          className="w-24 h-1 bg-primary mt-6 sm:mt-8"
-          initial={{ width: 0, opacity: 0 }}
-          whileInView={{ width: 96, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          viewport={{ once: true }}
-        />
-      </CinematicReveal>
-    </div>
-
-    {/* Horizontal Scroll Cards */}
-    <div className="relative overflow-hidden mb-8 sm:mb-12">
-      <CinematicReveal delay={0.3}>
-        <p className="font-paragraph text-xs uppercase tracking-widest text-primary mb-6 sm:mb-8">
-          Featured Infrastructure
-        </p>
-      </CinematicReveal>
-
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="flex gap-8"
-          animate={{ x: [0, -totalWidth] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        >
-          {[...infrastructure, ...infrastructure].map((item, idx) => (
-            <motion.div
-              key={`${item._id}-${idx}`}
-              className="flex-shrink-0 w-72 sm:w-80 md:w-96 group"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+    <section ref={sectionRef} className="py-16 sm:py-24 md:py-36 bg-warm-beige relative overflow-hidden">
+      <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+        <div className="mb-16 sm:mb-24 md:mb-32">
+          <CinematicReveal>
+            <motion.h2 
+              className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-6 leading-tight"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
             >
-              <div className="relative h-56 sm:h-64 md:h-72 rounded-xl overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-500 bg-gradient-to-br from-pale-sage/30 to-pale-sage/10 shadow-sm hover:shadow-md">
-                {item.featureIcon && (
-                  <Image
-                    src={item.featureIcon}
-                    alt={item.featureName || "Feature"}
-                    className="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-                )}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 bg-gradient-to-t from-old-lace via-old-lace/80 to-transparent">
-                  <h4 className="font-heading text-lg sm:text-xl md:text-2xl text-soft-charcoal group-hover:text-primary transition-colors duration-300">
-                    {item.featureName}
-                  </h4>
-                  <p className="font-paragraph text-xs sm:text-sm text-muted-gray mt-1.5 line-clamp-2">
-                    {item.featureDescription}
-                  </p>
-                </div>
-              </div>
+              Infrastructure <span className="text-primary">Reimagined</span>
+            </motion.h2>
+          </CinematicReveal>
+          
+          <CinematicReveal delay={0.2}>
+            <motion.p 
+              className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray max-w-3xl"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
+            >
+              We don't just build roads and pipes; we engineer a seamless living experience. Every detail is executed to global standards.
+            </motion.p>
+          </CinematicReveal>
+          
+          <CinematicReveal delay={0.4}>
+            <motion.div 
+              className="w-20 sm:w-24 h-1 bg-primary mt-6 sm:mt-8"
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: 96, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              viewport={{ once: true }}
+            />
+          </CinematicReveal>
+        </div>
+
+        <div className="relative overflow-hidden mb-8 sm:mb-12">
+          <CinematicReveal delay={0.3}>
+            <p className="font-paragraph text-xs uppercase tracking-widest text-primary mb-6 sm:mb-8">Featured Infrastructure</p>
+          </CinematicReveal>
+
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex gap-8"
+              animate={{ x: [0, -totalWidth] }}
+              transition={{
+                duration: 40,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              {infrastructure.map((item) => (
+                <motion.div
+                  key={item._id}
+                  className="flex-shrink-0 w-72 sm:w-80 md:w-96 group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative h-56 sm:h-64 md:h-72 rounded-xl overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-500 bg-gradient-to-br from-pale-sage/30 to-pale-sage/10 shadow-sm hover:shadow-md">
+                    {item.featureIcon && (
+                      <Image
+                        src={item.featureIcon}
+                        alt={item.featureName || "Feature"}
+                        className="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                    )}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 bg-gradient-to-t from-old-lace via-old-lace/80 to-transparent">
+                      <h4 className="font-heading text-lg sm:text-xl md:text-2xl text-soft-charcoal group-hover:text-primary transition-colors duration-300">
+                        {item.featureName}
+                      </h4>
+                      <p className="font-paragraph text-xs sm:text-sm text-muted-gray mt-1.5 line-clamp-2">
+                        {item.featureDescription}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              {infrastructure.map((item) => (
+                <motion.div
+                  key={`${item._id}-duplicate`}
+                  className="flex-shrink-0 w-72 sm:w-80 md:w-96 group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative h-56 sm:h-64 md:h-72 rounded-xl overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-500 bg-gradient-to-br from-pale-sage/30 to-pale-sage/10 shadow-sm hover:shadow-md">
+                    {item.featureIcon && (
+                      <Image
+                        src={item.featureIcon}
+                        alt={item.featureName || "Feature"}
+                        className="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                    )}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 bg-gradient-to-t from-old-lace via-old-lace/80 to-transparent">
+                      <h4 className="font-heading text-lg sm:text-xl md:text-2xl text-soft-charcoal group-hover:text-primary transition-colors duration-300">
+                        {item.featureName}
+                      </h4>
+                      <p className="font-paragraph text-xs sm:text-sm text-muted-gray mt-1.5 line-clamp-2">
+                        {item.featureDescription}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-
-    {/* 🔥 ENHANCED BOTTOM STATS ROW */}
-    <motion.div
-      className="border-t border-primary/20
-                 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4
-                 gap-8 sm:gap-10 md:gap-12
-                 pt-12 sm:pt-16 md:pt-20
-                 mt-12 sm:mt-16 md:mt-20"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.5 }}
-      viewport={{ once: true }}
-    >
-      <div className="text-center">
-        <div className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary mb-3 sm:mb-4 font-semibold tracking-tight">
-          {infrastructure.length}+
+          </div>
         </div>
-        <p className="font-paragraph text-sm sm:text-base text-muted-gray uppercase tracking-widest">
-          Premium Features
-        </p>
-      </div>
 
-      <div className="text-center">
-        <div className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary mb-3 sm:mb-4 font-semibold tracking-tight">
-          100
-          <span className="text-4xl sm:text-5xl md:text-6xl align-top">%</span>
-        </div>
-        <p className="font-paragraph text-sm sm:text-base text-muted-gray uppercase tracking-widest">
-          Global Standards
-        </p>
-      </div>
-
-      <div className="text-center">
-        <div className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary mb-3 sm:mb-4 font-semibold tracking-tight">
-          24/7
-        </div>
-        <p className="font-paragraph text-sm sm:text-base text-muted-gray uppercase tracking-widest">
-          Maintenance
-        </p>
-      </div>
-
-      <div className="text-center">
-        <div className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary mb-3 sm:mb-4 font-semibold tracking-tight">
-          ∞
-        </div>
-        <p className="font-paragraph text-sm sm:text-base text-muted-gray uppercase tracking-widest">
-          Durability
-        </p>
-      </div>
-    </motion.div>
-
-    {/* CTA */}
-    <CinematicReveal delay={0.7}>
-      <div className="mt-12 sm:mt-16 md:mt-20 text-center">
-        <Button
-          onClick={onOpenContactForm}
-          className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+        <motion.div
+          className="border-t border-primary/15 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 pt-8 sm:pt-10 md:pt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          viewport={{ once: true }}
         >
-          Explore Our Infrastructure
-        </Button>
-      </div>
-    </CinematicReveal>
-  </div>
-</section>
+          <div className="text-center">
+            <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-2 sm:mb-3">{infrastructure.length}+</div>
+            <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Premium Features</p>
+          </div>
+          <div className="text-center">
+            <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-2 sm:mb-3">100%</div>
+            <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Global Standards</p>
+          </div>
+          <div className="text-center">
+            <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-2 sm:mb-3">24/7</div>
+            <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Maintenance</p>
+          </div>
+          <div className="text-center">
+            <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-2 sm:mb-3">∞</div>
+            <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Durability</p>
+          </div>
+        </motion.div>
 
+        <CinematicReveal delay={0.7}>
+          <div className="mt-12 sm:mt-16 md:mt-20 text-center">
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Explore Our Infrastructure
+            </Button>
+          </div>
+        </CinematicReveal>
+      </div>
+    </section>
   );
 };
 
@@ -670,7 +666,7 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
             </h2>
           </CinematicReveal>
           <CinematicReveal delay={0.2}>
-            <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray max-w-2xl mx-auto px-4">
+            <p className="font-paragraph text-base sm:text-lg md:text-xl text-muted-gray max-w-2xl mx-auto px-4">
               Choose from our thoughtfully designed plot options
             </p>
           </CinematicReveal>
@@ -693,20 +689,22 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
 
                 <div className="relative flex-1 flex flex-col justify-between p-5 sm:p-6 md:p-8 bg-old-lace border border-primary/10">
                   <div>
-                    <p className="font-paragraph text-primary text-[10px] uppercase tracking-widest mb-2 sm:mb-3">
+                    <p className="font-paragraph text-primary text-xs sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
                       {card.subtitle}
                     </p>
                     <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl text-soft-charcoal mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="font-paragraph text-muted-gray text-xs sm:text-sm leading-relaxed">
+                    <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray leading-relaxed">
                       {card.description}
                     </p>
                   </div>
 
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-primary/10 flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span className="font-paragraph text-primary text-[10px] uppercase tracking-wider">Available</span>
+                    <span className="font-paragraph text-primary text-xs uppercase tracking-wider">
+                      Available
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -722,8 +720,12 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
               { number: "100%", label: "Vastu Compliant" }
             ].map((stat, i) => (
               <div key={i}>
-                <p className="font-heading text-3xl sm:text-4xl md:text-6xl text-primary mb-1 sm:mb-2">{stat.number}</p>
-                <p className="font-paragraph text-muted-gray text-[10px] uppercase tracking-wider">{stat.label}</p>
+                <p className="font-heading text-4xl sm:text-5xl md:text-7xl text-primary mb-1 sm:mb-2">
+                  {stat.number}
+                </p>
+                <p className="font-paragraph text-xs sm:text-sm uppercase tracking-wider text-muted-gray">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
@@ -733,7 +735,12 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
           <div className="text-center">
             <Button 
               onClick={onOpenContactForm}
-              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+              className="bg-primary text-white hover:bg-primary/90 
+                         font-paragraph text-base sm:text-lg 
+                         px-8 sm:px-10 py-3 sm:py-4 
+                         rounded-xl tracking-wide 
+                         transition-all duration-300 
+                         hover:scale-105 shadow-md hover:shadow-lg"
             >
               Reserve Your Plot Today
             </Button>
@@ -743,7 +750,6 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
     </section>
   );
 };
-
 const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: LegalApprovals[], onOpenContactForm: () => void }) => {
   return (
     <section className="py-12 sm:py-20 md:py-36 bg-old-lace relative overflow-hidden">
