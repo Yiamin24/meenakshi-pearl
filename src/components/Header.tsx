@@ -9,6 +9,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
+    { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
     { label: 'Plots', href: '#plots' },
     { label: 'Contact', href: '#contact' },
@@ -57,7 +58,7 @@ export default function Header() {
           </motion.div>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-10 flex-1 justify-center">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-12 flex-1 justify-center">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.label}
@@ -65,10 +66,10 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleNavClick(item.href)}
-                className={`font-paragraph text-xs uppercase tracking-widest transition-colors duration-300 drop-shadow-md hover:text-primary ${
+                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 drop-shadow-md ${
                   isScrolled 
-                    ? 'text-warm-espresso' 
-                    : 'text-warm-espresso'
+                    ? 'text-warm-espresso hover:text-primary' 
+                    : 'text-warm-espresso hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -87,7 +88,7 @@ export default function Header() {
             >
               <Button 
                 size="sm"
-                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-5 py-2 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md whitespace-nowrap"
+                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-6 py-2 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
                 onClick={() => {
                   const element = document.querySelector('#contact');
                   if (element) {
