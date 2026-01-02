@@ -36,8 +36,8 @@ const SectionDivider = () => (
 
 const CinematicReveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
-    initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-10%" }}
     transition={{ duration: 1.2, delay, ease: [0.22, 1, 0.36, 1] }}
     className={className}
@@ -151,7 +151,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
       <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
         <CinematicReveal delay={0.1}>
-          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 backdrop-blur-md text-primary text-xs sm:text-xs md:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
+          <span className="inline-block py-1 px-3 border border-primary/50 rounded-full bg-black/30 text-primary text-xs sm:text-xs md:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6 drop-shadow-[0_0_20px_rgba(184,134,11,0.5)]">
             Grade-A Plotted Development
           </span>
         </CinematicReveal>
@@ -182,7 +182,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-none w-full sm:w-auto tracking-wide backdrop-blur-sm transition-all duration-500"
+            className="border-pearl-ivory text-pearl-ivory hover:bg-pearl-ivory hover:text-black font-paragraph text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-none w-full sm:w-auto tracking-wide transition-all duration-500"
             onClick={() => document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })}
           >
             View Masterplan
@@ -231,7 +231,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                   <motion.div 
                     animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 bg-primary rounded-full blur-xl"
+                    className="absolute inset-0 bg-primary rounded-full opacity-50"
                   />
                   <MapPin className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-primary relative z-10 drop-shadow-[0_0_15px_rgba(184,134,11,0.8)]" fill="currentColor" />
                 </div>
@@ -295,7 +295,7 @@ const ProjectOverviewSection = () => {
                 transition={{ duration: 1, delay: i * 0.2 }}
                 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-primary/20 font-bold relative"
               >
-                <span className="absolute inset-0 text-primary blur-2xl opacity-30">{stat.value}</span>
+                <span className="absolute inset-0 text-primary opacity-30">{stat.value}</span>
                 <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-primary to-primary/40">
                   {stat.value}{stat.suffix}
                 </span>
@@ -328,7 +328,7 @@ const LegalSection = ({ legalApprovals }: { legalApprovals: LegalApprovals[] }) 
   return (
     <section className="py-16 sm:py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-primary/5 rounded-full opacity-30 pointer-events-none" />
       
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 sm:gap-8">
@@ -453,7 +453,7 @@ const PlotConfigurationsSection = ({ plotConfigs }: { plotConfigs: PlotConfigura
                 </div>
 
                 {/* Content - Minimal and Clean */}
-                <div className="relative flex-1 flex flex-col justify-between p-6 sm:p-8 bg-background/50 backdrop-blur-sm border border-foreground/5">
+                <div className="relative flex-1 flex flex-col justify-between p-6 sm:p-8 bg-background/50 border border-foreground/5">
                   {/* Header */}
                   <div>
                     <p className="font-paragraph text-primary text-xs uppercase tracking-widest mb-2 sm:mb-3">
@@ -951,7 +951,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
   return (
     <section id="contact" className="relative py-16 sm:py-24 md:py-32 bg-background flex items-center justify-center overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[700px] md:w-[800px] h-[600px] sm:h-[700px] md:h-[800px] bg-primary/5 rounded-full opacity-30 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
         <div className="text-center mb-12 sm:mb-16">
@@ -1046,7 +1046,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         <CinematicReveal delay={0.4}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="relative group w-full sm:w-auto">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
               <Button 
                 size="lg" 
                 className="relative bg-primary text-black hover:bg-primary/90 font-paragraph text-sm sm:text-lg px-6 sm:px-12 py-6 sm:py-8 rounded-none w-full sm:w-auto"
