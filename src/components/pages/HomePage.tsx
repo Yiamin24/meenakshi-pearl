@@ -691,11 +691,14 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-24 gap-6 sm:gap-8">
           <div className="max-w-2xl">
             <CinematicReveal>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-4 sm:mb-6">
-                What  <br />
-                <span className="text-primary">Meenakshi</span>
-              </h2>
-            </CinematicReveal>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-6 leading-tight">
+              What{" "}
+    m         <span className="text-primary">Meenakshi</span>
+              <br />
+              Delivers to you ?
+             </h2>
+           </CinematicReveal>
+
             <CinematicReveal delay={0.2}>
               <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray">
                 Your investment is secured by comprehensive legal approvals and clear titles. We believe trust is the ultimate luxury.
