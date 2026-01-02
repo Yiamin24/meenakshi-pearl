@@ -4,7 +4,11 @@ import { Image } from '@/components/ui/image';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  onOpenContactForm?: () => void;
+}
+
+export default function Header({ onOpenContactForm }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -12,7 +16,7 @@ export default function Header() {
     { label: 'About', href: '#about' },
     { label: 'Plots', href: '#plots' },
     { label: 'Amenities', href: '#amenities' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '#own-legacy' },
   ];
 
   useEffect(() => {
@@ -89,12 +93,7 @@ export default function Header() {
               <Button 
                 size="sm"
                 className="bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-6 py-2 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
-                onClick={() => {
-                  const element = document.querySelector('#contact');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={onOpenContactForm}
               >
                 Enquire Now
               </Button>
@@ -150,10 +149,7 @@ export default function Header() {
                 className="w-full bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-6 py-2 rounded-lg tracking-wide transition-all duration-300"
                 onClick={() => {
                   setIsMenuOpen(false);
-                  const element = document.querySelector('#contact');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  onOpenContactForm?.();
                 }}
               >
                 Enquire Now

@@ -84,7 +84,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-old-lace text-soft-charcoal min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
-      <Header />
+      <Header onOpenContactForm={() => setIsContactModalOpen(true)} />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 
