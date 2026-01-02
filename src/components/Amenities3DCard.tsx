@@ -143,9 +143,6 @@ const Card3D: React.FC<Card3DProps> = ({ amenity, index }) => {
             amenityName={amenity.amenityName}
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20" />
-
           {/* Hover Glow Effect */}
           {isHovered && (
             <motion.div
