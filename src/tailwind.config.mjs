@@ -28,9 +28,9 @@ export default {
                 'muted-forest-green': '#228B22',
                 destructive: '#D32F2F',
                 'destructive-foreground': '#FFFFFF',
-                background: '#FFF8EB',
+                background: '#FFFFFF',
                 secondary: '#A9A9A9',
-                foreground: '#222222',
+                foreground: '#1a1a1a',
                 'secondary-foreground': '#FFFFFF',
                 'primary-foreground': '#FFFFFF',
                 primary: '#B8860B'

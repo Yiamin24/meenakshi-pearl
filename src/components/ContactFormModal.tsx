@@ -66,7 +66,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[999]"
+            className="fixed inset-0 bg-black/60 z-[999]"
           />
 
           {/* Modal */}
