@@ -693,7 +693,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
             <CinematicReveal>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-6 leading-tight">
                What
-    m         <span className="text-primary">Meenakshi</span>
+             <span className="text-primary">Meenakshi</span>
               <br />
               Delivers to you ?
              </h2>
