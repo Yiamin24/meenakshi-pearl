@@ -132,7 +132,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         <div className="absolute inset-0 bg-gradient-to-b from-soft-charcoal/40 via-soft-charcoal/25 to-soft-charcoal/10" />
       </motion.div>
 
-      <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
+      <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full bg-gradient-to-b from-soft-charcoal/5 to-transparent rounded-2xl py-12 sm:py-16 md:py-20 shadow-lg">
         <CinematicReveal delay={0.1}>
           <span className="inline-block py-2 px-4 border border-primary rounded-lg bg-white/50 text-primary text-xs sm:text-xs md:text-sm tracking-[0.15em] uppercase mb-4 sm:mb-6">
             Grade-A Plotted Development
