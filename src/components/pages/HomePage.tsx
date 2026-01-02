@@ -101,30 +101,41 @@ export default function HomePage() {
     <div className="bg-old-lace text-soft-charcoal min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
       {showLoader && <Loader />}
       
-      <Header onOpenContactForm={() => setIsContactModalOpen(true)} />
+      <AnimatePresence>
+        {!showLoader && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="w-full"
+          >
+            <Header onOpenContactForm={() => setIsContactModalOpen(true)} />
 
-      <ContactFormModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
-      />
+            <ContactFormModal 
+              isOpen={isContactModalOpen} 
+              onClose={() => setIsContactModalOpen(false)} 
+            />
 
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-        <ProjectOverviewSection />
-        <InfrastructureSection infrastructure={infrastructure} />
-        <GatedLivingSection gatedBenefits={gatedBenefits} />
-        <Amenities3DSection amenities={amenities} />
-        <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-        <PlotConfigurationsSection plotConfigs={plotConfigs} />
-        <LegalSection legalApprovals={legalApprovals} />
-        <InvestmentSection investmentHighlights={investmentHighlights} />
-        <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
-        <Footer />
-      </motion.main>
+            <motion.main
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <ProjectOverviewSection />
+              <InfrastructureSection infrastructure={infrastructure} />
+              <GatedLivingSection gatedBenefits={gatedBenefits} />
+              <Amenities3DSection amenities={amenities} />
+              <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <PlotConfigurationsSection plotConfigs={plotConfigs} />
+              <LegalSection legalApprovals={legalApprovals} />
+              <InvestmentSection investmentHighlights={investmentHighlights} />
+              <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <Footer />
+            </motion.main>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
