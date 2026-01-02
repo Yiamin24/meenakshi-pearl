@@ -781,13 +781,13 @@ const GatedLivingSection = ({ gatedBenefits }: { gatedBenefits: GatedLivingBenef
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           {gatedBenefits.map((benefit, index) => (
             <CinematicReveal key={benefit._id} delay={index * 0.2}>
-              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start group">
+              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
                 <div className="w-full sm:w-1/3 overflow-hidden rounded-sm aspect-[4/5] flex-shrink-0">
                   {benefit.benefitVisual && (
                     <Image
                       src={benefit.benefitVisual}
                       alt={benefit.benefitTitle || "Benefit"}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      className="w-full h-full object-cover"
                     />
                   )}
                 </div>
