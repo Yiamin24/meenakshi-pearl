@@ -55,6 +55,7 @@ export default function HomePage() {
   const [gatedBenefits, setGatedBenefits] = useState<GatedLivingBenefits[]>([]);
   const [investmentHighlights, setInvestmentHighlights] = useState<InvestmentHighlights[]>([]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,6 +77,11 @@ export default function HomePage() {
         setInvestmentHighlights(investment.items.sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0)));
       } catch (error) {
         console.error("Failed to fetch data", error);
+      } finally {
+        // Hide loader after 3 seconds (after the loader animation completes)
+        setTimeout(() => {
+          setShowLoader(false);
+        }, 3000);
       }
     };
 
@@ -93,6 +99,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-old-lace text-soft-charcoal min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+      {showLoader && <Loader />}
+      
       <Header onOpenContactForm={() => setIsContactModalOpen(true)} />
 
       <ContactFormModal 
