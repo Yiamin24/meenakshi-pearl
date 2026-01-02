@@ -45,7 +45,7 @@ export default function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex-shrink-0 drop-shadow-lg"
+            className="flex-shrink-0"
           >
             <Image
               src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
@@ -65,7 +65,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleNavClick(item.href)}
-                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 drop-shadow-md ${
+                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 ${
                   isScrolled 
                     ? 'text-foreground/70 hover:text-primary' 
                     : 'text-foreground/80 hover:text-primary'
@@ -110,7 +110,7 @@ export default function Header() {
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 drop-shadow-md ${
+                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 py-2 ${
                   isScrolled 
                     ? 'text-foreground/70 hover:text-primary' 
                     : 'text-foreground/80 hover:text-primary'
