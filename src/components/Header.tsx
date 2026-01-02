@@ -19,7 +19,6 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
     { label: 'Contact', href: '#own-legacy' },
   ];
 
-  /* 🔥 EARLY SCROLL TRIGGER */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
@@ -50,7 +49,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex h-16 sm:h-20 md:h-24 items-center justify-between">
 
-          {/* Logo (Click → Top) */}
+          {/* Logo */}
           <motion.button
             onClick={handleLogoClick}
             initial={{ opacity: 0, x: -20 }}
@@ -62,9 +61,9 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
             <Image
               src="https://static.wixstatic.com/media/cef78c_c6d8a435aea5404b8ab01167c045f18b~mv2.png"
               alt="Meenakshi Pearl Logo"
-              width={120}
-              height={42}
-              className="w-24 sm:w-28 md:w-32 h-auto"
+              width={140}
+              height={48}
+              className="w-28 sm:w-32 md:w-36 h-auto"
             />
           </motion.button>
 
@@ -88,17 +87,20 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Right Actions (Mobile + Desktop) */}
+          {/* Right Actions */}
           <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
 
-            {/* Enquire Now — Always Visible */}
+            {/* 🔥 BIGGER ENQUIRE NOW — ALL SCREENS */}
             <Button
-              size="sm"
-              className={`font-paragraph tracking-wide transition-all duration-300 ${
-                isScrolled
-                  ? 'bg-primary text-white'
-                  : 'bg-primary text-white shadow-lg'
-              } md:size-lg md:px-8 md:py-3 rounded-lg md:rounded-xl`}
+              className={`font-paragraph font-medium tracking-wide transition-all duration-300
+                h-11 px-5 text-sm
+                sm:h-12 sm:px-6 sm:text-base
+                md:h-14 md:px-10 md:text-base
+                rounded-xl ${
+                  isScrolled
+                    ? 'bg-primary text-white'
+                    : 'bg-primary text-white shadow-lg'
+                }`}
               onClick={onOpenContactForm}
             >
               Enquire Now
@@ -114,7 +116,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
               }`}
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
         </div>
