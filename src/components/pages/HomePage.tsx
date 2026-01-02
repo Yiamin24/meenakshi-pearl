@@ -655,13 +655,13 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
   ];
 
   return (
-    <section id="plots" className="py-12 sm:py-20 md:py-36 bg-warm-beige relative overflow-hidden">
+    <section id="plots" className="py-10 sm:py-14 md:py-20 bg-warm-beige relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <SectionDivider />
         
-        <div className="text-center mb-12 sm:mb-16 md:mb-24">
+        <div className="text-center mb-8 sm:mb-10 md:mb-14">
           <CinematicReveal>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-4 sm:mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-3 sm:mb-4">
               Plot <span className="text-primary">Configurations</span>
             </h2>
           </CinematicReveal>
@@ -672,14 +672,14 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
           </CinematicReveal>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 md:mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-14">
           {configCards.map((card, index) => (
             <CinematicReveal key={index} delay={index * 0.15}>
               <motion.div
                 whileHover={{ y: -8 }}
                 className="group relative h-full flex flex-col overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="relative w-full h-48 sm:h-60 md:h-80 overflow-hidden bg-pale-sage/20">
+                <div className="relative w-full h-48 sm:h-56 md:h-72 overflow-hidden bg-pale-sage/20">
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -687,12 +687,12 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
                   />
                 </div>
 
-                <div className="relative flex-1 flex flex-col justify-between p-5 sm:p-6 md:p-8 bg-old-lace border border-primary/10">
+                <div className="relative flex-1 flex flex-col justify-between p-5 sm:p-6 md:p-7 bg-old-lace border border-primary/10">
                   <div>
-                    <p className="font-paragraph text-primary text-xs sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
+                    <p className="font-paragraph text-primary text-xs sm:text-sm uppercase tracking-widest mb-2">
                       {card.subtitle}
                     </p>
-                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl text-soft-charcoal mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-500">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl text-soft-charcoal mb-2 group-hover:text-primary transition-colors duration-500">
                       {card.title}
                     </h3>
                     <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray leading-relaxed">
@@ -700,7 +700,7 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
                     </p>
                   </div>
 
-                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-primary/10 flex items-center gap-2">
+                  <div className="mt-3 pt-3 border-t border-primary/10 flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="font-paragraph text-primary text-xs uppercase tracking-wider">
                       Available
@@ -713,14 +713,14 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
         </div>
 
         <CinematicReveal delay={0.5}>
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 text-center py-8 sm:py-12 md:py-16 border-y border-primary/15 mb-12 sm:mb-16 md:mb-20">
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 text-center py-6 sm:py-8 md:py-10 border-y border-primary/15 mb-8 sm:mb-10 md:mb-14">
             {[
               { number: "212", label: "Total Plots" },
               { number: "14", label: "Acres" },
               { number: "100%", label: "Vastu Compliant" }
             ].map((stat, i) => (
               <div key={i}>
-                <p className="font-heading text-4xl sm:text-5xl md:text-7xl text-primary mb-1 sm:mb-2">
+                <p className="font-heading text-4xl sm:text-5xl md:text-7xl text-primary mb-1">
                   {stat.number}
                 </p>
                 <p className="font-paragraph text-xs sm:text-sm uppercase tracking-wider text-muted-gray">
@@ -750,6 +750,7 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
     </section>
   );
 };
+
 const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: LegalApprovals[], onOpenContactForm: () => void }) => {
   return (
     <section className="py-12 sm:py-20 md:py-36 bg-old-lace relative overflow-hidden">
