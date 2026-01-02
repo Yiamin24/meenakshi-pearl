@@ -91,8 +91,8 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
               className="hidden md:block"
             >
               <Button 
-                size="sm"
-                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-xs px-6 py-2 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+                size="lg"
+                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm px-8 py-3 rounded-xl tracking-wide transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
                 onClick={onOpenContactForm}
               >
                 Enquire Now
