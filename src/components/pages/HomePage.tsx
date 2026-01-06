@@ -683,7 +683,7 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
             </div>
 
             {/* Right Side - Text Content */}
-            <div className="order-1 lg:order-2 flex flex-col justify-center">
+            <div className="order-1 lg:order-2 flex flex-col justify-end lg:justify-center">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentIndex}
