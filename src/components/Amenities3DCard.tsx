@@ -1,215 +1,228 @@
-import React, { useRef, useEffect, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { ProjectAmenities } from '@/entities'
-import { Image } from '@/components/ui/image'
-import { ArrowRight } from 'lucide-react'
+import React, { useRef, useState, useMemo } from 'react';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { ProjectAmenities } from '@/entities';
+import { Image } from '@/components/ui/image';
 
-/* =========================
-   Single Amenity Card
-========================= */
-const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({ amenity, index }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-10%" })
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="min-w-[280px] md:min-w-[340px] lg:min-w-[400px] flex-shrink-0"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative h-full rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
-        {/* Image Container */}
-        <div className="relative h-72 md:h-80 lg:h-96 overflow-hidden bg-gradient-to-br from-pale-sage/30 to-pale-sage/10">
-          {amenity.galleryImage ? (
-            <motion.div
-              className="w-full h-full"
-              animate={{ scale: isHovered ? 1.08 : 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                src={amenity.galleryImage}
-                alt={amenity.amenityName}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-warm-beige to-pale-sage">
-              <span className="font-heading text-3xl md:text-4xl text-soft-charcoal/40 text-center px-4">
-                {amenity.amenityName}
-              </span>
-            </div>
-          )}
-          
-          {/* Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-old-lace via-old-lace/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </div>
-
-        {/* Content Container */}
-        <div className="relative p-6 md:p-8 bg-old-lace border-l-4 border-primary/30 group-hover:border-primary transition-all duration-500">
-          {/* Category Badge */}
-          {amenity.category && (
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-              className="inline-block mb-3 md:mb-4"
-            >
-              <span className="font-paragraph text-xs md:text-sm uppercase tracking-widest text-primary font-semibold">
-                {amenity.category}
-              </span>
-            </motion.div>
-          )}
-
-          {/* Title */}
-          <motion.h3
-            className="font-heading text-2xl md:text-3xl text-soft-charcoal mb-3 md:mb-4 group-hover:text-primary transition-colors duration-300 line-clamp-2"
-            animate={{ y: isHovered ? -4 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {amenity.amenityName}
-          </motion.h3>
-
-          {/* Description */}
-          <motion.p
-            className="font-paragraph text-sm md:text-base text-muted-gray leading-relaxed mb-4 md:mb-6 line-clamp-3"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-          >
-            {amenity.description}
-          </motion.p>
-
-          {/* CTA Link */}
-          <motion.div
-            className="flex items-center gap-2 text-primary font-semibold text-sm md:text-base group/link cursor-pointer"
-            animate={{ x: isHovered ? 4 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="group-hover/link:underline">Explore</span>
-            <motion.div
-              animate={{ x: isHovered ? 4 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Accent Line */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-      </div>
-    </motion.div>
-  )
+interface Card3DProps {
+  amenity: ProjectAmenities;
+  index: number;
 }
 
 /* =========================
-   Horizontal Carousel Section
+   Nested Carousel
 ========================= */
-const Amenities3Dcard: React.FC<{ amenities: ProjectAmenities[] }> = ({
-  amenities,
+const NestedCarousel: React.FC<{ imageUrl?: string; amenityName?: string }> = ({
+  imageUrl,
+  amenityName,
 }) => {
-  const trackRef = useRef<HTMLDivElement>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-10%" })
+  const carouselImages = useMemo(() => {
+    return [
+      { id: 1, url: imageUrl, label: 'Main View' },
+      { id: 2, url: imageUrl, label: 'Detail View' },
+      { id: 3, url: imageUrl, label: 'Overview' },
+    ].filter(img => img.url);
+  }, [imageUrl]);
 
-  useEffect(() => {
-    if (!trackRef.current) return
+  if (!imageUrl || carouselImages.length === 0) {
+    return (
+      <div className="w-full h-full bg-white/5 flex items-center justify-center">
+        <span className="text-foreground/20 font-heading text-2xl italic">
+          {amenityName || 'Amenity'}
+        </span>
+      </div>
+    );
+  }
 
-    const track = trackRef.current
-
-    const onWheel = (e: WheelEvent) => {
-      // Horizontal scroll on wheel
-      track.scrollLeft += e.deltaY
-    }
-
-    track.addEventListener('wheel', onWheel)
-
-    return () => {
-      track.removeEventListener('wheel', onWheel)
-    }
-  }, [])
+  const itemWidth = 100;
+  const totalWidth = carouselImages.length * itemWidth;
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 lg:py-40 bg-gradient-to-b from-warm-beige via-old-lace to-warm-beige relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/3 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Header Section */}
-      <div className="container mx-auto px-4 md:px-8 mb-16 md:mb-24 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl"
-        >
-          <div className="inline-block mb-4 md:mb-6">
-            <span className="font-paragraph text-xs md:text-sm uppercase tracking-widest text-primary font-semibold">
-              Premium Collection
-            </span>
+    <div className="relative w-full h-full overflow-hidden">
+      <motion.div
+        className="flex w-full h-full"
+        animate={{ x: [0, -totalWidth] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+      >
+        {carouselImages.map(img => (
+          <div key={`${img.id}-a`} className="flex-shrink-0 w-full h-full">
+            <Image src={img.url!} alt={img.label} className="w-full h-full object-cover" />
           </div>
-          <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-soft-charcoal mb-6 md:mb-8 leading-tight">
+        ))}
+        {carouselImages.map(img => (
+          <div key={`${img.id}-b`} className="flex-shrink-0 w-full h-full">
+            <Image src={img.url!} alt={img.label} className="w-full h-full object-cover" />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+/* =========================
+   Card 3D
+========================= */
+const Card3D: React.FC<Card3DProps> = ({ amenity, index }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const isInView = useInView(cardRef, { once: true, margin: '-100px' });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setRotateX(y / 10);
+    setRotateY(-x / 10);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.12 }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setRotateX(0);
+        setRotateY(0);
+        setIsHovered(false);
+      }}
+      style={{ perspective: '1000px' }}
+      className="h-full"
+    >
+      <motion.div
+        style={{ rotateX, rotateY }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className="relative w-full h-full rounded-lg overflow-hidden border border-foreground/20 group hover:border-primary/50 transition-colors duration-500"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-white/[0.02]" />
+        <div className="relative w-full h-full">
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500 z-10" />
+          <NestedCarousel imageUrl={amenity.galleryImage} amenityName={amenity.amenityName} />
+        </div>
+
+        {isHovered && (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent pointer-events-none" />
+        )}
+      </motion.div>
+    </motion.div>
+  );
+};
+
+/* =========================
+   Amenity Card
+========================= */
+const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({
+  amenity,
+  index,
+}) => {
+  const itemRef = useRef(null);
+  const itemInView = useInView(itemRef, { once: false, margin: '-50px' });
+
+  return (
+    <div ref={itemRef} className="flex flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        animate={itemInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.6, delay: index * 0.08 }}
+        className="h-64 md:h-72"
+      >
+        <Card3D amenity={amenity} index={index} />
+      </motion.div>
+
+      <motion.div
+        className="mt-5 md:mt-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={itemInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: index * 0.08 + 0.15 }}
+      >
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <h3 className="font-heading text-xl md:text-2xl text-foreground">
+            {amenity.amenityName}
+          </h3>
+          <span className="font-mono text-primary/60 text-xs uppercase tracking-widest">
+            0{index + 1}
+          </span>
+        </div>
+        <p className="font-paragraph text-sm md:text-base text-foreground/70 leading-relaxed">
+          {amenity.description}
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
+/* =========================
+   Section
+========================= */
+const Amenities3DSection: React.FC<{ amenities: ProjectAmenities[] }> = ({ amenities }) => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const headerY = useTransform(scrollYProgress, [0, 0.2], [40, 0]);
+  const dividerWidth = useTransform(scrollYProgress, [0.1, 0.3], [0, 96]);
+
+  return (
+    <section ref={sectionRef} id="amenities" className="py-20 md:py-28 bg-foreground/5">
+      <div className="container mx-auto px-4 md:px-8">
+        <motion.div style={{ opacity: headerOpacity, y: headerY }} className="mb-16 md:mb-24">
+          <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-foreground mb-4">
             The Collection
           </h2>
-          <p className="font-paragraph text-base md:text-lg text-muted-gray max-w-2xl leading-relaxed">
-            Discover world-class amenities designed to elevate your lifestyle. Each facility is meticulously crafted to provide the ultimate living experience.
+          <p className="font-paragraph text-primary uppercase tracking-widest text-xs md:text-sm">
+            World-Class Amenities
           </p>
+          <motion.div className="h-1 bg-primary mt-6" style={{ width: dividerWidth }} />
         </motion.div>
 
-        {/* Accent Line */}
-        <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={isInView ? { width: 120, opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="h-1 bg-gradient-to-r from-primary to-primary/40 mt-8 md:mt-12"
-        />
-      </div>
-
-      {/* Carousel Container */}
-      <div className="relative">
-        {/* Left Fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-warm-beige via-warm-beige/50 to-transparent z-20 pointer-events-none" />
-        
-        {/* Right Fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-warm-beige via-warm-beige/50 to-transparent z-20 pointer-events-none" />
-
-        {/* Scroll Track */}
-        <div
-          ref={trackRef}
-          className="flex gap-6 md:gap-8 px-4 md:px-8 overflow-x-auto scroll-smooth cursor-grab active:cursor-grabbing pb-4"
-          style={{
-            scrollBehavior: 'smooth',
-            WebkitOverflowScrolling: 'touch',
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {amenities.map((amenity, index) => (
             <AmenityCard key={amenity._id} amenity={amenity} index={index} />
           ))}
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="flex items-center justify-center gap-2 mt-12 md:mt-16 text-muted-gray text-xs md:text-sm uppercase tracking-widest relative z-10"
-      >
-        <span>Scroll to explore</span>
+        {/* ===== UPDATED SIZE ONLY ===== */}
         <motion.div
-          animate={{ x: [0, 4, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="mt-8 md:mt-12 pt-8 md:pt-12 border-t border-primary/20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          →
-        </motion.div>
-      </motion.div>
-    </section>
-  )
-}
+          <div className="grid grid-cols-3 gap-6 md:gap-12">
+            <div className="text-center">
+              <div className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 font-semibold tracking-tight">
+                {amenities.length}+
+              </div>
+              <p className="font-paragraph text-sm md:text-base text-foreground/60 uppercase tracking-widest">
+                Premium Amenities
+              </p>
+            </div>
 
-export default Amenities3Dcard
+            <div className="text-center">
+              <div className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 font-semibold tracking-tight">
+                100<span className="text-3xl sm:text-4xl md:text-5xl align-top">%</span>
+              </div>
+              <p className="font-paragraph text-sm md:text-base text-foreground/60 uppercase tracking-widest">
+                World-Class Quality
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 font-semibold tracking-tight">
+                ∞
+              </div>
+              <p className="font-paragraph text-sm md:text-base text-foreground/60 uppercase tracking-widest">
+                Timeless Design
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Amenities3DSection;
