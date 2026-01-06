@@ -199,7 +199,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                    leading-relaxed tracking-normal
                    drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
       >
-        Your gateway to luxury living in the heart of East Bangalore.
+        Your gateway to luxury living in East of Bangalore.
         <br className="hidden md:block" />
         A sanctuary of 212 premium plots across 14 acres.
         <br className="hidden md:block" />
