@@ -808,9 +808,6 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
 };
 
 const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotConfigs: PlotConfigurations[], onOpenContactForm: () => void }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  
   const configCards = [
     { 
       title: "1500 Sqft", 
@@ -832,33 +829,6 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
     }
   ];
 
-  const slideVariants = {
-    enter: (dir: number) => (({
-      x: dir > 0 ? 1000 : -1000,
-      opacity: 0,
-    })),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir: number) => (({
-      zIndex: 0,
-      x: dir < 0 ? 1000 : -1000,
-      opacity: 0,
-    })),
-  };
-
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % configCards.length);
-  };
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + configCards.length) % configCards.length);
-  };
-
   return (
     <section id="plots" className="py-10 sm:py-14 md:py-20 bg-warm-beige relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -877,120 +847,8 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
           </CinematicReveal>
         </div>
 
-        {/* Mobile Carousel (visible only on small screens) */}
-        <div className="md:hidden mb-8 sm:mb-10">
-          <div className="relative">
-            <div className="relative w-full overflow-hidden rounded-xl">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.5 },
-                  }}
-                  className="w-full"
-                >
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="group relative h-full flex flex-col overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-pale-sage/20">
-                      <Image
-                        src={configCards[currentIndex].image}
-                        alt={configCards[currentIndex].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
-
-                    <div className="relative flex-1 flex flex-col justify-between p-5 sm:p-6 bg-old-lace border border-primary/10">
-                      <div>
-                        <p className="font-paragraph text-primary text-xs sm:text-sm uppercase tracking-widest mb-2">
-                          {configCards[currentIndex].subtitle}
-                        </p>
-                        <h3 className="font-heading text-2xl sm:text-3xl text-soft-charcoal mb-2 group-hover:text-primary transition-colors duration-500">
-                          {configCards[currentIndex].title}
-                        </h3>
-                        <p className="font-paragraph text-sm sm:text-base text-muted-gray leading-relaxed">
-                          {configCards[currentIndex].description}
-                        </p>
-                      </div>
-
-                      <div className="mt-3 pt-3 border-t border-primary/10 flex items-center gap-2">
-                        <div className="w-2 h-2 bg-primary rounded-full" />
-                        <span className="font-paragraph text-primary text-xs uppercase tracking-wider">
-                          Available
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Mobile Navigation Controls */}
-            <div className="flex items-center justify-center gap-4 mt-6">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handlePrev}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-primary/30 hover:border-primary bg-warm-beige hover:bg-pale-sage/40 flex items-center justify-center transition-all duration-300 group"
-                aria-label="Previous plot"
-              >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </motion.button>
-
-              {/* Indicator Dots */}
-              <div className="flex items-center gap-2">
-                {configCards.map((_, index) => (
-                  <motion.button
-                    key={index}
-                    onClick={() => {
-                      setDirection(index > currentIndex ? 1 : -1);
-                      setCurrentIndex(index);
-                    }}
-                    className={`transition-all duration-300 rounded-full ${
-                      index === currentIndex
-                        ? 'w-3 h-3 sm:w-4 sm:h-4 bg-primary'
-                        : 'w-2 h-2 sm:w-3 sm:h-3 bg-primary/30 hover:bg-primary/50'
-                    }`}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label={`Go to plot ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleNext}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-primary/30 hover:border-primary bg-warm-beige hover:bg-pale-sage/40 flex items-center justify-center transition-all duration-300 group"
-                aria-label="Next plot"
-              >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </motion.button>
-            </div>
-
-            {/* Counter */}
-            <div className="text-center mt-4">
-              <p className="font-paragraph text-xs sm:text-sm text-muted-gray uppercase tracking-widest">
-                {currentIndex + 1} <span className="text-primary/50">of</span> {configCards.length}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop Grid (hidden on small screens) */}
-        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-14">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-14">
           {configCards.map((card, index) => (
             <CinematicReveal key={index} delay={index * 0.15}>
               <motion.div
@@ -1413,5 +1271,3 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
     </section>
   );
 };
-
-
