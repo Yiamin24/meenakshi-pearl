@@ -1,7 +1,8 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { ProjectAmenities } from '@/entities';
 import { Image } from '@/components/ui/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Card3DProps {
   amenity: ProjectAmenities;
@@ -156,6 +157,167 @@ const AmenityCard: React.FC<{ amenity: ProjectAmenities; index: number }> = ({
 };
 
 /* =========================
+   Mobile Slider Component
+========================= */
+const MobileSlider: React.FC<{ amenities: ProjectAmenities[] }> = ({ amenities }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      zIndex: 0,
+      x: dir < 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+  };
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % amenities.length);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + amenities.length) % amenities.length);
+  };
+
+  // Auto-advance every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % amenities.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [amenities.length]);
+
+  const currentAmenity = amenities[currentIndex];
+
+  return (
+    <div className="md:hidden relative">
+      {/* Slider Container */}
+      <div ref={sliderRef} className="relative h-96 overflow-hidden rounded-2xl mb-8">
+        <motion.div
+          key={currentIndex}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: 'spring', stiffness: 300, damping: 30 },
+            opacity: { duration: 0.5 },
+          }}
+          className="absolute inset-0"
+        >
+          <div className="relative w-full h-full rounded-2xl overflow-hidden">
+            {currentAmenity.galleryImage ? (
+              <Image
+                src={currentAmenity.galleryImage}
+                alt={currentAmenity.amenityName}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-warm-beige to-pale-sage flex items-center justify-center">
+                <span className="font-heading text-2xl text-soft-charcoal/40 text-center px-4">
+                  {currentAmenity.amenityName}
+                </span>
+              </div>
+            )}
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-old-lace via-transparent to-transparent" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Content */}
+      <motion.div
+        key={`content-${currentIndex}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mb-6"
+      >
+        {currentAmenity.category && (
+          <span className="inline-block font-paragraph text-xs uppercase tracking-widest text-primary font-semibold mb-3">
+            {currentAmenity.category}
+          </span>
+        )}
+        <h3 className="font-heading text-2xl text-soft-charcoal mb-3">
+          {currentAmenity.amenityName}
+        </h3>
+        <p className="font-paragraph text-sm text-muted-gray leading-relaxed mb-4">
+          {currentAmenity.description}
+        </p>
+      </motion.div>
+
+      {/* Navigation Controls */}
+      <div className="flex items-center justify-between gap-4 mb-6">
+        {/* Previous Button */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handlePrev}
+          className="w-12 h-12 rounded-full border-2 border-primary/30 hover:border-primary bg-old-lace hover:bg-pale-sage/40 flex items-center justify-center transition-all duration-300 group"
+          aria-label="Previous amenity"
+        >
+          <ChevronLeft className="w-5 h-5 text-primary group-hover:text-primary transition-colors" />
+        </motion.button>
+
+        {/* Indicator Dots */}
+        <div className="flex items-center gap-2">
+          {amenities.map((_, index) => (
+            <motion.button
+              key={index}
+              onClick={() => {
+                setDirection(index > currentIndex ? 1 : -1);
+                setCurrentIndex(index);
+              }}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentIndex
+                  ? 'w-3 h-3 bg-primary'
+                  : 'w-2 h-2 bg-primary/30 hover:bg-primary/50'
+              }`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label={`Go to amenity ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Next Button */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleNext}
+          className="w-12 h-12 rounded-full border-2 border-primary/30 hover:border-primary bg-old-lace hover:bg-pale-sage/40 flex items-center justify-center transition-all duration-300 group"
+          aria-label="Next amenity"
+        >
+          <ChevronRight className="w-5 h-5 text-primary group-hover:text-primary transition-colors" />
+        </motion.button>
+      </div>
+
+      {/* Counter */}
+      <div className="text-center">
+        <p className="font-paragraph text-xs text-muted-gray uppercase tracking-widest">
+          {currentIndex + 1} <span className="text-primary/50">of</span> {amenities.length}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+/* =========================
    Section
 ========================= */
 const Amenities3DSection: React.FC<{ amenities: ProjectAmenities[] }> = ({ amenities }) => {
@@ -178,7 +340,11 @@ const Amenities3DSection: React.FC<{ amenities: ProjectAmenities[] }> = ({ ameni
           <motion.div className="h-1 bg-primary mt-6" style={{ width: dividerWidth }} />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Mobile Slider */}
+        <MobileSlider amenities={amenities} />
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {amenities.map((amenity, index) => (
             <AmenityCard key={amenity._id} amenity={amenity} index={index} />
           ))}
