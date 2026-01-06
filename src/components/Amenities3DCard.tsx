@@ -1,10 +1,6 @@
 import React, { useRef, useEffect } from 'react'
-import gsap from 'gsap'
-import { Draggable } from 'gsap/all'
 import { ProjectAmenities } from '@/entities'
 import { Image } from '@/components/ui/image'
-
-gsap.registerPlugin(Draggable)
 
 /* =========================
    Single Amenity Card
@@ -55,22 +51,9 @@ const Amenities3Dcard: React.FC<{ amenities: ProjectAmenities[] }> = ({
 
     const track = trackRef.current
 
-    Draggable.create(track, {
-      type: 'x',
-      inertia: true,
-      bounds: {
-        minX: -(track.scrollWidth - track.offsetWidth),
-        maxX: 0,
-      },
-    })
-
     const onWheel = (e: WheelEvent) => {
-      gsap.to(track, {
-        x: `-=${e.deltaY}`,
-        duration: 0.6,
-        ease: 'power3.out',
-        overwrite: 'auto',
-      })
+      // Horizontal scroll on wheel
+      track.scrollLeft += e.deltaY
     }
 
     track.addEventListener('wheel', onWheel)
@@ -91,7 +74,7 @@ const Amenities3Dcard: React.FC<{ amenities: ProjectAmenities[] }> = ({
         </p>
       </div>
 
-      <div className="relative">
+      <div className="relative overflow-x-auto">
         <div
           ref={trackRef}
           className="flex gap-6 md:gap-8 px-4 md:px-8 cursor-grab active:cursor-grabbing"
