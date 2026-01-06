@@ -832,8 +832,6 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
   return (
     <section id="plots" className="py-10 sm:py-14 md:py-20 bg-warm-beige relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-        <SectionDivider />
-        
         <div className="text-center mb-8 sm:mb-10 md:mb-14">
           <CinematicReveal>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-3 sm:mb-4">
