@@ -565,6 +565,7 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
 const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefits: GatedLivingBenefits[], onOpenContactForm: () => void }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
 
   if (!gatedBenefits || gatedBenefits.length === 0) {
     return null;
@@ -572,14 +573,32 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
 
   const currentBenefit = gatedBenefits[currentIndex];
 
+  // Auto-advance carousel every 3 seconds
+  useEffect(() => {
+    if (!isAutoPlay) return;
+
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % gatedBenefits.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay, gatedBenefits.length]);
+
   const handleNext = () => {
+    setIsAutoPlay(false);
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % gatedBenefits.length);
+    // Resume auto-play after 5 seconds of inactivity
+    setTimeout(() => setIsAutoPlay(true), 5000);
   };
 
   const handlePrev = () => {
+    setIsAutoPlay(false);
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + gatedBenefits.length) % gatedBenefits.length);
+    // Resume auto-play after 5 seconds of inactivity
+    setTimeout(() => setIsAutoPlay(true), 5000);
   };
 
   const slideVariants = {
