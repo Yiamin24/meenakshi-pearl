@@ -205,7 +205,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         <br className="hidden md:block" />
         <span
           className="text-primary font-semibold
-                     drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]"
+                     drop-shadow-[0_6px_24px_rgba(0,0,0,0.65)]"
         >
           Grade-A Plotted Development
         </span>
@@ -226,7 +226,8 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                    rounded-xl w-full sm:w-auto tracking-wide
                    transition-all duration-500 hover:scale-105
                    shadow-xl hover:shadow-2xl
-                   ring-1 ring-primary/40"
+                   ring-1 ring-primary/40
+                   drop-shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
         onClick={onOpenContactForm}
       >
         Schedule Visit
@@ -242,7 +243,8 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                    py-4 sm:py-5 md:py-6
                    rounded-xl w-full sm:w-auto tracking-wide
                    transition-all duration-500
-                   shadow-lg"
+                   shadow-lg
+                   drop-shadow-[0_6px_24px_rgba(0,0,0,0.4)]"
         onClick={() =>
           document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
         }
