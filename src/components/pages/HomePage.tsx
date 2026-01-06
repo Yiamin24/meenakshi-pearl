@@ -123,11 +123,11 @@ export default function HomePage() {
             >
               <HeroSection onOpenContactForm={() => setIsContactModalOpen(true)} />
               <ProjectOverviewSection onOpenContactForm={() => setIsContactModalOpen(true)} />
-              <InfrastructureSection infrastructure={infrastructure} onOpenContactForm={() => setIsContactModalOpen(true)} />
-              <GatedLivingSection gatedBenefits={gatedBenefits} onOpenContactForm={() => setIsContactModalOpen(true)} />
-              <Amenities3DSection amenities={amenities} />
-              <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
               <PlotConfigurationsSection plotConfigs={plotConfigs} onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <LocationSection onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <Amenities3DSection amenities={amenities} />
+              <GatedLivingSection gatedBenefits={gatedBenefits} onOpenContactForm={() => setIsContactModalOpen(true)} />
+              <InfrastructureSection infrastructure={infrastructure} onOpenContactForm={() => setIsContactModalOpen(true)} />
               <LegalSection legalApprovals={legalApprovals} onOpenContactForm={() => setIsContactModalOpen(true)} />
               <InvestmentSection investmentHighlights={investmentHighlights} onOpenContactForm={() => setIsContactModalOpen(true)} />
               <FinalCTASection onOpenContactForm={() => setIsContactModalOpen(true)} />
