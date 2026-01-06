@@ -178,12 +178,12 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                    font-semibold leading-tight tracking-tight
                    drop-shadow-[0_8px_32px_rgba(0,0,0,0.65)]"
       >
-        Plots Starting From <br className="hidden sm:block" />
+        Plots starting from{' '}
         <span
           className="text-primary font-semibold
-                     drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)]"
+                     drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)] whitespace-nowrap"
         >
-          38 Lac
+          ₹38 Lakhs
         </span>
       </h1>
     </CinematicReveal>
