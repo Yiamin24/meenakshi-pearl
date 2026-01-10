@@ -164,7 +164,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   </motion.div>
 
   {/* Light Overlay for Content Visibility */}
-  <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/35 via-black/25 to-black/40" />
+  <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/50 via-black/45 to-black/55" />
 
   {/* Hero Content */}
   <motion.div
