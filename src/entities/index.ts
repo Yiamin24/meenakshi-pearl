@@ -36,7 +36,7 @@ export interface GatedLivingBenefits {
   benefitTitle?: string;
   /** @wixFieldType text */
   benefitDescription?: string;
-  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  /** @wixFieldType image */
   benefitVisual?: string;
   /** @wixFieldType number */
   displayOrder?: number;
@@ -57,7 +57,7 @@ export interface InfrastructureDetails {
   featureName?: string;
   /** @wixFieldType text */
   featureDescription?: string;
-  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  /** @wixFieldType image */
   featureIcon?: string;
   /** @wixFieldType number */
   displayOrder?: number;
@@ -124,7 +124,7 @@ export interface PlotConfigurations {
   areaSqFt?: number;
   /** @wixFieldType text */
   dimensions?: string;
-  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  /** @wixFieldType image */
   plotImage?: string;
   /** @wixFieldType text */
   description?: string;
@@ -145,7 +145,7 @@ export interface ProjectAmenities {
   amenityName?: string;
   /** @wixFieldType text */
   description?: string;
-  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  /** @wixFieldType image */
   galleryImage?: string;
   /** @wixFieldType text */
   category?: string;

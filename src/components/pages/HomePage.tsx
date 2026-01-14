@@ -145,107 +145,134 @@ export default function HomePage() {
 const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.2]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section
-      ref={ref}
-      className="relative h-screen w-full overflow-hidden bg-old-lace"
-    >
-      <div className="flex h-full w-full">
-        {/* Left Side - Content (35%) */}
-        <motion.div
-          style={{ opacity: contentOpacity }}
-          className="relative z-10 w-full lg:w-[35%] flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-12 bg-old-lace"
-        >
-          <div className="max-w-xl">
-            {/* Heading */}
-            <CinematicReveal delay={0.3}>
-              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-soft-charcoal mb-6 font-semibold leading-tight tracking-tight">
-                Plots starting from{' '}
-                <span className="text-primary font-semibold">
-                  ₹38 Lakhs
-                </span>
-              </h1>
-            </CinematicReveal>
+  ref={ref}
+  className="relative h-screen sm:min-h-screen w-full overflow-hidden flex items-center justify-center bg-old-lace"
+>
+  {/* Background Image */}
+  <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
+    <Image
+      src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg"
+      alt="Meenakshi Pearl Aerial View"
+      className="w-full h-full object-cover"
+    />
+  </motion.div>
 
-            {/* Description */}
-            <CinematicReveal delay={0.5}>
-              <p className="font-paragraph text-base sm:text-lg md:text-xl text-muted-gray mb-8 leading-relaxed">
-                Your gateway to luxury living in East of Bangalore. A sanctuary of 212 premium plots across 14 acres.
-              </p>
-              <p className="font-paragraph text-sm sm:text-base md:text-lg text-primary font-semibold mb-10">
-                Grade-A Plotted Development
-              </p>
-            </CinematicReveal>
+  {/* Light Overlay for Content Visibility */}
+  <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/50 via-black/45 to-black/55" />
 
-            {/* CTA Buttons */}
-            <CinematicReveal delay={0.7} className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-base px-8 py-4 rounded-xl tracking-wide transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
-                onClick={onOpenContactForm}
-              >
-                Schedule Visit
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-warm-beige font-paragraph text-base px-8 py-4 rounded-xl tracking-wide transition-all duration-300"
-                onClick={() =>
-                  document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
-                }
-              >
-                View Masterplan
-              </Button>
-            </CinematicReveal>
-          </div>
-        </motion.div>
-
-        {/* Right Side - Image (65%) */}
-        <div className="hidden lg:block relative w-[65%] overflow-hidden">
-          <motion.div 
-            style={{ y: imageY }} 
-            className="absolute inset-0 h-[120%]"
-          >
-            <Image
-              src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg"
-              alt="Meenakshi Pearl Aerial View"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-          
-          {/* Subtle gradient overlay on left edge for smooth transition */}
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-old-lace to-transparent z-[1]" />
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        style={{ opacity: contentOpacity }}
-        className="absolute bottom-8 left-8 lg:left-[17.5%] flex flex-col items-start gap-2 z-20"
+  {/* Hero Content */}
+  <motion.div
+    style={{ opacity }}
+    className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-12 sm:py-20 md:py-28"
+  >
+    {/* Heading */}
+    <CinematicReveal delay={0.3}>
+      <h1
+        className="font-heading
+                   text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+                   text-[#F6F1E8]
+                   mb-6 sm:mb-8
+                   font-semibold leading-tight tracking-tight
+                   drop-shadow-[0_8px_32px_rgba(0,0,0,0.65)]"
       >
-        <span className="text-xs uppercase tracking-widest text-primary/70">
-          Scroll to Explore
+        Plots starting from{' '}
+        <span
+          className="text-primary font-semibold
+                     drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)] whitespace-nowrap"
+        >
+          ₹38 Lakhs
         </span>
-        <motion.div
-          animate={{ height: [20, 40, 20] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-[1px] bg-primary/50 ml-8"
-        />
-      </motion.div>
+      </h1>
+    </CinematicReveal>
 
-      {/* Mobile: Full-width image background */}
-      <div className="lg:hidden absolute inset-0 z-0">
-        <Image
-          src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg"
-          alt="Meenakshi Pearl Aerial View"
-          className="w-full h-full object-cover opacity-20"
-        />
-      </div>
-    </section>
+    {/* Description */}
+    <CinematicReveal delay={0.6}>
+      <p
+        className="font-paragraph
+                   text-base sm:text-lg md:text-xl lg:text-2xl
+                   text-[#F6F1E8]/90
+                   max-w-4xl mx-auto
+                   mb-10 sm:mb-12 md:mb-16
+                   leading-relaxed tracking-normal
+                   drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+      >
+        Your gateway to luxury living in East of Bangalore.
+        <br className="hidden md:block" />
+        A sanctuary of 212 premium plots across 14 acres.
+        <br className="hidden md:block" />
+        <span
+          className="text-primary font-semibold
+                     drop-shadow-[0_6px_24px_rgba(0,0,0,0.65)]"
+        >
+          Grade-A Plotted Development
+        </span>
+      </p>
+    </CinematicReveal>
+
+    {/* CTA Buttons */}
+    <CinematicReveal
+      delay={0.8}
+      className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap"
+    >
+      <Button
+        size="lg"
+        className="bg-primary text-white hover:bg-primary/90
+                   font-paragraph text-base sm:text-lg
+                   px-8 sm:px-10 md:px-12
+                   py-4 sm:py-5 md:py-6
+                   rounded-xl w-full sm:w-auto tracking-wide
+                   transition-all duration-500 hover:scale-105
+                   shadow-xl hover:shadow-2xl
+                   ring-1 ring-primary/40
+                   drop-shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+        onClick={onOpenContactForm}
+      >
+        Schedule Visit
+      </Button>
+
+      <Button
+        size="lg"
+        variant="outline"
+        className="border-2 border-primary text-primary
+                   hover:bg-pale-sage
+                   font-paragraph text-base sm:text-lg
+                   px-8 sm:px-10 md:px-12
+                   py-4 sm:py-5 md:py-6
+                   rounded-xl w-full sm:w-auto tracking-wide
+                   transition-all duration-500
+                   shadow-lg
+                   drop-shadow-[0_6px_24px_rgba(0,0,0,0.4)]"
+        onClick={() =>
+          document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
+        }
+      >
+        View Masterplan
+      </Button>
+    </CinematicReveal>
+  </motion.div>
+
+  {/* Scroll Indicator */}
+  <motion.div
+    style={{ opacity }}
+    className="absolute bottom-4 sm:bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+  >
+    <span className="text-[9px] uppercase tracking-[0.3em] text-primary/70 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+      Scroll to Explore
+    </span>
+    <motion.div
+      animate={{ height: [20, 40, 20] }}
+      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+      className="w-[1px] bg-primary/50"
+    />
+  </motion.div>
+</section>
+
   );
 };
 
