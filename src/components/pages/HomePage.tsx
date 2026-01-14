@@ -301,7 +301,8 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   className="font-heading text-5xl sm:text-6xl md:text-8xl 
              font-semibold text-primary
              tracking-tight leading-none
-             drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]"
+             drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]
+             mb-0"
 >
   {stat.value}
   <span className="text-4xl sm:text-5xl md:text-7xl align-top ml-1">
@@ -313,7 +314,10 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal mt-1 sm:mt-4 uppercase tracking-widest -translate-y-3 sm:translate-y-0"
+                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal 
+                           mt-[-0.5rem] sm:mt-4 
+                           uppercase tracking-widest 
+                           leading-tight sm:leading-normal"
               >
                 {stat.label}
               </motion.p>
