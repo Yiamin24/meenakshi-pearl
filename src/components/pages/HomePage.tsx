@@ -396,10 +396,10 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
             <div className="space-y-6 sm:space-y-8">
               {[
-                { label: "Sarjapur Main Road", dist: "5 km" },
-                { label: "Electronic City", dist: "8 km" },
-                { label: "Whitefield Tech Park", dist: "12 km" },
-                { label: "Intl. Airport", dist: "45 mins" }
+                { label: "Sarjapur Main Road", dist: "15 mins" },
+                { label: "Electronic City", dist: "25 mins" },
+                { label: "Whitefield Tech Park", dist: "40 mins" },
+                { label: "Intl. Airport", dist: "60 mins" }
               ].map((item, i) => (
                 <CinematicReveal key={i} delay={0.3 + (i * 0.1)}>
                   <div className="flex items-center justify-between border-b border-primary/10 pb-3 sm:pb-4 group hover:border-primary/30 transition-colors cursor-pointer" onClick={onOpenContactForm}>
