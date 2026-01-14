@@ -16,7 +16,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
     { label: 'About', href: '#about' },
     { label: 'Plots', href: '#plots' },
     { label: 'Amenities', href: '#amenities' },
-    { label: 'Contact', href: '#own-legacy' },
+    { label: 'Contact', href: '#own-coffee' },
   ];
 
   useEffect(() => {

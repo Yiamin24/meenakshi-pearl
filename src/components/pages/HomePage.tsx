@@ -328,7 +328,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
         <div className="mt-12 sm:mt-20 md:mt-32 text-center">
           <CinematicReveal>
             <p className="font-heading text-2xl sm:text-3xl md:text-5xl text-soft-charcoal max-w-4xl mx-auto leading-relaxed px-4 mb-8 sm:mb-12">
-              "A meticulously planned ecosystem where luxury meets <span className="text-primary">legacy</span>. Every square foot is designed to appreciate in value and quality of life."
+              "A meticulously planned ecosystem where luxury meets <span className="text-primary">golden</span>. Every square foot is designed to appreciate in value and quality of life."
             </p>
           </CinematicReveal>
           
@@ -1109,14 +1109,14 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
   };
 
   return (
-    <section id="own-legacy" className="relative py-12 sm:py-20 md:py-36 bg-old-lace overflow-hidden">
+    <section id="own-coffee" className="relative py-12 sm:py-20 md:py-36 bg-old-lace overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[600px] md:h-[800px] bg-primary/5 rounded-full opacity-15 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 w-full">
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-8xl text-primary mb-6 sm:mb-8 tracking-tight">
-              <span className="whitespace-nowrap">Own the legacy</span>
+              <span className="whitespace-nowrap">Own the coffee</span>
             </h2>
           </CinematicReveal>
 
