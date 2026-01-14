@@ -161,32 +161,36 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         className="relative z-10 grid grid-cols-1 lg:grid-cols-2 min-h-screen"
       >
         {/* LEFT: MASTERPLAN / IMAGE */}
-        <div className="relative h-[55vh] lg:h-auto">
-          <Image src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg" alt="Meenakshi Pearl Aerial View - Gated Community" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="relative h-[50vh] sm:h-[55vh] lg:h-auto order-1 lg:order-1">
+          <Image 
+            src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg" 
+            alt="Meenakshi Pearl Aerial View - Gated Community" 
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
 
           {/* Dark cinematic overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent" />
 
           {/* Subtle brand mark */}
-          <div className="absolute bottom-6 left-6 text-white/80 text-xs tracking-[0.3em] uppercase">
+          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-white/80 text-[10px] sm:text-xs tracking-[0.3em] uppercase">
             Master Planned Community
           </div>
         </div>
 
         {/* RIGHT: CONTENT PANEL */}
-        <div className="flex items-center justify-center px-6 sm:px-10 md:px-14 lg:px-20 bg-white">
+        <div className="flex items-center justify-center px-4 py-8 sm:px-6 sm:py-10 md:px-10 lg:px-16 xl:px-20 bg-white order-2 lg:order-2">
           <div className="max-w-xl w-full text-left">
             
             {/* Badge */}
             <CinematicReveal delay={0.2}>
-              <span className="inline-block mb-6 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs tracking-widest uppercase font-medium">
+              <span className="inline-block mb-4 sm:mb-6 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs tracking-widest uppercase font-medium">
                 Premium Plotted Development
               </span>
             </CinematicReveal>
 
             {/* Heading */}
             <CinematicReveal delay={0.35}>
-              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight text-soft-charcoal mb-6">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-soft-charcoal mb-4 sm:mb-6">
                 Plots starting from{' '}
                 <span className="text-primary whitespace-nowrap">
                   ₹38 Lakhs
@@ -196,7 +200,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
             {/* Description */}
             <CinematicReveal delay={0.55}>
-              <p className="font-paragraph text-base sm:text-lg md:text-xl text-muted-gray leading-relaxed mb-8">
+              <p className="font-paragraph text-sm sm:text-base md:text-lg lg:text-xl text-muted-gray leading-relaxed mb-6 sm:mb-8">
                 Your gateway to luxury living in East of Bangalore.
                 <br />
                 A sanctuary of 212 premium plots across 14 acres.
@@ -209,18 +213,18 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
 
             {/* Feature checklist (inspired by reference layout) */}
             <CinematicReveal delay={0.75}>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 sm:gap-y-4 sm:gap-x-6 mb-8 sm:mb-10">
                 {[
                   'Ready Infrastructure',
                   'Wide Internal Roads',
                   'Underground Utilities',
                   'Gated Community',
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-xs">
+                  <li key={item} className="flex items-center gap-2 sm:gap-3">
+                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary text-white flex items-center justify-center text-[10px] sm:text-xs flex-shrink-0">
                       ✓
                     </span>
-                    <span className="text-sm sm:text-base text-soft-charcoal">
+                    <span className="text-xs sm:text-sm md:text-base text-soft-charcoal">
                       {item}
                     </span>
                   </li>
@@ -229,12 +233,12 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
             </CinematicReveal>
 
             {/* CTA */}
-            <CinematicReveal delay={0.95} className="flex flex-col sm:flex-row gap-4">
+            <CinematicReveal delay={0.95} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 size="lg"
                 className="bg-primary text-white hover:bg-primary/90
-                           px-8 py-4 rounded-xl text-base sm:text-lg
-                           transition-all duration-500 hover:scale-105"
+                           px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-sm sm:text-base lg:text-lg
+                           transition-all duration-500 hover:scale-105 w-full sm:w-auto"
                 onClick={onOpenContactForm}
               >
                 Schedule Visit
@@ -245,7 +249,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                 variant="outline"
                 className="border-2 border-primary text-primary
                            hover:bg-pale-sage
-                           px-8 py-4 rounded-xl text-base sm:text-lg"
+                           px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-sm sm:text-base lg:text-lg w-full sm:w-auto"
                 onClick={() =>
                   document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
                 }
@@ -260,7 +264,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
       {/* Scroll Indicator */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden lg:flex"
       >
         <span className="text-[10px] uppercase tracking-[0.35em] text-primary/70">
           Scroll

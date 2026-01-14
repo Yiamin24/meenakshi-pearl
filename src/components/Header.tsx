@@ -40,11 +40,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-lg transition-all duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex h-16 sm:h-20 md:h-24 items-center justify-between">
@@ -76,11 +72,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleNavClick(item.href)}
-                className={`font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 ${
-                  isScrolled
-                    ? 'text-warm-espresso hover:text-primary'
-                    : 'text-off-white hover:text-primary drop-shadow-lg'
-                }`}
+                className="font-paragraph text-sm uppercase tracking-widest transition-colors duration-300 text-warm-espresso hover:text-primary"
               >
                 {item.label}
               </motion.button>
@@ -92,15 +84,11 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
 
             {/* 🔥 BIGGER ENQUIRE NOW — ALL SCREENS */}
             <Button
-              className={`font-paragraph font-medium tracking-wide transition-all duration-300
+              className="font-paragraph font-medium tracking-wide transition-all duration-300
                 h-11 px-5 text-sm
                 sm:h-12 sm:px-6 sm:text-base
                 md:h-14 md:px-10 md:text-base
-                rounded-xl ${
-                  isScrolled
-                    ? 'bg-primary text-white'
-                    : 'bg-primary text-white shadow-lg'
-                }`}
+                rounded-xl bg-primary text-white shadow-lg"
               onClick={onOpenContactForm}
             >
               Enquire Now
@@ -109,11 +97,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`md:hidden p-2 transition-colors ${
-                isScrolled
-                  ? 'text-warm-espresso'
-                  : 'text-off-white drop-shadow-lg'
-              }`}
+              className="md:hidden p-2 transition-colors text-warm-espresso"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -127,19 +111,13 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className={`md:hidden pb-4 space-y-3 ${
-              isScrolled ? 'bg-background/95' : 'bg-black/30'
-            }`}
+            className="md:hidden pb-4 space-y-3 bg-background/95"
           >
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`block w-full text-left font-paragraph text-sm uppercase tracking-widest py-2 transition-colors ${
-                  isScrolled
-                    ? 'text-warm-espresso hover:text-primary'
-                    : 'text-off-white hover:text-primary'
-                }`}
+                className="block w-full text-left font-paragraph text-sm uppercase tracking-widest py-2 transition-colors text-warm-espresso hover:text-primary"
               >
                 {item.label}
               </button>
