@@ -287,7 +287,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   return (
     <section id="about" ref={ref} className="py-12 sm:py-20 md:py-36 bg-warm-beige relative">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/15">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 md:divide-x divide-primary/15">
           {[
             { value: 14, label: "Acres of Land", suffix: "" },
             { value: 212, label: "Premium Plots", suffix: "" },
