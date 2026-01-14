@@ -838,6 +838,13 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
                 className="group relative h-full flex flex-col overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="relative w-full h-48 sm:h-56 md:h-72 overflow-hidden bg-pale-sage/20">
+                  {/* Available Badge at Top */}
+                  <div className="absolute top-4 left-4 z-10 bg-primary/90 text-white px-3 py-1.5 rounded-lg">
+                    <span className="font-paragraph text-xs sm:text-sm uppercase tracking-wider font-medium">
+                      Available
+                    </span>
+                  </div>
+                  
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -847,7 +854,7 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
 
                 <div className="relative flex-1 flex flex-col justify-between p-5 sm:p-6 md:p-7 bg-old-lace border border-primary/10">
                   <div>
-                    <p className="font-paragraph text-primary text-xs sm:text-sm uppercase tracking-widest mb-2">
+                    <p className="font-paragraph text-primary text-lg sm:text-xl md:text-2xl uppercase tracking-wide mb-3 font-semibold">
                       {card.subtitle}
                     </p>
                     <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl text-soft-charcoal mb-2 group-hover:text-primary transition-colors duration-500">
@@ -856,13 +863,6 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
                     <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray leading-relaxed">
                       {card.description}
                     </p>
-                  </div>
-
-                  <div className="mt-3 pt-3 border-t border-primary/10 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span className="font-paragraph text-primary text-xs uppercase tracking-wider">
-                      Available
-                    </span>
                   </div>
                 </div>
               </motion.div>
