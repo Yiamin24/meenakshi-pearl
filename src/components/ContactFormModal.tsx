@@ -111,7 +111,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                   <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                     {/* Name */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
                         Full Name *
                       </label>
                       <input
@@ -127,7 +127,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
 
                     {/* Phone */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
                         Phone Number *
                       </label>
                       <input
@@ -143,7 +143,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
 
                     {/* Email */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
                         Email Address *
                       </label>
                       <input
@@ -159,7 +159,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
 
                     {/* Message */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/70 mb-2">
+                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
                         Message *
                       </label>
                       <textarea

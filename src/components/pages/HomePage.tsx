@@ -1184,7 +1184,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
                   {/* Name */}
                   <div>
-                    <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal mb-2 sm:mb-3 font-medium">
+                    <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 sm:mb-3 font-semibold">
                       Full Name *
                     </label>
                     <input
@@ -1200,7 +1200,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
                   {/* Phone */}
                   <div>
-                    <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal mb-2 sm:mb-3 font-medium">
+                    <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 sm:mb-3 font-semibold">
                       Phone Number *
                     </label>
                     <input
@@ -1217,7 +1217,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
                 {/* Email */}
                 <div>
-                  <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal mb-2 sm:mb-3 font-medium">
+                  <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 sm:mb-3 font-semibold">
                     Email Address *
                   </label>
                   <input
@@ -1233,7 +1233,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
                 {/* Message */}
                 <div>
-                  <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal mb-2 sm:mb-3 font-medium">
+                  <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 sm:mb-3 font-semibold">
                     Message *
                   </label>
                   <textarea
