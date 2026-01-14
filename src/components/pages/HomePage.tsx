@@ -897,6 +897,14 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
 };
 
 const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: LegalApprovals[], onOpenContactForm: () => void }) => {
+  // Helper function to replace BDA with MPA and Bangalore with Malur
+  const replaceText = (text?: string) => {
+    if (!text) return text;
+    return text
+      .replace(/\bBDA\b/g, 'MPA')
+      .replace(/\bBangalore\b/gi, 'Malur');
+  };
+
   return (
     <section className="py-12 sm:py-20 md:py-36 bg-old-lace relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[250px] sm:w-[350px] md:w-[500px] h-[250px] sm:h-[350px] md:h-[500px] bg-primary/5 rounded-full opacity-20 pointer-events-none" />
@@ -939,16 +947,16 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
                 </div>
                 
                 <h3 className="font-heading text-lg sm:text-2xl md:text-3xl text-soft-charcoal mb-2 sm:mb-3 group-hover:text-primary transition-colors">
-                  {approval.approvalName}
+                  {replaceText(approval.approvalName)}
                 </h3>
                 <p className="font-paragraph text-xs sm:text-sm text-muted-gray leading-relaxed mb-3 sm:mb-4 flex-grow">
-                  {approval.description}
+                  {replaceText(approval.description)}
                 </p>
                 
                 {approval.issuingAuthority && (
                   <div className="pt-3 sm:pt-4 border-t border-primary/10 mt-auto">
                     <p className="text-[10px] sm:text-xs text-primary/70 uppercase tracking-wider">
-                      {approval.issuingAuthority}
+                      {replaceText(approval.issuingAuthority)}
                     </p>
                   </div>
                 )}
