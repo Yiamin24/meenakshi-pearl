@@ -292,7 +292,6 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
 >
   <div className="container mx-auto px-4 sm:px-6 md:px-8">
 
-    {/* STATS GRID */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/15">
       {[
         { value: 14, label: "Acres of Land", suffix: "" },
@@ -303,8 +302,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
           key={i}
           className="flex items-center justify-center p-6 sm:p-10 md:p-12 text-center"
         >
-          {/* TIGHT STACK CONTROLLER */}
-          <div className="flex flex-col items-center gap-0">
+          <div className="flex flex-col items-center">
 
             {/* NUMBER */}
             <motion.div
@@ -313,8 +311,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
               transition={{ duration: 1, delay: i * 0.2 }}
               className="font-heading text-5xl sm:text-6xl md:text-8xl
                          font-semibold text-primary
-                         tracking-tight leading-none
-                         drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]"
+                         tracking-tight leading-none"
             >
               {stat.value}
               <span className="text-4xl sm:text-5xl md:text-7xl align-top ml-1">
@@ -322,16 +319,19 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
               </span>
             </motion.div>
 
-            {/* LABEL — MOBILE FIX */}
+            {/* LABEL — ACTUAL FIX */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.5 + i * 0.2 }}
-              className="font-paragraph text-sm sm:text-lg md:text-xl
-                         text-soft-charcoal
-                         mt-0
-                         uppercase tracking-widest
-                         leading-[1] sm:leading-[1.2]"
+              className="
+                font-paragraph
+                text-sm sm:text-lg md:text-xl
+                uppercase tracking-widest
+                text-soft-charcoal
+                leading-tight
+                -mt-2 sm:mt-0
+              "
             >
               {stat.label}
             </motion.p>
@@ -341,7 +341,6 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
       ))}
     </div>
 
-    {/* QUOTE SECTION */}
     <div className="mt-12 sm:mt-20 md:mt-32 text-center">
       <CinematicReveal>
         <p className="font-heading text-2xl sm:text-3xl md:text-5xl
