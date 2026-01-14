@@ -1227,14 +1227,6 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
             )}
           </div>
         </CinematicReveal>
-
-        <CinematicReveal delay={0.6} className="pt-6 sm:pt-8 md:pt-12 border-t border-primary/10">
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 md:gap-8 text-[10px] sm:text-xs md:text-sm text-muted-gray font-paragraph uppercase tracking-widest text-center">
-            <span>Sales Office: Sarjapur Road</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Open Daily: 9:00 AM - 6:00 PM</span>
-          </div>
-        </CinematicReveal>
       </div>
     </section>
   );
