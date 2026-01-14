@@ -899,24 +899,7 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
           ))}
         </div>
 
-        <CinematicReveal delay={0.5}>
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 text-center py-6 sm:py-8 md:py-10 border-y border-primary/15 mb-8 sm:mb-10 md:mb-14">
-            {[
-              { number: "212", label: "Total Plots" },
-              { number: "14", label: "Acres" },
-              { number: "100%", label: "Vastu Compliant" }
-            ].map((stat, i) => (
-              <div key={i}>
-                <p className="font-heading text-4xl sm:text-5xl md:text-7xl text-primary mb-1">
-                  {stat.number}
-                </p>
-                <p className="font-paragraph text-xs sm:text-sm uppercase tracking-wider text-muted-gray">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </CinematicReveal>
+
 
         <CinematicReveal delay={0.7}>
           <div className="text-center">
