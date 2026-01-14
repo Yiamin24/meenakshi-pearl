@@ -1133,8 +1133,7 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <CinematicReveal>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-8xl text-soft-charcoal mb-6 sm:mb-8 tracking-tight">
-              Own The <br />
-              <span className="text-primary">Legacy</span>
+              <span className="whitespace-nowrap">Own the legacy</span>
             </h2>
           </CinematicReveal>
 
