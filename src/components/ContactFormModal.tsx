@@ -120,7 +120,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
+                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
                         placeholder="Your name"
                       />
                     </div>
@@ -136,7 +136,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.phoneNumber}
                         onChange={handleChange}
                         required
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
+                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
                         placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
@@ -152,7 +152,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
+                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -168,7 +168,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all resize-none"
+                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all resize-none"
                         placeholder="Tell us about your interest in Meenakshi Pearl..."
                       />
                     </div>
