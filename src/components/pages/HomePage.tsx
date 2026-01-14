@@ -285,87 +285,60 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   
   return (
-    <section
-  id="about"
-  ref={ref}
-  className="py-12 sm:py-20 md:py-36 bg-warm-beige relative"
+    <section id="about" ref={ref} className="py-12 sm:py-20 md:py-36 bg-warm-beige relative">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/15">
+          {[
+            { value: 14, label: "Acres of Land", suffix: "" },
+            { value: 212, label: "Premium Plots", suffix: "" },
+            { value: 100, label: "Vastu Compliant", suffix: "%" }
+          ].map((stat, i) => (
+            <div key={i} className="flex flex-col items-center justify-center p-6 sm:p-10 md:p-12 text-center">
+             <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={isInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 1, delay: i * 0.2 }}
+  className="font-heading text-5xl sm:text-6xl md:text-8xl 
+             font-semibold text-primary
+             tracking-tight leading-none
+             drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]"
 >
-  <div className="container mx-auto px-4 sm:px-6 md:px-8">
-    
-    {/* Stats Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-primary/15">
-      {[
-        { value: 14, label: "Acres of Land", suffix: "" },
-        { value: 212, label: "Premium Plots", suffix: "" },
-        { value: 100, label: "Vastu Compliant", suffix: "%" }
-      ].map((stat, i) => (
-        <div
-          key={i}
-          className="flex flex-col items-center justify-center p-6 sm:p-10 md:p-12 text-center"
-        >
-          
-          {/* Number */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: i * 0.2 }}
-            className="font-heading text-5xl sm:text-6xl md:text-8xl 
-                       font-semibold text-primary
-                       tracking-tight leading-[0.9]
-                       drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]"
-          >
-            {stat.value}
-            <span className="text-4xl sm:text-5xl md:text-7xl align-top ml-1">
-              {stat.suffix}
-            </span>
-          </motion.div>
+  {stat.value}
+  <span className="text-4xl sm:text-5xl md:text-7xl align-top ml-1">
+    {stat.suffix}
+  </span>
+</motion.div>
 
-          {/* Label */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1, delay: 0.5 + i * 0.2 }}
-            className="font-paragraph text-sm sm:text-lg md:text-xl
-                       text-soft-charcoal
-                       mt-1 sm:mt-2
-                       uppercase tracking-widest"
-          >
-            {stat.label}
-          </motion.p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
+                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal mt-3 sm:mt-4 uppercase tracking-widest"
+              >
+                {stat.label}
+              </motion.p>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-
-    {/* Bottom Quote */}
-    <div className="mt-12 sm:mt-20 md:mt-32 text-center">
-      <CinematicReveal>
-        <p className="font-heading text-2xl sm:text-3xl md:text-5xl 
-                      text-soft-charcoal max-w-4xl mx-auto 
-                      leading-relaxed px-4 mb-8 sm:mb-12">
-          "A meticulously planned ecosystem where{" "}
-          <span className="text-primary">luxury meets legacy</span>. Every
-          square foot is designed to appreciate in value and quality of life."
-        </p>
-      </CinematicReveal>
-
-      <CinematicReveal delay={0.2}>
-        <Button
-          onClick={onOpenContactForm}
-          className="bg-primary text-white hover:bg-primary/90 
-                     font-paragraph text-sm sm:text-base 
-                     px-6 sm:px-8 py-2.5 sm:py-3 
-                     rounded-lg tracking-wide 
-                     transition-all duration-300 
-                     hover:scale-105 shadow-sm hover:shadow-md"
-        >
-          Learn More About Our Vision
-        </Button>
-      </CinematicReveal>
-    </div>
-
-  </div>
-</section>
-
+        
+        <div className="mt-12 sm:mt-20 md:mt-32 text-center">
+          <CinematicReveal>
+            <p className="font-heading text-2xl sm:text-3xl md:text-5xl text-soft-charcoal max-w-4xl mx-auto leading-relaxed px-4 mb-8 sm:mb-12">
+              "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
+            </p>
+          </CinematicReveal>
+          
+          <CinematicReveal delay={0.2}>
+            <Button 
+              onClick={onOpenContactForm}
+              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Learn More About Our Vision
+            </Button>
+          </CinematicReveal>
+        </div>
+      </div>
+    </section>
   );
 };
 
