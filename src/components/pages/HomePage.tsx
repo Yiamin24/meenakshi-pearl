@@ -328,7 +328,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
         <div className="mt-12 sm:mt-20 md:mt-32 text-center">
           <CinematicReveal>
             <p className="font-heading text-2xl sm:text-3xl md:text-5xl text-soft-charcoal max-w-4xl mx-auto leading-relaxed px-4 mb-8 sm:mb-12">
-              "A meticulously planned ecosystem where <span className="text-primary">luxury meets legacy</span>. Every square foot is designed to appreciate in value and quality of life."
+              "A meticulously planned ecosystem where luxury meets <span className="text-primary">legacy</span>. Every square foot is designed to appreciate in value and quality of life."
             </p>
           </CinematicReveal>
           
