@@ -536,16 +536,12 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
         </div>
 
         <motion.div
-          className="border-t border-primary/15 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 pt-8 sm:pt-10 md:pt-12"
+          className="border-t border-primary/15 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 pt-8 sm:pt-10 md:pt-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="text-center">
-            <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-2 sm:mb-3">{infrastructure.length}+</div>
-            <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Premium Features</p>
-          </div>
           <div className="text-center">
             <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary mb-2 sm:mb-3">100%</div>
             <p className="font-paragraph text-xs sm:text-sm text-muted-gray">Global Standards</p>
