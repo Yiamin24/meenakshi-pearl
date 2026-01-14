@@ -58,17 +58,12 @@ export default function Footer() {
         >
           <div className="text-center sm:text-left">
             <p className="text-primary font-medium mb-0.5 sm:mb-1">Sales Office</p>
-            <p className="text-[10px] sm:text-xs md:text-sm">Sarjapur Road, Bangalore</p>
+            <p className="text-[10px] sm:text-xs md:text-sm">New Thippasandra, Indiranagar</p>
           </div>
           <div className="hidden sm:block w-px h-6 sm:h-10 md:h-12 bg-primary/30" />
           <div className="text-center sm:text-left">
             <p className="text-primary font-medium mb-0.5 sm:mb-1">Contact</p>
-            <p className="text-[10px] sm:text-xs md:text-sm">+91 98765 43210</p>
-          </div>
-          <div className="hidden sm:block w-px h-6 sm:h-10 md:h-12 bg-primary/30" />
-          <div className="text-center sm:text-left">
-            <p className="text-primary font-medium mb-0.5 sm:mb-1">Email</p>
-            <p className="text-[10px] sm:text-xs md:text-sm">info@meenakshipearl.com</p>
+            <p className="text-[10px] sm:text-xs md:text-sm">8792991263</p>
           </div>
         </motion.div>
 
