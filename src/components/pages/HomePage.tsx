@@ -143,115 +143,140 @@ export default function HomePage() {
 // --- Sections ---
 
 const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
 
   return (
     <section
       ref={ref}
-      className="relative h-screen sm:min-h-screen w-full overflow-hidden flex items-center justify-center bg-old-lace"
+      className="relative w-full min-h-screen overflow-hidden bg-old-lace"
     >
-      {/* Hero Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-12 sm:py-20 md:py-28"
+        className="relative z-10 grid grid-cols-1 lg:grid-cols-2 min-h-screen"
       >
-        {/* Heading */}
-        <CinematicReveal delay={0.3}>
-          <h1
-            className="font-heading
-                       text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-                       text-soft-charcoal
-                       mb-6 sm:mb-8
-                       font-semibold leading-tight tracking-tight"
-          >
-            Plots starting from{' '}
-            <span
-              className="text-primary font-semibold whitespace-nowrap"
-            >
-              ₹38 Lakhs
-            </span>
-          </h1>
-        </CinematicReveal>
+        {/* LEFT: MASTERPLAN / IMAGE */}
+        <div className="relative h-[55vh] lg:h-auto">
+          <img
+            src="/images/masterplan.jpg" // replace with your image
+            alt="Project Masterplan"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
 
-        {/* Description */}
-        <CinematicReveal delay={0.6}>
-          <p
-            className="font-paragraph
-                       text-base sm:text-lg md:text-xl lg:text-2xl
-                       text-muted-gray
-                       max-w-4xl mx-auto
-                       mb-10 sm:mb-12 md:mb-16
-                       leading-relaxed tracking-normal"
-          >
-            Your gateway to luxury living in East of Bangalore.
-            <br className="hidden md:block" />
-            A sanctuary of 212 premium plots across 14 acres.
-            <br className="hidden md:block" />
-            <span
-              className="text-primary font-semibold"
-            >
-              Grade-A Plotted Development
-            </span>
-          </p>
-        </CinematicReveal>
+          {/* Dark cinematic overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent" />
 
-        {/* CTA Buttons */}
-        <CinematicReveal
-          delay={0.8}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap"
-        >
-          <Button
-            size="lg"
-            className="bg-primary text-white hover:bg-primary/90
-                       font-paragraph text-base sm:text-lg
-                       px-8 sm:px-10 md:px-12
-                       py-4 sm:py-5 md:py-6
-                       rounded-xl w-full sm:w-auto tracking-wide
-                       transition-all duration-500 hover:scale-105
-                       shadow-sm hover:shadow-md"
-            onClick={onOpenContactForm}
-          >
-            Schedule Visit
-          </Button>
+          {/* Subtle brand mark */}
+          <div className="absolute bottom-6 left-6 text-white/80 text-xs tracking-[0.3em] uppercase">
+            Master Planned Community
+          </div>
+        </div>
 
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-primary text-primary
-                       hover:bg-pale-sage
-                       font-paragraph text-base sm:text-lg
-                       px-8 sm:px-10 md:px-12
-                       py-4 sm:py-5 md:py-6
-                       rounded-xl w-full sm:w-auto tracking-wide
-                       transition-all duration-500
-                       shadow-sm"
-            onClick={() =>
-              document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            View Masterplan
-          </Button>
-        </CinematicReveal>
+        {/* RIGHT: CONTENT PANEL */}
+        <div className="flex items-center justify-center px-6 sm:px-10 md:px-14 lg:px-20 bg-white">
+          <div className="max-w-xl w-full text-left">
+            
+            {/* Badge */}
+            <CinematicReveal delay={0.2}>
+              <span className="inline-block mb-6 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs tracking-widest uppercase font-medium">
+                Premium Plotted Development
+              </span>
+            </CinematicReveal>
+
+            {/* Heading */}
+            <CinematicReveal delay={0.35}>
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight text-soft-charcoal mb-6">
+                Plots starting from{' '}
+                <span className="text-primary whitespace-nowrap">
+                  ₹38 Lakhs
+                </span>
+              </h1>
+            </CinematicReveal>
+
+            {/* Description */}
+            <CinematicReveal delay={0.55}>
+              <p className="font-paragraph text-base sm:text-lg md:text-xl text-muted-gray leading-relaxed mb-8">
+                Your gateway to luxury living in East of Bangalore.
+                <br />
+                A sanctuary of 212 premium plots across 14 acres.
+                <br />
+                <span className="text-primary font-semibold">
+                  Grade-A Plotted Development
+                </span>
+              </p>
+            </CinematicReveal>
+
+            {/* Feature checklist (inspired by reference layout) */}
+            <CinematicReveal delay={0.75}>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+                {[
+                  'Ready Infrastructure',
+                  'Wide Internal Roads',
+                  'Underground Utilities',
+                  'Gated Community',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-xs">
+                      ✓
+                    </span>
+                    <span className="text-sm sm:text-base text-soft-charcoal">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </CinematicReveal>
+
+            {/* CTA */}
+            <CinematicReveal delay={0.95} className="flex flex-col sm:flex-row gap-4">
+              <Button
+                size="lg"
+                className="bg-primary text-white hover:bg-primary/90
+                           px-8 py-4 rounded-xl text-base sm:text-lg
+                           transition-all duration-500 hover:scale-105"
+                onClick={onOpenContactForm}
+              >
+                Schedule Visit
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary text-primary
+                           hover:bg-pale-sage
+                           px-8 py-4 rounded-xl text-base sm:text-lg"
+                onClick={() =>
+                  document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              >
+                View Masterplan
+              </Button>
+            </CinematicReveal>
+          </div>
+        </div>
       </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-4 sm:bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[9px] uppercase tracking-[0.3em] text-primary/70">
-          Scroll to Explore
+        <span className="text-[10px] uppercase tracking-[0.35em] text-primary/70">
+          Scroll
         </span>
         <motion.div
-          animate={{ height: [20, 40, 20] }}
+          animate={{ height: [18, 36, 18] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-[1px] bg-primary/50"
+          className="w-px bg-primary/60"
         />
       </motion.div>
     </section>
-
+  
   );
 };
 
