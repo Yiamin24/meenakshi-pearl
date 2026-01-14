@@ -162,11 +162,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
       >
         {/* LEFT: MASTERPLAN / IMAGE */}
         <div className="relative h-[55vh] lg:h-auto">
-          <img
-            src="/images/masterplan.jpg" // replace with your image
-            alt="Project Masterplan"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <Image src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg" alt="Meenakshi Pearl Aerial View - Gated Community" className="absolute inset-0 w-full h-full object-cover" />
 
           {/* Dark cinematic overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent" />
