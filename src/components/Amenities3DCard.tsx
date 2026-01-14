@@ -349,43 +349,6 @@ const Amenities3DSection: React.FC<{ amenities: ProjectAmenities[] }> = ({ ameni
             <AmenityCard key={amenity._id} amenity={amenity} index={index} />
           ))}
         </div>
-
-        {/* ===== UPDATED SIZE ONLY ===== */}
-        <motion.div
-          className="mt-8 md:mt-12 pt-8 md:pt-12 border-t border-primary/20"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="grid grid-cols-3 gap-6 md:gap-12">
-            <div className="text-center">
-              <div className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 font-semibold tracking-tight">
-                {amenities.length}+
-              </div>
-              <p className="font-paragraph text-sm md:text-base text-foreground/60 uppercase tracking-widest">
-                Premium Amenities
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 font-semibold tracking-tight">
-                100<span className="text-3xl sm:text-4xl md:text-5xl align-top">%</span>
-              </div>
-              <p className="font-paragraph text-sm md:text-base text-foreground/60 uppercase tracking-widest">
-                World-Class Quality
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 font-semibold tracking-tight">
-                ∞
-              </div>
-              <p className="font-paragraph text-sm md:text-base text-foreground/60 uppercase tracking-widest">
-                Timeless Design
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
