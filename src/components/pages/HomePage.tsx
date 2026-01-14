@@ -145,172 +145,113 @@ export default function HomePage() {
 const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const imageParallax = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section
       ref={ref}
-      className="relative h-screen w-full overflow-hidden bg-soft-charcoal"
+      className="relative h-screen sm:min-h-screen w-full overflow-hidden flex items-center justify-center bg-old-lace"
     >
-      {/* Split Layout Container */}
-      <div className="relative h-full w-full flex flex-col lg:flex-row">
-        
-        {/* Left Side - Content */}
-        <motion.div 
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-20 w-full lg:w-[45%] h-full flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24 py-20 lg:py-0 bg-soft-charcoal"
-        >
-          {/* Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-old-lace mb-6 leading-[0.95] tracking-tight">
-              Expanding
-              <br />
-              <span className="italic font-light">Horizons</span>
-            </h1>
-          </motion.div>
-
-          {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="font-paragraph text-sm sm:text-base md:text-lg text-warm-beige/80 max-w-xl mb-10 leading-relaxed">
-              Crafting urban masterpieces, we redefine cityscapes by seamlessly blending modern real estate into our dynamic skylines.
-            </p>
-          </motion.div>
-
-          {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Button
-              size="lg"
-              className="bg-transparent border-2 border-old-lace text-old-lace hover:bg-old-lace hover:text-soft-charcoal
-                         font-paragraph text-sm sm:text-base
-                         px-8 sm:px-10
-                         py-3 sm:py-4
-                         rounded-full tracking-wide
-                         transition-all duration-500
-                         shadow-none"
-              onClick={onOpenContactForm}
-            >
-              Find a house
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Right Side - Hero Image */}
-        <motion.div 
-          className="relative w-full lg:w-[55%] h-1/2 lg:h-full overflow-hidden"
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-soft-charcoal/60 via-soft-charcoal/40 to-transparent z-10" />
-          
-          {/* Hero Image with Parallax */}
-          <motion.div 
-            style={{ y: imageParallax }}
-            className="relative w-full h-full"
-          >
-            <Image
-              src="https://static.wixstatic.com/media/cef78c_1ed0e26987f94f4da1faa6988026c93d~mv2.png"
-              alt="Modern Architecture"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-
-          {/* Circular Scroll Indicator - Bottom Right */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-8 right-8 z-20 hidden lg:flex"
-          >
-            <div className="relative w-24 h-24 flex items-center justify-center">
-              {/* Rotating Circle Border */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0"
-              >
-                <svg className="w-full h-full" viewBox="0 0 100 100">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="48"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="0.5"
-                    className="text-old-lace/40"
-                    strokeDasharray="4 4"
-                  />
-                </svg>
-              </motion.div>
-              
-              {/* Scroll Text Path */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0"
-              >
-                <svg className="w-full h-full" viewBox="0 0 100 100">
-                  <defs>
-                    <path
-                      id="circlePath"
-                      d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"
-                    />
-                  </defs>
-                  <text className="text-[8px] fill-old-lace/60 uppercase tracking-[0.3em] font-paragraph">
-                    <textPath href="#circlePath" startOffset="0%">
-                      Scroll • Explore • Discover • 
-                    </textPath>
-                  </text>
-                </svg>
-              </motion.div>
-
-              {/* Center Arrow */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10"
-              >
-                <svg className="w-6 h-6 text-old-lace" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Mobile Scroll Indicator */}
+      {/* Hero Content */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 lg:hidden"
+        style={{ opacity }}
+        className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-12 sm:py-20 md:py-28"
       >
-        <span className="text-[9px] uppercase tracking-[0.3em] text-old-lace/70 font-paragraph">
-          Scroll
+        {/* Heading */}
+        <CinematicReveal delay={0.3}>
+          <h1
+            className="font-heading
+                       text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+                       text-soft-charcoal
+                       mb-6 sm:mb-8
+                       font-semibold leading-tight tracking-tight"
+          >
+            Plots starting from{' '}
+            <span
+              className="text-primary font-semibold whitespace-nowrap"
+            >
+              ₹38 Lakhs
+            </span>
+          </h1>
+        </CinematicReveal>
+
+        {/* Description */}
+        <CinematicReveal delay={0.6}>
+          <p
+            className="font-paragraph
+                       text-base sm:text-lg md:text-xl lg:text-2xl
+                       text-muted-gray
+                       max-w-4xl mx-auto
+                       mb-10 sm:mb-12 md:mb-16
+                       leading-relaxed tracking-normal"
+          >
+            Your gateway to luxury living in East of Bangalore.
+            <br className="hidden md:block" />
+            A sanctuary of 212 premium plots across 14 acres.
+            <br className="hidden md:block" />
+            <span
+              className="text-primary font-semibold"
+            >
+              Grade-A Plotted Development
+            </span>
+          </p>
+        </CinematicReveal>
+
+        {/* CTA Buttons */}
+        <CinematicReveal
+          delay={0.8}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap"
+        >
+          <Button
+            size="lg"
+            className="bg-primary text-white hover:bg-primary/90
+                       font-paragraph text-base sm:text-lg
+                       px-8 sm:px-10 md:px-12
+                       py-4 sm:py-5 md:py-6
+                       rounded-xl w-full sm:w-auto tracking-wide
+                       transition-all duration-500 hover:scale-105
+                       shadow-sm hover:shadow-md"
+            onClick={onOpenContactForm}
+          >
+            Schedule Visit
+          </Button>
+
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-2 border-primary text-primary
+                       hover:bg-pale-sage
+                       font-paragraph text-base sm:text-lg
+                       px-8 sm:px-10 md:px-12
+                       py-4 sm:py-5 md:py-6
+                       rounded-xl w-full sm:w-auto tracking-wide
+                       transition-all duration-500
+                       shadow-sm"
+            onClick={() =>
+              document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            View Masterplan
+          </Button>
+        </CinematicReveal>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        style={{ opacity }}
+        className="absolute bottom-4 sm:bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+      >
+        <span className="text-[9px] uppercase tracking-[0.3em] text-primary/70">
+          Scroll to Explore
         </span>
         <motion.div
           animate={{ height: [20, 40, 20] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-[1px] bg-old-lace/50"
+          className="w-[1px] bg-primary/50"
         />
       </motion.div>
     </section>
+
   );
 };
 
