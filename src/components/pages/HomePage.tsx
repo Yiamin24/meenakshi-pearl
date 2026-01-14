@@ -150,90 +150,144 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
   return (
     <section
       ref={ref}
-      className="relative h-screen sm:min-h-screen w-full overflow-hidden flex items-center justify-center bg-old-lace"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-old-lace"
     >
-      {/* Hero Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center w-full py-12 sm:py-20 md:py-28"
+        className="relative z-10 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20"
       >
-        {/* Heading */}
-        <CinematicReveal delay={0.3}>
-          <h1
-            className="font-heading
-                       text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-                       text-soft-charcoal
-                       mb-6 sm:mb-8
-                       font-semibold leading-tight tracking-tight"
-          >
-            Plots starting from{' '}
-            <span
-              className="text-primary font-semibold whitespace-nowrap"
-            >
-              ₹38 Lakhs
-            </span>
-          </h1>
-        </CinematicReveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+          {/* Left Side - Aerial Image */}
+          <CinematicReveal delay={0.2}>
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-primary/20">
+              <Image
+                src="https://static.wixstatic.com/media/cef78c_d87b85be2bf247a1a36baa0bdc65b893~mv2.png?originWidth=1152&originHeight=896"
+                alt="Meenakshi Pearl Aerial View"
+                className="w-full h-full object-cover"
+              />
+              {/* Overlay gradient for better text visibility if needed */}
+              <div className="absolute inset-0 bg-gradient-to-t from-soft-charcoal/10 to-transparent pointer-events-none" />
+            </div>
+          </CinematicReveal>
 
-        {/* Description */}
-        <CinematicReveal delay={0.6}>
-          <p
-            className="font-paragraph
-                       text-base sm:text-lg md:text-xl lg:text-2xl
-                       text-muted-gray
-                       max-w-4xl mx-auto
-                       mb-10 sm:mb-12 md:mb-16
-                       leading-relaxed tracking-normal"
-          >
-            Your gateway to luxury living in East of Bangalore.
-            <br className="hidden md:block" />
-            A sanctuary of 212 premium plots across 14 acres.
-            <br className="hidden md:block" />
-            <span
-              className="text-primary font-semibold"
-            >
-              Grade-A Plotted Development
-            </span>
-          </p>
-        </CinematicReveal>
+          {/* Right Side - Content */}
+          <div className="flex flex-col justify-center space-y-6 md:space-y-8">
+            {/* Phase Badge */}
+            <CinematicReveal delay={0.3}>
+              <div className="inline-flex items-center justify-center bg-primary px-6 py-3 rounded-lg self-start">
+                <span className="font-paragraph text-white text-sm md:text-base uppercase tracking-wider font-semibold">
+                  Phase-2 Launched
+                </span>
+              </div>
+            </CinematicReveal>
 
-        {/* CTA Buttons */}
-        <CinematicReveal
-          delay={0.8}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap"
-        >
-          <Button
-            size="lg"
-            className="bg-primary text-white hover:bg-primary/90
-                       font-paragraph text-base sm:text-lg
-                       px-8 sm:px-10 md:px-12
-                       py-4 sm:py-5 md:py-6
-                       rounded-xl w-full sm:w-auto tracking-wide
-                       transition-all duration-500 hover:scale-105
-                       shadow-sm hover:shadow-md"
-            onClick={onOpenContactForm}
-          >
-            Schedule Visit
-          </Button>
+            {/* Main Heading */}
+            <CinematicReveal delay={0.4}>
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-soft-charcoal leading-tight tracking-tight">
+                Introducing <span className="text-primary">Indian Coral</span> and <span className="text-primary">Palash</span>, Our Premium Plots.
+              </h1>
+            </CinematicReveal>
 
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-primary text-primary
-                       hover:bg-pale-sage
-                       font-paragraph text-base sm:text-lg
-                       px-8 sm:px-10 md:px-12
-                       py-4 sm:py-5 md:py-6
-                       rounded-xl w-full sm:w-auto tracking-wide
-                       transition-all duration-500
-                       shadow-sm"
-            onClick={() =>
-              document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            View Masterplan
-          </Button>
-        </CinematicReveal>
+            {/* Infrastructure Features Grid */}
+            <CinematicReveal delay={0.5}>
+              <div className="grid grid-cols-2 gap-4 md:gap-6">
+                {[
+                  { icon: Check, label: "Road Work Completed", color: "bg-pale-sage" },
+                  { icon: Check, label: "Underground Pipelines", color: "bg-pale-sage" },
+                  { icon: Check, label: "Approvals Under Process", color: "bg-warm-beige" },
+                  { icon: Check, label: "Electrical Network", color: "bg-pale-sage" }
+                ].map((feature, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.5 + (i * 0.1) }}
+                    className={`flex items-center gap-3 ${feature.color} px-4 py-3 rounded-lg border border-primary/10`}
+                  >
+                    <feature.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="font-paragraph text-xs md:text-sm text-soft-charcoal font-medium">
+                      {feature.label}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </CinematicReveal>
+
+            {/* Pricing Section */}
+            <CinematicReveal delay={0.7}>
+              <div className="bg-warm-beige border-2 border-primary/20 rounded-xl p-6 md:p-8">
+                <p className="font-paragraph text-sm md:text-base text-muted-gray mb-3 uppercase tracking-wider">
+                  Build & Stay Plots
+                </p>
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="font-heading text-5xl md:text-6xl lg:text-7xl text-soft-charcoal font-bold">
+                    ₹54L
+                  </span>
+                  <span className="font-paragraph text-xl md:text-2xl text-primary font-semibold">*</span>
+                </div>
+                <p className="font-paragraph text-xs md:text-sm text-muted-gray mb-6">
+                  1800+ Sq.Ft
+                </p>
+                <p className="font-paragraph text-xs text-muted-gray/70 leading-relaxed">
+                  A+ Grade Villa Plots, 7 Mins from Manipal Jn. Mysuru
+                </p>
+              </div>
+            </CinematicReveal>
+
+            {/* CTA Buttons */}
+            <CinematicReveal delay={0.8}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-primary text-white hover:bg-primary/90
+                             font-paragraph text-base md:text-lg
+                             px-8 md:px-10 py-4 md:py-5
+                             rounded-xl tracking-wide
+                             transition-all duration-500 hover:scale-105
+                             shadow-md hover:shadow-lg"
+                  onClick={onOpenContactForm}
+                >
+                  Schedule Site Visit
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-primary text-primary
+                             hover:bg-pale-sage
+                             font-paragraph text-base md:text-lg
+                             px-8 md:px-10 py-4 md:py-5
+                             rounded-xl tracking-wide
+                             transition-all duration-500
+                             shadow-sm"
+                  onClick={() =>
+                    document.getElementById('plots')?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                >
+                  View Plot Details
+                </Button>
+              </div>
+            </CinematicReveal>
+
+            {/* Developer Branding */}
+            <CinematicReveal delay={0.9}>
+              <div className="flex items-center gap-3 pt-4 border-t border-primary/10">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="font-heading text-primary text-xl font-bold">M</span>
+                </div>
+                <div>
+                  <p className="font-heading text-sm md:text-base text-soft-charcoal font-semibold">
+                    Meenakshi Pearl
+                  </p>
+                  <p className="font-paragraph text-xs text-muted-gray">
+                    Premium Gated Community
+                  </p>
+                </div>
+              </div>
+            </CinematicReveal>
+          </div>
+        </div>
       </motion.div>
 
       {/* Scroll Indicator */}
@@ -251,7 +305,6 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         />
       </motion.div>
     </section>
-
   );
 };
 
