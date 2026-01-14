@@ -313,7 +313,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal mt-1 sm:mt-4 uppercase tracking-widest"
+                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal mt-1.5 sm:mt-4 uppercase tracking-widest"
               >
                 {stat.label}
               </motion.p>
