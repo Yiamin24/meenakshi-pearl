@@ -396,8 +396,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
             <div className="space-y-6 sm:space-y-8">
               {[
-                { label: "Sarjapur Main Road", dist: "15 mins" },
-                { label: "Electronic City", dist: "25 mins" },
+                { label: "Hoskote", dist: "20 mins" },
                 { label: "Whitefield Tech Park", dist: "40 mins" },
                 { label: "Intl. Airport", dist: "60 mins" }
               ].map((item, i) => (
