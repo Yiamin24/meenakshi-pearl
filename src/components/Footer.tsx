@@ -57,7 +57,7 @@ export default function Footer() {
           transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
         >
           <div className="text-center sm:text-left">
-            <p className="text-primary font-medium mb-0.5 sm:mb-1">Sales Office</p>
+            <p className="text-primary font-medium mb-0.5 sm:mb-1">Head Office</p>
             <p className="text-[10px] sm:text-xs md:text-sm">New Thippasandra, Indiranagar</p>
           </div>
           <div className="hidden sm:block w-px h-6 sm:h-10 md:h-12 bg-primary/30" />
