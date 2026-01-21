@@ -1030,70 +1030,104 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
           </CinematicReveal>
         </div>
 
-        {/* Investment Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-12 sm:mb-16 md:mb-20">
-          {investmentHighlights.map((highlight, index) => {
+        {/* Investment Highlights Grid - 2x2 Layout */}
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-12 sm:mb-16 md:mb-20 max-w-7xl mx-auto">
+          {investmentHighlights.slice(0, 4).map((highlight, index) => {
             const { Icon, gradient } = iconMap[index % iconMap.length];
             
             return (
               <CinematicReveal key={highlight._id} delay={index * 0.1}>
                 <motion.div
                   className="group relative h-full"
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 >
                   {/* Card Container */}
-                  <div className="relative h-full bg-old-lace border-2 border-primary/15 rounded-2xl p-6 sm:p-7 md:p-8 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                  <div className="relative h-full bg-old-lace border-2 border-primary/15 rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
                     {/* Gradient Background on Hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    {/* Animated Pattern Background */}
+                    <motion.div 
+                      className="absolute inset-0 opacity-5"
+                      initial={{ backgroundPosition: '0% 0%' }}
+                      animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
+                      transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
+                      style={{
+                        backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)',
+                        backgroundSize: '20px 20px'
+                      }}
+                    />
                     
                     {/* Top Border Accent */}
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
 
                     {/* Content */}
                     <div className="relative z-10">
-                      {/* Icon Container */}
+                      {/* Icon Container with Glow Effect */}
                       <motion.div 
-                        className={`w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 rounded-xl bg-gradient-to-br ${gradient} border border-primary/20 flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                        className={`relative w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-2xl bg-gradient-to-br ${gradient} border-2 border-primary/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
                         whileHover={{ rotate: 12 }}
                       >
-                        <Icon className="w-7 sm:w-8 md:w-10 h-7 sm:h-8 md:h-10 text-primary" />
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <Icon className="relative w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-primary drop-shadow-lg" />
                       </motion.div>
 
                       {/* Title */}
-                      <h3 className="font-heading text-xl sm:text-2xl md:text-3xl text-soft-charcoal mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
+                      <h3 className="font-heading text-base sm:text-xl md:text-2xl lg:text-3xl text-soft-charcoal mb-2 sm:mb-3 md:mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
                         {highlight.highlightTitle}
                       </h3>
 
                       {/* Quote */}
                       {highlight.highlightQuote && (
-                        <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray mb-3 sm:mb-4 leading-relaxed">
+                        <p className="font-paragraph text-xs sm:text-sm md:text-base lg:text-lg text-muted-gray mb-2 sm:mb-3 md:mb-4 leading-relaxed">
                           {highlight.highlightQuote}
                         </p>
                       )}
 
                       {/* Additional Context */}
                       {highlight.additionalContext && (
-                        <p className="font-paragraph text-xs sm:text-sm text-muted-gray leading-relaxed group-hover:text-soft-charcoal/70 transition-colors duration-300">
+                        <p className="font-paragraph text-[10px] sm:text-xs md:text-sm text-muted-gray leading-relaxed group-hover:text-soft-charcoal/70 transition-colors duration-300">
                           {highlight.additionalContext}
                         </p>
                       )}
 
                       {/* Decorative Corner Element */}
-                      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
+                      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
+                      
+                      {/* Decorative Top Left Corner */}
+                      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-t-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
                     </div>
                   </div>
 
                   {/* Floating Badge */}
                   <motion.div
-                    className="absolute -top-3 -right-3 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-lg"
+                    className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-xl"
                     initial={{ scale: 0, rotate: -180 }}
                     whileInView={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                   </motion.div>
+
+                  {/* Animated Shine Effect */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)',
+                      backgroundSize: '200% 200%'
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 0%', '200% 200%']
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: 'linear'
+                    }}
+                  />
                 </motion.div>
               </CinematicReveal>
             );
