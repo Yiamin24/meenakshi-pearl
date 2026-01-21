@@ -905,7 +905,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
   };
 
   return (
-    <section className="py-12 sm:py-20 md:py-36 bg-old-lace relative overflow-hidden">
+    <section className="pt-12 sm:pt-20 md:pt-36 bg-old-lace relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[250px] sm:w-[350px] md:w-[500px] h-[250px] sm:h-[350px] md:h-[500px] bg-primary/5 rounded-full opacity-20 pointer-events-none" />
       
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
