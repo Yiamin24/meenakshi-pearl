@@ -12,7 +12,7 @@ import {
 } from '@/entities';
 import { Image } from '@/components/ui/image';
 import { Button } from '@/components/ui/button';
-import { MapPin, Phone, Mail, ArrowRight, Check, Lock, TrendingUp } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight, Check, Lock, TrendingUp, Sparkles, Target, Shield, Zap, Award, BarChart3 } from 'lucide-react';
 import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
 import Amenities3DSection from '@/components/Amenities3DCard';
@@ -977,83 +977,182 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
 const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { investmentHighlights: InvestmentHighlights[], onOpenContactForm: () => void }) => {
   const sectionRef = useRef(null);
 
+  // Icon mapping for each investment highlight
+  const iconMap = [
+    { Icon: Target, gradient: "from-primary/20 to-primary/5" },
+    { Icon: BarChart3, gradient: "from-primary/15 to-primary/10" },
+    { Icon: Shield, gradient: "from-primary/25 to-primary/5" },
+    { Icon: Zap, gradient: "from-primary/20 to-primary/10" },
+    { Icon: Award, gradient: "from-primary/15 to-primary/5" },
+    { Icon: Sparkles, gradient: "from-primary/20 to-primary/5" },
+  ];
+
   return (
-    <section ref={sectionRef} className="py-12 sm:py-20 md:py-36 bg-warm-beige relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.div 
-          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-24 border-b border-primary/15 pb-6 sm:pb-8 gap-6 sm:gap-8"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+    <section ref={sectionRef} className="py-16 sm:py-24 md:py-36 bg-gradient-to-br from-warm-beige via-old-lace to-warm-beige relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] md:w-[700px] h-[300px] sm:h-[500px] md:h-[700px] bg-primary/5 rounded-full blur-3xl opacity-30 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[250px] sm:w-[400px] md:w-[600px] h-[250px] sm:h-[400px] md:h-[600px] bg-primary/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16 md:mb-24">
           <CinematicReveal>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-7xl text-soft-charcoal">
+            <motion.div 
+              className="inline-flex items-center justify-center w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 mb-6 sm:mb-8 border-2 border-primary/20"
+              whileHover={{ scale: 1.1, rotate: 360 }}
+              transition={{ duration: 0.8 }}
+            >
+              <TrendingUp className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-primary" />
+            </motion.div>
+          </CinematicReveal>
+
+          <CinematicReveal delay={0.15}>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-4 sm:mb-6 leading-tight">
               The Investment <br />
-              <span className="text-primary">Advantage</span>
+              <span className="text-primary italic">Advantage</span>
             </h2>
           </CinematicReveal>
-          <CinematicReveal delay={0.2}>
-            <div className="flex items-center gap-2 text-muted-gray mt-4 md:mt-0 whitespace-nowrap text-xs sm:text-sm">
-              <TrendingUp className="w-5 sm:w-6 h-5 sm:h-6" />
-              <span className="uppercase tracking-widest">High Appreciation Potential</span>
-            </div>
+
+          <CinematicReveal delay={0.25}>
+            <p className="font-paragraph text-sm sm:text-base md:text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed px-4">
+              Discover why Meenakshi Pearl stands out as the premier investment opportunity in East Bangalore's growth corridor
+            </p>
           </CinematicReveal>
-        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-16 mb-12 sm:mb-16 md:mb-20">
-          {investmentHighlights.map((highlight, index) => (
-            <CinematicReveal key={highlight._id} delay={index * 0.15}>
-              <div className="relative pl-6 sm:pl-8 border-l-2 border-primary/30 hover:border-primary transition-colors duration-500 group">
-                <h3 className="font-heading text-lg sm:text-2xl md:text-3xl text-soft-charcoal mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">
-                  {highlight.highlightTitle}
-                </h3>
-                
-                {highlight.highlightQuote && (
-                  <blockquote className="font-heading text-sm sm:text-lg md:text-xl text-soft-charcoal/80 italic mb-3 sm:mb-4 leading-relaxed">
-                    "{highlight.highlightQuote}"
-                  </blockquote>
-                )}
-
-                {highlight.additionalContext && (
-                  <p className="font-paragraph text-xs sm:text-sm text-muted-gray group-hover:text-soft-charcoal/70 transition-colors duration-300">
-                    {highlight.additionalContext}
-                  </p>
-                )}
-
-                <motion.div 
-                  className="absolute -left-[5px] top-0 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: false }}
-                />
-              </div>
-            </CinematicReveal>
-          ))}
-        </div>
-
-        <CinematicReveal delay={0.5}>
-          <div className="text-center mb-12 sm:mb-16">
-            <motion.div
-              className="h-[1px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"
+          <CinematicReveal delay={0.35}>
+            <motion.div 
+              className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-6 sm:mt-8"
               initial={{ scaleX: 0, opacity: 0 }}
               whileInView={{ scaleX: 1, opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-              viewport={{ once: false }}
-              style={{ originX: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
             />
+          </CinematicReveal>
+        </div>
+
+        {/* Investment Highlights Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-12 sm:mb-16 md:mb-20">
+          {investmentHighlights.map((highlight, index) => {
+            const { Icon, gradient } = iconMap[index % iconMap.length];
+            
+            return (
+              <CinematicReveal key={highlight._id} delay={index * 0.1}>
+                <motion.div
+                  className="group relative h-full"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  {/* Card Container */}
+                  <div className="relative h-full bg-old-lace border-2 border-primary/15 rounded-2xl p-6 sm:p-7 md:p-8 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                    {/* Gradient Background on Hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    {/* Top Border Accent */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+
+                    {/* Content */}
+                    <div className="relative z-10">
+                      {/* Icon Container */}
+                      <motion.div 
+                        className={`w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 rounded-xl bg-gradient-to-br ${gradient} border border-primary/20 flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                        whileHover={{ rotate: 12 }}
+                      >
+                        <Icon className="w-7 sm:w-8 md:w-10 h-7 sm:h-8 md:h-10 text-primary" />
+                      </motion.div>
+
+                      {/* Title */}
+                      <h3 className="font-heading text-xl sm:text-2xl md:text-3xl text-soft-charcoal mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
+                        {highlight.highlightTitle}
+                      </h3>
+
+                      {/* Quote */}
+                      {highlight.highlightQuote && (
+                        <blockquote className="font-paragraph text-sm sm:text-base md:text-lg text-soft-charcoal/80 italic mb-3 sm:mb-4 leading-relaxed border-l-2 border-primary/30 pl-4 group-hover:border-primary transition-colors duration-300">
+                          "{highlight.highlightQuote}"
+                        </blockquote>
+                      )}
+
+                      {/* Additional Context */}
+                      {highlight.additionalContext && (
+                        <p className="font-paragraph text-xs sm:text-sm text-muted-gray leading-relaxed group-hover:text-soft-charcoal/70 transition-colors duration-300">
+                          {highlight.additionalContext}
+                        </p>
+                      )}
+
+                      {/* Decorative Corner Element */}
+                      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
+                    </div>
+                  </div>
+
+                  {/* Floating Badge */}
+                  <motion.div
+                    className="absolute -top-3 -right-3 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-lg"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </motion.div>
+                </motion.div>
+              </CinematicReveal>
+            );
+          })}
+        </div>
+
+        {/* Stats Bar */}
+        <CinematicReveal delay={0.5}>
+          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-6 sm:p-8 md:p-10 mb-12 sm:mb-16 border border-primary/20">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-primary/20">
+              {[
+                { value: "25%+", label: "Expected Appreciation", sublabel: "in 3-5 years" },
+                { value: "100%", label: "Clear Title", sublabel: "Legal Compliance" },
+                { value: "₹38L", label: "Starting Price", sublabel: "Premium Plots" }
+              ].map((stat, i) => (
+                <motion.div 
+                  key={i}
+                  className="text-center py-4 sm:py-0"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + (i * 0.1) }}
+                  viewport={{ once: true }}
+                >
+                  <div className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary font-bold mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="font-paragraph text-sm sm:text-base text-soft-charcoal font-semibold mb-1">
+                    {stat.label}
+                  </div>
+                  <div className="font-paragraph text-xs sm:text-sm text-muted-gray">
+                    {stat.sublabel}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </CinematicReveal>
 
+        {/* CTA Section */}
         <CinematicReveal delay={0.7}>
           <div className="text-center">
-            <Button 
-              onClick={onOpenContactForm}
-              className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Explore Investment Opportunities
-            </Button>
+              <Button 
+                onClick={onOpenContactForm}
+                className="bg-primary text-white hover:bg-primary/90 font-paragraph text-base sm:text-lg px-8 sm:px-12 py-3 sm:py-4 rounded-xl tracking-wide transition-all duration-300 shadow-lg hover:shadow-2xl group"
+              >
+                <span className="flex items-center gap-2">
+                  Explore Investment Opportunities
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+              </Button>
+            </motion.div>
+            
+            <p className="font-paragraph text-xs sm:text-sm text-muted-gray mt-4 sm:mt-6">
+              Limited plots available • Book your site visit today
+            </p>
           </div>
         </CinematicReveal>
       </div>
