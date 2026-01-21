@@ -1067,9 +1067,9 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
 
                       {/* Quote */}
                       {highlight.highlightQuote && (
-                        <blockquote className="font-paragraph text-sm sm:text-base md:text-lg text-soft-charcoal/80 italic mb-3 sm:mb-4 leading-relaxed border-l-2 border-primary/30 pl-4 group-hover:border-primary transition-colors duration-300">
-                          "{highlight.highlightQuote}"
-                        </blockquote>
+                        <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray mb-3 sm:mb-4 leading-relaxed">
+                          {highlight.highlightQuote}
+                        </p>
                       )}
 
                       {/* Additional Context */}
