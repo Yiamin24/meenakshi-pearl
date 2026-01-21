@@ -401,7 +401,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                 { label: "Intl. Airport", dist: "60 mins" }
               ].map((item, i) => (
                 <CinematicReveal key={i} delay={0.3 + (i * 0.1)}>
-                  <div className="flex items-center justify-between border-b border-primary/10 pb-3 sm:pb-4 group hover:border-primary/30 transition-colors cursor-pointer" onClick={onOpenContactForm}>
+                  <div className="flex items-center justify-between pb-3 sm:pb-4 group transition-colors cursor-pointer" onClick={onOpenContactForm}>
                     <span className="font-heading text-lg sm:text-xl md:text-2xl text-soft-charcoal group-hover:translate-x-2 transition-transform duration-500">{item.label}</span>
                     <span className="font-paragraph text-primary font-semibold text-sm sm:text-base md:text-lg">{item.dist}</span>
                   </div>
@@ -953,7 +953,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
                 </p>
                 
                 {approval.issuingAuthority && (
-                  <div className="pt-3 sm:pt-4 border-t border-primary/10 mt-auto">
+                  <div className="pt-3 sm:pt-4 mt-auto">
                     <p className="text-[10px] sm:text-xs text-primary/70 uppercase tracking-wider">
                       {replaceText(approval.issuingAuthority)}
                     </p>
