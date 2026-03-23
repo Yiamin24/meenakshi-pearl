@@ -19,8 +19,32 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  const isEnglishOnly = (text: string): boolean => {
+    // Allow only English letters, numbers, spaces, and common punctuation
+    const englishRegex = /^[a-zA-Z0-9\s.,!?'\"-]*$/;
+    return englishRegex.test(text);
+  };
+
+  const countWords = (text: string): number => {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
+    // Apply restrictions only to message field
+    if (name === 'message') {
+      // Check if input is English only
+      if (!isEnglishOnly(value)) {
+        return;
+      }
+      
+      // Check word limit (10 words max)
+      if (countWords(value) > 10) {
+        return;
+      }
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: value,
@@ -159,9 +183,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
 
                     {/* Message */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
-                        Message *
-                      </label>
+                      <div className="flex justify-between items-center mb-2">
+                        <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 font-semibold">
+                          Message * (English only, max 10 words)
+                        </label>
+                        <span className="font-paragraph text-xs text-foreground/50">
+                          {countWords(formData.message)}/10 words
+                        </span>
+                      </div>
                       <textarea
                         name="message"
                         value={formData.message}
