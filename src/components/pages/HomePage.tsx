@@ -1246,12 +1246,11 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         name: formData.name,
         phoneNumber: formData.phoneNumber,
         email: formData.email,
-        message: formData.message,
         submissionDate: new Date(),
       });
 
       setSubmitSuccess(true);
-      setFormData({ name: '', phoneNumber: '', email: '', message: '' });
+      setFormData({ name: '', phoneNumber: '', email: '' });
 
       // Reset success message after 3 seconds
       setTimeout(() => {
@@ -1349,27 +1348,6 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                     required
                     className="w-full bg-old-lace border border-primary/20 rounded-lg px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 font-paragraph text-sm sm:text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all"
                     placeholder="your@email.com"
-                  />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <div className="flex justify-between items-center mb-2 sm:mb-3">
-                    <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 font-semibold">
-                      Message * (English only, max 10 words)
-                    </label>
-                    <span className="font-paragraph text-xs text-soft-charcoal/50">
-                      {countWords(formData.message)}/10 words
-                    </span>
-                  </div>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full bg-old-lace border border-primary/20 rounded-lg px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 font-paragraph text-sm sm:text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all resize-none"
-                    placeholder="Tell us about your interest in Meenakshi Pearl..."
                   />
                 </div>
 

@@ -14,7 +14,6 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
     name: '',
     phoneNumber: '',
     email: '',
-    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -61,12 +60,11 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
         name: formData.name,
         phoneNumber: formData.phoneNumber,
         email: formData.email,
-        message: formData.message,
         submissionDate: new Date(),
       });
 
       setSubmitSuccess(true);
-      setFormData({ name: '', phoneNumber: '', email: '', message: '' });
+      setFormData({ name: '', phoneNumber: '', email: '' });
 
       // Close modal after 2 seconds
       setTimeout(() => {
@@ -178,27 +176,6 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         required
                         className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
                         placeholder="your@email.com"
-                      />
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <div className="flex justify-between items-center mb-2">
-                        <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 font-semibold">
-                          Message * (English only, max 10 words)
-                        </label>
-                        <span className="font-paragraph text-xs text-foreground/50">
-                          {countWords(formData.message)}/10 words
-                        </span>
-                      </div>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={4}
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all resize-none"
-                        placeholder="Tell us about your interest in Meenakshi Pearl..."
                       />
                     </div>
 
