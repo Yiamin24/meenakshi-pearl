@@ -193,7 +193,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-soft-charcoal mb-4 sm:mb-6">
                 Plots starting from{' '}
                 <span className="text-primary whitespace-nowrap">
-                  ₹38 Lakhs
+                  ₹40 Lakhs
                 </span>
               </h1>
             </CinematicReveal>
