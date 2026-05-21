@@ -1141,7 +1141,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
               {[
                 { value: "25%+", label: "Expected Appreciation", sublabel: "in 3-5 years" },
                 { value: "100%", label: "Clear Title", sublabel: "Legal Compliance" },
-                { value: "₹38L", label: "Starting Price", sublabel: "Premium Plots" }
+                { value: "₹40L", label: "Starting Price", sublabel: "Premium Plots" }
               ].map((stat, i) => (
                 <motion.div 
                   key={i}
