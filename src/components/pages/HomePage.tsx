@@ -219,6 +219,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
                   'Wide Internal Roads',
                   'Underground Utilities',
                   'Gated Community',
+                  'Ready to register plots',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 sm:gap-3">
                     <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary text-white flex items-center justify-center text-[10px] sm:text-xs flex-shrink-0">
