@@ -193,7 +193,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-soft-charcoal mb-4 sm:mb-6">
                 Plots starting from{' '}
                 <span className="text-primary whitespace-nowrap">
-                  ₹40 Lakhs
+                  ₹45 Lakhs
                 </span>
               </h1>
             </CinematicReveal>
@@ -1142,7 +1142,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
               {[
                 { value: "25%+", label: "Expected Appreciation", sublabel: "in 3-5 years" },
                 { value: "100%", label: "Clear Title", sublabel: "Legal Compliance" },
-                { value: "₹40L", label: "Starting Price", sublabel: "Premium Plots" }
+                { value: "₹45L", label: "Starting Price", sublabel: "Premium Plots" }
               ].map((stat, i) => (
                 <motion.div 
                   key={i}
