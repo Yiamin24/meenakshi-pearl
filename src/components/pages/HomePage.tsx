@@ -191,12 +191,9 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
             {/* Heading */}
             <CinematicReveal delay={0.35}>
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-soft-charcoal mb-4 sm:mb-6">
-                <span className="text-primary whitespace-nowrap">30x50</span> Plot Size
+                Premium <span className="text-primary whitespace-nowrap">30x50</span> Plots
                 <br />
-                Starting from{' '}
-                <span className="text-primary whitespace-nowrap">
-                  ₹45 Lakhs
-                </span>
+                From <span className="text-primary whitespace-nowrap">₹45 Lakhs</span>
               </h1>
             </CinematicReveal>
 
