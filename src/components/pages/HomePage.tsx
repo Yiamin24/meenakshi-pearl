@@ -193,7 +193,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-soft-charcoal mb-4 sm:mb-6">
                 Exclusive <span className="text-primary whitespace-nowrap">30x50</span> Plots
                 <br />
-                Starting at <span className="text-primary whitespace-nowrap">₹48 Lakhs</span>
+                Starting at <span className="text-primary whitespace-nowrap">₹45 Lakhs</span>
               </h1>
             </CinematicReveal>
 
@@ -301,7 +301,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   className="font-heading text-5xl sm:text-6xl md:text-8xl 
              font-semibold text-primary
              tracking-tight leading-none
-
+             drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]
              mb-0"
 >
   {stat.value}
@@ -1246,12 +1246,11 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         name: formData.name,
         phoneNumber: formData.phoneNumber,
         email: formData.email,
-        message: formData.message,
         submissionDate: new Date(),
       });
 
       setSubmitSuccess(true);
-      setFormData({ name: '', phoneNumber: '', email: '', message: '' });
+      setFormData({ name: '', phoneNumber: '', email: '' });
 
       // Reset success message after 3 seconds
       setTimeout(() => {

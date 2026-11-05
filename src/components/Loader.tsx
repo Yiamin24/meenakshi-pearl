@@ -19,7 +19,7 @@ export default function Loader() {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-old-lace z-50 flex flex-col items-center justify-center"
+      className="fixed inset-0 bg-background z-50 flex flex-col items-center justify-center"
       initial={{ opacity: 1 }}
       animate={{ opacity: stage >= 3 ? 0 : 1 }}
       transition={{ duration: 1, ease: 'easeOut' }}
@@ -74,7 +74,7 @@ export default function Loader() {
         animate={{ opacity: stage >= 2 ? 1 : 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <p className="font-paragraph text-soft-charcoal text-sm">
+        <p className="font-paragraph text-champagne-beige text-sm">
           Loading your luxury experience...
         </p>
       </motion.div>

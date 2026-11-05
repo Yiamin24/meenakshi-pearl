@@ -40,7 +40,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-old-lace/95 backdrop-blur-md border-b border-primary/20 shadow-lg transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-lg transition-all duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex h-16 sm:h-20 md:h-24 items-center justify-between">
@@ -111,7 +111,7 @@ export default function Header({ onOpenContactForm }: HeaderProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden pb-4 space-y-3 bg-old-lace/95"
+            className="md:hidden pb-4 space-y-3 bg-background/95"
           >
             {navItems.map((item) => (
               <button
