@@ -1246,11 +1246,12 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
         name: formData.name,
         phoneNumber: formData.phoneNumber,
         email: formData.email,
+        message: formData.message,
         submissionDate: new Date(),
       });
 
       setSubmitSuccess(true);
-      setFormData({ name: '', phoneNumber: '', email: '' });
+      setFormData({ name: '', phoneNumber: '', email: '', message: '' });
 
       // Reset success message after 3 seconds
       setTimeout(() => {
