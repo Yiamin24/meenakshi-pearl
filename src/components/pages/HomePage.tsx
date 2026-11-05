@@ -301,7 +301,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   className="font-heading text-5xl sm:text-6xl md:text-8xl 
              font-semibold text-primary
              tracking-tight leading-none
-             drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]
+
              mb-0"
 >
   {stat.value}
