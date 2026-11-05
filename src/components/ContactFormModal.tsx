@@ -99,13 +99,13 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[1000] flex items-center justify-center p-4"
           >
-            <div className="bg-background border border-foreground/20 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto scrollbar-hide">
+            <div className="bg-old-lace border border-primary/20 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto scrollbar-hide">
               {/* Header */}
-              <div className="sticky top-0 bg-background border-b border-foreground/20 px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
-                <h2 className="font-heading text-xl sm:text-2xl text-foreground">Get In Touch</h2>
+              <div className="sticky top-0 bg-old-lace border-b border-primary/20 px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
+                <h2 className="font-heading text-xl sm:text-2xl text-soft-charcoal">Get In Touch</h2>
                 <button
                   onClick={onClose}
-                  className="text-foreground/50 hover:text-foreground transition-colors"
+                  className="text-muted-gray/50 hover:text-soft-charcoal transition-colors"
                 >
                   <X className="w-5 sm:w-6 h-5 sm:h-6" />
                 </button>
@@ -119,13 +119,13 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center py-8 sm:py-12"
                   >
-                    <div className="w-10 sm:w-12 h-10 sm:h-12 bg-muted-forest-green/20 border border-muted-forest-green rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <svg className="w-5 sm:w-6 h-5 sm:h-6 text-muted-forest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 border border-primary rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                      <svg className="w-5 sm:w-6 h-5 sm:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="font-heading text-lg sm:text-xl text-foreground mb-2">Thank You!</h3>
-                    <p className="font-paragraph text-sm sm:text-base text-foreground/70">
+                    <h3 className="font-heading text-lg sm:text-xl text-soft-charcoal mb-2">Thank You!</h3>
+                    <p className="font-paragraph text-sm sm:text-base text-muted-gray/70">
                       We've received your message. Our team will be in touch shortly.
                     </p>
                   </motion.div>
@@ -133,7 +133,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                   <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                     {/* Name */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
+                      <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 font-semibold">
                         Full Name *
                       </label>
                       <input
@@ -142,14 +142,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
+                        className="w-full bg-white border border-primary/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
                         placeholder="Your name"
                       />
                     </div>
 
                     {/* Phone */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
+                      <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 font-semibold">
                         Phone Number *
                       </label>
                       <input
@@ -158,14 +158,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.phoneNumber}
                         onChange={handleChange}
                         required
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
+                        className="w-full bg-white border border-primary/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
                         placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
 
                     {/* Email */}
                     <div>
-                      <label className="block font-paragraph text-xs sm:text-sm text-foreground/90 mb-2 font-semibold">
+                      <label className="block font-paragraph text-xs sm:text-sm text-soft-charcoal/90 mb-2 font-semibold">
                         Email Address *
                       </label>
                       <input
@@ -174,7 +174,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full bg-foreground/15 border border-foreground/30 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-warm-espresso placeholder-foreground/50 focus:outline-none focus:border-primary focus:bg-foreground/20 transition-all"
+                        className="w-full bg-white border border-primary/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 font-paragraph text-sm sm:text-base text-soft-charcoal placeholder-muted-gray/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -183,12 +183,12 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-primary text-black hover:bg-primary/90 font-paragraph text-sm sm:text-base py-2 sm:py-3 rounded-lg mt-4 sm:mt-6 transition-all"
+                      className="w-full bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base py-2 sm:py-3 rounded-lg mt-4 sm:mt-6 transition-all"
                     >
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
 
-                    <p className="font-paragraph text-xs text-foreground/30 text-center mt-3 sm:mt-4">
+                    <p className="font-paragraph text-xs text-muted-gray/50 text-center mt-3 sm:mt-4">
                       We respect your privacy. Your information will never be shared.
                     </p>
                   </form>

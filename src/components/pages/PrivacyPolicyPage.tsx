@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-old-lace">
       <Header />
       
       <main className="w-full">
