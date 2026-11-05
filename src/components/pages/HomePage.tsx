@@ -1,11 +1,7 @@
 // Premium Light Theme - Redesigned
-import Amenities3DSection from '@/components/Amenities3DCard';
-import ContactFormModal from '@/components/ContactFormModal';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import Loader from '@/components/Loader';
-import { Button } from '@/components/ui/button';
-import { Image } from '@/components/ui/image';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
+import { BaseCrudService } from '@/integrations';
 import {
   GatedLivingBenefits,
   InfrastructureDetails,
@@ -14,10 +10,14 @@ import {
   PlotConfigurations,
   ProjectAmenities,
 } from '@/entities';
-import { BaseCrudService } from '@/integrations';
-import { AnimatePresence, motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Award, BarChart3, Check, Lock, MapPin, Shield, Sparkles, Target, TrendingUp, Zap } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
+import { Image } from '@/components/ui/image';
+import { Button } from '@/components/ui/button';
+import { MapPin, Phone, Mail, ArrowRight, Check, Lock, TrendingUp, Sparkles, Target, Shield, Zap, Award, BarChart3 } from 'lucide-react';
+import Loader from '@/components/Loader';
+import Footer from '@/components/Footer';
+import Amenities3DSection from '@/components/Amenities3DCard';
+import ContactFormModal from '@/components/ContactFormModal';
+import Header from '@/components/Header';
 
 // --- Utility Components ---
 
@@ -35,7 +35,7 @@ const CinematicReveal = ({ children, delay = 0, className = "" }: { children: Re
 
 const SectionDivider = () => (
   <div className="w-full flex justify-center py-12 md:py-24">
-    <motion.div
+    <motion.div 
       initial={{ scaleX: 0, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
       viewport={{ once: true }}
@@ -100,7 +100,7 @@ export default function HomePage() {
   return (
     <div className="bg-old-lace text-soft-charcoal min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
       {showLoader && <Loader />}
-
+      
       <AnimatePresence>
         {!showLoader && (
           <motion.div
@@ -111,9 +111,9 @@ export default function HomePage() {
           >
             <Header onOpenContactForm={() => setIsContactModalOpen(true)} />
 
-            <ContactFormModal
-              isOpen={isContactModalOpen}
-              onClose={() => setIsContactModalOpen(false)}
+            <ContactFormModal 
+              isOpen={isContactModalOpen} 
+              onClose={() => setIsContactModalOpen(false)} 
             />
 
             <motion.main
@@ -162,10 +162,10 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
       >
         {/* LEFT: MASTERPLAN / IMAGE */}
         <div className="relative h-[50vh] sm:h-[55vh] lg:h-auto order-1 lg:order-1">
-          <Image
-            src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg"
-            alt="Meenakshi Pearl Aerial View - Gated Community"
-            className="absolute inset-0 w-full h-full object-cover"
+          <Image 
+            src="https://static.wixstatic.com/media/cef78c_5c7ab11a07ad4474859427a981665a82~mv2.jpg" 
+            alt="Meenakshi Pearl Aerial View - Gated Community" 
+            className="absolute inset-0 w-full h-full object-cover" 
           />
 
           {/* Dark cinematic overlay */}
@@ -180,7 +180,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         {/* RIGHT: CONTENT PANEL */}
         <div className="flex items-center justify-center px-4 py-8 sm:px-6 sm:py-10 md:px-10 lg:px-16 xl:px-20 bg-white order-2 lg:order-2">
           <div className="max-w-xl w-full text-left">
-
+            
             {/* Badge */}
             <CinematicReveal delay={0.2}>
               <span className="inline-block mb-4 sm:mb-6 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs tracking-widest uppercase font-medium">
@@ -193,7 +193,7 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-soft-charcoal mb-4 sm:mb-6">
                 Exclusive <span className="text-primary whitespace-nowrap">30x50</span> Plots
                 <br />
-                Starting at <span className="text-primary whitespace-nowrap">₹48 Lakhs</span>
+                Starting at <span className="text-primary whitespace-nowrap">₹45 Lakhs</span>
               </h1>
             </CinematicReveal>
 
@@ -276,14 +276,14 @@ const HeroSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) =
         />
       </motion.div>
     </section>
-
+  
   );
 };
 
 const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () => void }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
-
+  
   return (
     <section id="about" ref={ref} className="py-12 sm:py-20 md:py-36 bg-warm-beige relative">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
@@ -298,7 +298,7 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   initial={{ opacity: 0, y: 20 }}
   animate={isInView ? { opacity: 1, y: 0 } : {}}
   transition={{ duration: 1, delay: i * 0.2 }}
-  className="font-heading text-5xl sm:text-6xl md:text-8xl
+  className="font-heading text-5xl sm:text-6xl md:text-8xl 
              font-semibold text-primary
              tracking-tight leading-none
              drop-shadow-[0_6px_20px_rgba(0,0,0,0.15)]
@@ -310,13 +310,13 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
   </span>
 </motion.div>
 
-              <motion.p
+              <motion.p 
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal
-                           mt-[-0.5rem] sm:mt-4
-                           uppercase tracking-widest
+                className="font-paragraph text-sm sm:text-lg md:text-xl text-soft-charcoal 
+                           mt-[-0.5rem] sm:mt-4 
+                           uppercase tracking-widest 
                            leading-tight sm:leading-normal"
               >
                 {stat.label}
@@ -324,16 +324,16 @@ const ProjectOverviewSection = ({ onOpenContactForm }: { onOpenContactForm: () =
             </div>
           ))}
         </div>
-
+        
         <div className="mt-12 sm:mt-20 md:mt-32 text-center">
           <CinematicReveal>
             <p className="font-heading text-2xl sm:text-3xl md:text-5xl text-soft-charcoal max-w-4xl mx-auto leading-relaxed px-4 mb-8 sm:mb-12">
               "A meticulously planned ecosystem where luxury meets <span className="text-primary">legacy</span>. Every square foot is designed to appreciate in value and quality of life."
             </p>
           </CinematicReveal>
-
+          
           <CinematicReveal delay={0.2}>
-            <Button
+            <Button 
               onClick={onOpenContactForm}
               className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
             >
@@ -366,10 +366,10 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                   className="opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 />
                 <div className="absolute inset-0 pointer-events-none border border-primary/10" />
-
+                
                 {/* Animated Pin */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  <motion.div
+                  <motion.div 
                     animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
                     transition={{ duration: 2, repeat: Infinity }}
                     className="absolute inset-0 bg-primary rounded-full opacity-40"
@@ -387,7 +387,7 @@ const LocationSection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
                 <span className="text-primary italic">Positioned</span>
               </h2>
             </CinematicReveal>
-
+            
             <CinematicReveal delay={0.2}>
               <p className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray mb-8 sm:mb-12 leading-relaxed border-l-4 border-primary/30 pl-4 sm:pl-6">
                 Located in the rapid-growth corridor of East Bangalore, Meenakshi Pearl offers the perfect equilibrium between urban connectivity and natural serenity.
@@ -428,7 +428,7 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
       <div className="max-w-[100rem] mx-auto px-4 md:px-8">
         <div className="mb-16 sm:mb-24 md:mb-32">
           <CinematicReveal>
-            <motion.h2
+            <motion.h2 
               className="font-heading text-4xl sm:text-5xl md:text-7xl text-soft-charcoal mb-6 leading-tight"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -438,9 +438,9 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
               Infrastructure <span className="text-primary">Reimagined</span>
             </motion.h2>
           </CinematicReveal>
-
+          
           <CinematicReveal delay={0.2}>
-            <motion.p
+            <motion.p 
               className="font-paragraph text-sm sm:text-base md:text-lg text-muted-gray max-w-3xl"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -450,9 +450,9 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
               We don't just build roads and pipes; we engineer a seamless living experience. Every detail is executed to global standards.
             </motion.p>
           </CinematicReveal>
-
+          
           <CinematicReveal delay={0.4}>
-            <motion.div
+            <motion.div 
               className="w-20 sm:w-24 h-1 bg-primary mt-6 sm:mt-8"
               initial={{ width: 0, opacity: 0 }}
               whileInView={{ width: 96, opacity: 1 }}
@@ -536,7 +536,7 @@ const InfrastructureSection = ({ infrastructure, onOpenContactForm }: { infrastr
 
         <CinematicReveal delay={0.5}>
           <div className="mt-12 sm:mt-16 md:mt-20 text-center">
-            <Button
+            <Button 
               onClick={onOpenContactForm}
               className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
             >
@@ -608,7 +608,7 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
   return (
     <section className="relative py-12 sm:py-20 md:py-36 bg-old-lace overflow-hidden">
       <div className="absolute inset-0 opacity-10">
-        <Image
+        <Image 
           src="https://static.wixstatic.com/media/cef78c_f9065b5bb9c444d8956454710255821f~mv2.png?originWidth=1920&originHeight=1024"
           alt="Background Pattern"
           className="w-full h-full object-cover"
@@ -709,7 +709,7 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6 }}
                   >
-                    <Button
+                    <Button 
                       onClick={onOpenContactForm}
                       className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
                     >
@@ -781,7 +781,7 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
 
         <CinematicReveal delay={0.6}>
           <div className="text-center">
-            <Button
+            <Button 
               onClick={onOpenContactForm}
               className="bg-primary text-white hover:bg-primary/90 font-paragraph text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
             >
@@ -796,21 +796,21 @@ const GatedLivingSection = ({ gatedBenefits, onOpenContactForm }: { gatedBenefit
 
 const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotConfigs: PlotConfigurations[], onOpenContactForm: () => void }) => {
   const configCards = [
-    {
-      title: "1500 Sqft",
-      subtitle: "30x50",
+    { 
+      title: "1500 Sqft", 
+      subtitle: "30x50", 
       description: "Perfect for modern family homes",
       image: "https://static.wixstatic.com/media/cef78c_1ed0e26987f94f4da1faa6988026c93d~mv2.png?originWidth=1152&originHeight=768",
     },
-    {
-      title: "1800 Sqft",
-      subtitle: "30x60",
+    { 
+      title: "1800 Sqft", 
+      subtitle: "30x60", 
       description: "Premium luxury residences",
       image: "https://static.wixstatic.com/media/cef78c_3afbc2ed677e4695a734f9bc4f870313~mv2.png?originWidth=1152&originHeight=768",
     },
-    {
-      title: "Custom Plots",
-      subtitle: "Bespoke Sizes",
+    { 
+      title: "Custom Plots", 
+      subtitle: "Bespoke Sizes", 
       description: "Exclusive architectural designs",
       image: "https://static.wixstatic.com/media/cef78c_3dec255cbbec4e8e8c3a0710bcec325c~mv2.png?originWidth=1152&originHeight=768",
     }
@@ -847,7 +847,7 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
                       Available
                     </span>
                   </div>
-
+                  
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -877,13 +877,13 @@ const PlotConfigurationsSection = ({ plotConfigs, onOpenContactForm }: { plotCon
 
         <CinematicReveal delay={0.7}>
           <div className="text-center">
-            <Button
+            <Button 
               onClick={onOpenContactForm}
-              className="bg-primary text-white hover:bg-primary/90
-                         font-paragraph text-base sm:text-lg
-                         px-8 sm:px-10 py-3 sm:py-4
-                         rounded-xl tracking-wide
-                         transition-all duration-300
+              className="bg-primary text-white hover:bg-primary/90 
+                         font-paragraph text-base sm:text-lg 
+                         px-8 sm:px-10 py-3 sm:py-4 
+                         rounded-xl tracking-wide 
+                         transition-all duration-300 
                          hover:scale-105 shadow-md hover:shadow-lg"
             >
               Reserve Your Plot Today
@@ -907,7 +907,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
   return (
     <section className="pt-12 sm:pt-20 md:pt-36 bg-old-lace relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[250px] sm:w-[350px] md:w-[500px] h-[250px] sm:h-[350px] md:h-[500px] bg-primary/5 rounded-full opacity-20 pointer-events-none" />
-
+      
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-24 gap-6 sm:gap-8">
           <div className="max-w-2xl">
@@ -933,7 +933,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
             <CinematicReveal key={approval._id} delay={index * 0.1}>
               <div className="group relative p-6 sm:p-7 md:p-8 border border-primary/15 bg-warm-beige/50 hover:bg-warm-beige transition-all duration-500 h-full flex flex-col rounded-xl shadow-sm hover:shadow-md">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-
+                
                 <div className="mb-4 sm:mb-6 flex justify-between items-start">
                   <div className="p-2 sm:p-3 bg-pale-sage/40 rounded-lg text-primary group-hover:scale-110 transition-transform duration-500">
                     <Check className="w-5 sm:w-6 h-5 sm:h-6" />
@@ -944,14 +944,14 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
                     </span>
                   )}
                 </div>
-
+                
                 <h3 className="font-heading text-lg sm:text-2xl md:text-3xl text-soft-charcoal mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                   {replaceText(approval.approvalName)}
                 </h3>
                 <p className="font-paragraph text-xs sm:text-sm text-muted-gray leading-relaxed mb-3 sm:mb-4 flex-grow">
                   {replaceText(approval.description)}
                 </p>
-
+                
                 {approval.issuingAuthority && (
                   <div className="pt-3 sm:pt-4 border-t border-primary/10 mt-auto">
                     <p className="text-[10px] sm:text-xs text-primary/70 uppercase tracking-wider">
@@ -966,7 +966,7 @@ const LegalSection = ({ legalApprovals, onOpenContactForm }: { legalApprovals: L
 
         <CinematicReveal delay={0.5}>
           <div className="text-center">
-
+            
           </div>
         </CinematicReveal>
       </div>
@@ -997,7 +997,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16 md:mb-24">
           <CinematicReveal>
-            <motion.div
+            <motion.div 
               className="inline-flex items-center justify-center w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 mb-6 sm:mb-8 border-2 border-primary/20"
               whileHover={{ scale: 1.1, rotate: 360 }}
               transition={{ duration: 0.8 }}
@@ -1020,7 +1020,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
           </CinematicReveal>
 
           <CinematicReveal delay={0.35}>
-            <motion.div
+            <motion.div 
               className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-6 sm:mt-8"
               initial={{ scaleX: 0, opacity: 0 }}
               whileInView={{ scaleX: 1, opacity: 1 }}
@@ -1034,7 +1034,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-12 sm:mb-16 md:mb-20 max-w-7xl mx-auto">
           {investmentHighlights.slice(0, 4).map((highlight, index) => {
             const { Icon, gradient } = iconMap[index % iconMap.length];
-
+            
             return (
               <CinematicReveal key={highlight._id} delay={index * 0.1}>
                 <motion.div
@@ -1046,9 +1046,9 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
                   <div className="relative h-full bg-old-lace border-2 border-primary/15 rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
                     {/* Gradient Background on Hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
+                    
                     {/* Animated Pattern Background */}
-                    <motion.div
+                    <motion.div 
                       className="absolute inset-0 opacity-5"
                       initial={{ backgroundPosition: '0% 0%' }}
                       animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
@@ -1058,14 +1058,14 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
                         backgroundSize: '20px 20px'
                       }}
                     />
-
+                    
                     {/* Top Border Accent */}
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
 
                     {/* Content */}
                     <div className="relative z-10">
                       {/* Icon Container with Glow Effect */}
-                      <motion.div
+                      <motion.div 
                         className={`relative w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-2xl bg-gradient-to-br ${gradient} border-2 border-primary/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
                         whileHover={{ rotate: 12 }}
                       >
@@ -1095,7 +1095,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
 
                       {/* Decorative Corner Element */}
                       <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
-
+                      
                       {/* Decorative Top Left Corner */}
                       <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-t-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
                     </div>
@@ -1143,7 +1143,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
                 { value: "100%", label: "Clear Title", sublabel: "Legal Compliance" },
                 { value: "₹45L", label: "Starting Price", sublabel: "Premium Plots" }
               ].map((stat, i) => (
-                <motion.div
+                <motion.div 
                   key={i}
                   className="text-center py-4 sm:py-0"
                   initial={{ opacity: 0, y: 20 }}
@@ -1173,7 +1173,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Button
+              <Button 
                 onClick={onOpenContactForm}
                 className="bg-primary text-white hover:bg-primary/90 font-paragraph text-base sm:text-lg px-8 sm:px-12 py-3 sm:py-4 rounded-xl tracking-wide transition-all duration-300 shadow-lg hover:shadow-2xl group"
               >
@@ -1183,7 +1183,7 @@ const InvestmentSection = ({ investmentHighlights, onOpenContactForm }: { invest
                 </span>
               </Button>
             </motion.div>
-
+            
             <p className="font-paragraph text-xs sm:text-sm text-muted-gray mt-4 sm:mt-6">
               Limited plots available • Book your site visit today
             </p>
@@ -1216,20 +1216,20 @@ const FinalCTASection = ({ onOpenContactForm }: { onOpenContactForm: () => void 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-
+    
     // Apply restrictions only to message field
     if (name === 'message') {
       // Check if input is English only
       if (!isEnglishOnly(value)) {
         return;
       }
-
+      
       // Check word limit (10 words max)
       if (countWords(value) > 10) {
         return;
       }
     }
-
+    
     setFormData(prev => ({
       ...prev,
       [name]: value,
